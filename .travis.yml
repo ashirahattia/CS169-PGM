@@ -1,0 +1,10 @@
+language: ruby
+rvm:
+ - 2.2
+ - jruby
+ - rbx-2
+# uncomment and edit the following line if your project needs to run something other than Using the default profile...
+0 scenarios
+0 steps
+0m0.000s:
+# script: bundle exec rspec spec
