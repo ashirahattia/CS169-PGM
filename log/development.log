@@ -12,3 +12,4 @@ Cannot render console from 204.102.226.251! Allowed networks: 127.0.0.1, ::1, 12
 Processing by Rails::WelcomeController#index as HTML
   Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/railties-4.2.5/lib/rails/templates/rails/welcome/index.html.erb (11.4ms)
 Completed 200 OK in 39ms (Views: 27.5ms | ActiveRecord: 0.0ms)
+Initializing jasmine.yml configuration
