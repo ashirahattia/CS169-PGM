@@ -1,6 +1,9 @@
 language: ruby
 rvm:
  - 2.3.0
+addons:
+    code_climate:
+        repo_token: c79f66d08128ec373e911e150208ec90ca038ab2c9dd91734396e4aab076b9f0
 script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
