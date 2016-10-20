@@ -1,0 +1,19 @@
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Group Name</th>
+        <th>Project Name</th>
+    </tr>
+    
+    <% @matches.count.times do |index| %>
+    <tr>
+        <td><%= index %></td>
+        <td><%= @matches[index].group_name %></td>
+        <td><%= @matches[index].project_name %></td>
+    </tr>
+    <% end %>
+</table> 
+
+<form action="/matches/show" method="get">
+    <input type="submit" value="Match"/>
+</form>

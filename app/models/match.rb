@@ -1,7 +1,7 @@
 class Match < ActiveRecord::Base
     def self.algorithm
         Match.delete_all
-        all_projects = Project.all
+        all_projects = Project.all.shuffle
         all_groups = Group.all
         all_groups.count.times do |index|
             group_name = all_groups[index].group_name
