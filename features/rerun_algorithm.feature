@@ -4,7 +4,8 @@ Feature: Re-Run Matching Algorithm
   I want to be able to re-run it on an existing set of matches
     
   Scenario: Re-initiate algorithm from table
-    Given I am logged in as a TA
+    Given I am on the home page
+    And I am logged in as a TA
     And I have pressed the Match button
     And I can see a table
     Then I should see Match button

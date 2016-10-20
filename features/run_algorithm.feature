@@ -4,6 +4,7 @@ Feature: Run Matching Algorithm
   I want to be able to start the matching algorithm
     
   Scenario: Initiate algorithm
-    Given I am logged in as a TA
-    And there is no existing project-group match
+    Given I am on the home page
+    And I am logged in as a TA
+    Then there is no existing project-group match
     Then I should see Match button

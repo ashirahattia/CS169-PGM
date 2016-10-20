@@ -4,6 +4,7 @@ Feature: See Results of Algorithm
   I want to be able to see a table view
     
   Scenario: See table
-    Given I am logged in as a TA
+    Given I am on the home page
+    And I am logged in as a TA
     And I have pressed the Match button
-    Then I should see a project-group match table
+    Then I can see a table
