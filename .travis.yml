@@ -1,9 +1,12 @@
 language: ruby
 rvm:
  - 2.3.0
-addons:
-    code_climate:
-        repo_token: c79f66d08128ec373e911e150208ec90ca038ab2c9dd91734396e4aab076b9f0
-
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rspec
+  - bundle exec cucumber
+after_script:
+  - bundle exec rake send_to_codeclimate 
 # uncomment and edit the following line if your project needs to run something other than Using the default profile...
 # script: bundle exec rspec spec
