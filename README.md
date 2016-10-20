@@ -10,6 +10,9 @@ Travis CS Badge: <img src="https://travis-ci.org/ashirahattia/cs169-pgm.svg?bran
 CodeClimate Badge:
 <a href="https://codeclimate.com/github/ashirahattia/cs169-pgm"><img src="https://codeclimate.com/github/ashirahattia/cs169-pgm/badges/gpa.svg" /></a>
 
+CodeClimate Coverage Badge: 
+<a href="https://codeclimate.com/github/ashirahattia/cs169-pgm/coverage"><img src="https://codeclimate.com/github/ashirahattia/cs169-pgm/badges/coverage.svg" /></a>
+
 <h2>MVP User Stories</h2>
 As a TA
 I want to register as an administrator
