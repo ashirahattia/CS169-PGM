@@ -10,8 +10,12 @@ class MatchesController < ApplicationController
     def new
     end
     
-    def show
+    def generate_and_show_results
         Match.algorithm
+        redirect match_path
+    end
+    
+    def show
         @matches = Match.all
     end
     
