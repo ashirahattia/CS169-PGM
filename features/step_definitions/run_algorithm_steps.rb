@@ -2,7 +2,7 @@ Given(/^I am logged in as a TA$/) do
 end
 
 Given(/^there is no existing project\-group match$/) do
-  assert Matches.exists? == false
+    Match.exists?.should be_false
 end
 
 Given(/^I have pressed the (.*) button$/) do |name|
@@ -10,7 +10,7 @@ Given(/^I have pressed the (.*) button$/) do |name|
 end
 
 Then(/^I should see a project\-group match table$/) do
-  assert Matches.exists? == true
+    Match.exists?.should be_true
 end
 
 Given(/^I can see a table$/) do
