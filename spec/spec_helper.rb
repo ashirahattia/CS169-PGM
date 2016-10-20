@@ -1,12 +1,24 @@
 require "simplecov"
 SimpleCov.start do
-  add_filter "/lib/"
-  add_filter "/iterations/"
   add_filter "/bin/"
+  add_filter "/config/"
+  add_filter "/coverage/"
+  add_filter "/db/"
+  add_filter "/features/"
+  add_filter "/iterations/"
+  add_filter "/lib/"
+  add_filter "/log/"
+  add_filter "/public/"
   add_filter "/spec/"
   add_filter "/tmp/"
   add_filter "/vendor/"
-  add_filter "/config/"
+  add_filter "/config.ru"
+  add_filter "/Gemfile"
+  add_filter "/Gemfile.lock"
+  add_filter "/LICENSE"
+  add_filter "/Rakefile"
+  add_filter "/README.md"
+  add_filter "/README.rdoc"
 end
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
