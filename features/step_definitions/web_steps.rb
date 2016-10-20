@@ -128,15 +128,15 @@ Then /^(?:|I )should not see "([^"]*)"$/ do |text|
   end
 end
 
-Then /^(?:|I )should not see \/([^\/]*)\/$/ do |regexp|
-  regexp = Regexp.new(regexp)
+# Then /^(?:|I )should not see \/([^\/]*)\/$/ do |regexp|
+#   regexp = Regexp.new(regexp)
 
-  if page.respond_to? :should
-    page.should have_no_xpath('//*', :text => regexp)
-  else
-    assert page.has_no_xpath?('//*', :text => regexp)
-  end
-end
+#   if page.respond_to? :should
+#     page.should have_no_xpath('//*', :text => regexp)
+#   else
+#     assert page.has_no_xpath?('//*', :text => regexp)
+#   end
+# end
 
 Then /^the "([^"]*)" field(?: within (.*))? should contain "([^"]*)"$/ do |field, parent, value|
   with_scope(parent) do
@@ -149,6 +149,18 @@ Then /^the "([^"]*)" field(?: within (.*))? should contain "([^"]*)"$/ do |field
     end
   end
 end
+
+# Then /^the "([^"]*)" field(?: within (.*))? should not contain "([^"]*)"$/ do |field, parent, value|
+#   with_scope(parent) do
+#     field = find_field(field)
+#     field_value = (field.tag_name == 'textarea') ? field.text : field.value
+#     if field_value.respond_to? :should_not
+#       field_value.should_not =~ /#{value}/
+#     else
+#       assert_no_match(/#{value}/, field_value)
+#     end
+#   end
+# end
 
 Then /^the "([^"]*)" field should have the error "([^"]*)"$/ do |field, error_message|
   element = find_field(field)
