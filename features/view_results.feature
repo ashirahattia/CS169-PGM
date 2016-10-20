@@ -5,5 +5,5 @@ Feature: See Results of Algorithm
     
   Scenario: See table
     Given I am logged in as a TA
-    And I have run the algorithm
+    And I have pressed the Match button
     Then I should see a project-group match table

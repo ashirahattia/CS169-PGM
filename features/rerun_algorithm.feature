@@ -5,8 +5,8 @@ Feature: Re-Run Matching Algorithm
     
   Scenario: Re-initiate algorithm from table
     Given I am logged in as a TA
-    And I have run the algorithm
+    And I have pressed the Match button
     And I can see a table
-    Then I should see Re-Run Algorithm
-    And I press Re-Run Algorithm
+    Then I should see Match button
+    And I have pressed the Match button
     Then I should see a different table

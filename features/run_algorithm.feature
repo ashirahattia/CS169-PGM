@@ -6,4 +6,4 @@ Feature: Run Matching Algorithm
   Scenario: Initiate algorithm
     Given I am logged in as a TA
     And there is no existing project-group match
-    Then I should see Run Algorithm
+    Then I should see Match button
