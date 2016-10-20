@@ -2335,3 +2335,131 @@ Processing by MatchesController#show as HTML
   [1m[36mMatch Load (0.3ms)[0m  [1mSELECT "matches".* FROM "matches"[0m
   Rendered matches/show.html.erb within layouts/application (2.6ms)
 Completed 200 OK in 91ms (Views: 29.0ms | ActiveRecord: 50.9ms)
+
+
+Started GET "/" for 98.248.251.108 at 2016-10-20 21:36:37 +0000
+Cannot render console from 98.248.251.108! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+SyntaxError (/home/ubuntu/workspace/cs169-pgm/app/controllers/matches_controller.rb:21: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/matches_controller.rb:21: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (12.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (55.6ms)
+
+
+Started GET "/" for 98.248.251.108 at 2016-10-20 21:37:06 +0000
+Cannot render console from 98.248.251.108! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MatchesController#new as HTML
+  Rendered matches/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 500ms (Views: 486.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/matches.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 98.248.251.108 at 2016-10-20 21:37:07 +0000
+Cannot render console from 98.248.251.108! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 98.248.251.108 at 2016-10-20 21:37:08 +0000
+Cannot render console from 98.248.251.108! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 98.248.251.108 at 2016-10-20 21:37:08 +0000
+Cannot render console from 98.248.251.108! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 98.248.251.108 at 2016-10-20 21:37:08 +0000
+Cannot render console from 98.248.251.108! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 98.248.251.108 at 2016-10-20 21:37:08 +0000
+Cannot render console from 98.248.251.108! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for 98.248.251.108 at 2016-10-20 21:37:08 +0000
+Cannot render console from 98.248.251.108! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/matches.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 98.248.251.108 at 2016-10-20 21:37:08 +0000
+Cannot render console from 98.248.251.108! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/matches/generate_and_show_results" for 98.248.251.108 at 2016-10-20 21:37:11 +0000
+Cannot render console from 98.248.251.108! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"generate_and_show_results"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  [1m[36mMatch Load (0.2ms)[0m  [1mSELECT "matches".* FROM "matches"[0m
+  Rendered matches/show.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 27ms (Views: 24.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/matches/generate_and_show_results" for 98.248.251.108 at 2016-10-20 21:37:14 +0000
+Cannot render console from 98.248.251.108! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"generate_and_show_results"}
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "matches"
+  [1m[36mMatch Load (0.1ms)[0m  [1mSELECT "matches".* FROM "matches"[0m
+  Rendered matches/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 22ms (Views: 21.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 98.248.251.108 at 2016-10-20 21:44:45 +0000
+Cannot render console from 98.248.251.108! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MatchesController#new as HTML
+  Rendered matches/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 287ms (Views: 276.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/matches/generate_and_show_results" for 98.248.251.108 at 2016-10-20 21:44:48 +0000
+Cannot render console from 98.248.251.108! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"generate_and_show_results"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  [1m[36mMatch Load (0.1ms)[0m  [1mSELECT "matches".* FROM "matches"[0m
+  Rendered matches/show.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 123ms (Views: 119.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/matches/show" for 98.248.251.108 at 2016-10-20 21:44:50 +0000
+Cannot render console from 98.248.251.108! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "matches"
+  [1m[36mMatch Load (0.2ms)[0m  [1mSELECT "matches".* FROM "matches"[0m
+  Rendered matches/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 15ms (Views: 13.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/matches/show" for 98.248.251.108 at 2016-10-20 21:44:51 +0000
+Cannot render console from 98.248.251.108! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "matches"
+  [1m[36mMatch Load (0.1ms)[0m  [1mSELECT "matches".* FROM "matches"[0m
+  Rendered matches/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/matches/show" for 98.248.251.108 at 2016-10-20 21:44:53 +0000
+Cannot render console from 98.248.251.108! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  [1m[36mMatch Load (0.1ms)[0m  [1mSELECT "matches".* FROM "matches"[0m
+  Rendered matches/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/matches/show" for 98.248.251.108 at 2016-10-20 21:44:54 +0000
+Cannot render console from 98.248.251.108! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "matches"
+  [1m[36mMatch Load (0.1ms)[0m  [1mSELECT "matches".* FROM "matches"[0m
+  Rendered matches/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 15ms (Views: 14.6ms | ActiveRecord: 0.3ms)
