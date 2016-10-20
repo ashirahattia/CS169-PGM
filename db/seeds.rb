@@ -5,3 +5,21 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+groups = [  {:group_name => 'a'},
+            {:group_name => 'b'},
+            {:group_name => 'c'},
+            {:group_name => 'd'}]
+            
+groups.each do |group|
+    Group.create!(group)
+end
+            
+projects = [ {:project_name => '1'},
+             {:project_name => '2'},
+             {:project_name => '3'},
+             {:project_name => '4'}]
+             
+projects.each do |project|
+    Project.create!(project)
+end
