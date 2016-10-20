@@ -5,10 +5,6 @@ Given(/^there is no existing project\-group match$/) do
   assert Matches.exists? == false
 end
 
-Then(/^I should see (.*) button$/) do |name|
-  find_button(name).should_not be_nil
-end
-
 Given(/^I have pressed the (.*) button$/) do |name|
   click_button(name)
 end
