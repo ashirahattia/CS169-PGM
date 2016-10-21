@@ -6,19 +6,19 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-groups = [  {:group_name => 'a'},
-            {:group_name => 'b'},
-            {:group_name => 'c'},
-            {:group_name => 'd'}]
+groups = [  {:group_name => 'group1'},
+            {:group_name => 'group2'},
+            {:group_name => 'group3'},
+            {:group_name => 'group4'}]
             
 groups.each do |group|
     Group.create!(group)
 end
             
-projects = [ {:project_name => '1'},
-             {:project_name => '2'},
-             {:project_name => '3'},
-             {:project_name => '4'}]
+projects = [ {:project_name => 'proj1'},
+             {:project_name => 'proj2'},
+             {:project_name => 'proj3'},
+             {:project_name => 'proj4'}]
              
 projects.each do |project|
     Project.create!(project)
