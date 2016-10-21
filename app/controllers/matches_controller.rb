@@ -8,10 +8,11 @@ class MatchesController < ApplicationController
     end
     
     def new
+        Match.algorithm
+        redirect_to '/matches/show'
     end
     
     def show
-        Match.algorithm
         @matches = Match.all
     end
     
