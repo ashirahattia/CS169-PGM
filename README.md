@@ -3,7 +3,7 @@ CS169 Project Group Match
 
 See the app on heroku at <a href="http://cs169-pgm.herokuapp.com">cs169-pgm.herokuapp.com</a>
 
-See our tracking board at <a href="https://trello.com/b/ZYvTGo5c/cs169">Trello</a>
+See our tracking board at <a href="https://www.pivotaltracker.com/n/projects/1891561">Pivotal Tracker</a>
 
 Travis CS Badge: <img src="https://travis-ci.org/ashirahattia/cs169-pgm.svg?branch=master">
 
@@ -37,6 +37,13 @@ So that we can work on an exciting project for CS169
 As  project team
 We want to see the results of the project-group matching
 So that we can get in touch with our customer and begin work
+
+<h2>Github Rules of Engagement</h2>
+<ul>
+    <li>All feature merges must go through pull requests
+    <li>For small changes, must get an "LGTM" from one other team member
+    <li>For larger changes, must get an "LGTM" from at least two other team members
+</ul>
 
 <h2>Algorithm ideas</h2>
 
