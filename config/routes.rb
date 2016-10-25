@@ -58,5 +58,5 @@ Rails.application.routes.draw do
   #   end
   root 'matches#index'
   resources :matches
-  
+  resources :groups
 end
