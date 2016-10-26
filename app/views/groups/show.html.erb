@@ -2,7 +2,7 @@
 
 <%= form_tag("/groups/" + params[:id], method: "put") do %>
     <h3>First project choice</h3>
-    <p>Currently <%= choice_str :third_choice %></p>
+    <p>Currently <%= choice_str :first_choice %></p>
     <select name="first_choice">
         <% @projects.each do |project| %>
             <option value=<%= project[:id] %>><%= project[:project_name] %></option>
