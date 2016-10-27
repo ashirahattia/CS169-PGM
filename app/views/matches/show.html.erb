@@ -1,19 +1,27 @@
-<table id="match_table">
-    <tr>
-        <th>ID</th>
-        <th>Group Name</th>
-        <th>Project Name</th>
-    </tr>
-    
-    <% @matches.count.times do |index| %>
-    <tr>
-        <td><%= index %></td>
-        <td><%= @matches[index].group_name %></td>
-        <td><%= @matches[index].project_name %></td>
-    </tr>
-    <% end %>
-</table> 
 
-<form action="/matches/new" method="get">
-    <input type="submit" value="Match"/>
-</form>
+<div class="content">
+    <div class="table-container">
+        <table id="match_table">
+            <tr>
+                <th class="match-header">ID</th>
+                <th class="match-header">Group Name</th>
+                <th class="match-header">Project Name</th>
+            </tr>
+            
+            <% @matches.count.times do |index| %>
+            <tr>
+                <td><%= index %></td>
+                <td class="group-name"><%= @matches[index].group_name %></td>
+                <td class="project-name"><%= @matches[index].project_name %></td>
+                <!-- RANK  GOES HERE -->
+            </tr>
+            <% end %>
+        </table> 
+    </div>
+    
+    <div class="rematch-container">
+        <form action="/matches/new" method="get">
+            <input type="submit" class="button" value="Re-Match"/>
+        </form>
+    </div>
+</div>
