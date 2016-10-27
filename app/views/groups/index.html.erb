@@ -1,0 +1,36 @@
+<%= render "layouts/sidebar.html.erb" %>
+<div class="content">
+    <%= form_tag(:groups_destroy_multiple, method: "POST") do %>
+        <div class="table-container">
+            <table id="group_table" class="group-table">
+                <tr>
+                    <th class="group-header">Delete</th>
+                    <th class="group-header">Group Name</th>
+                    <th class="group-header">Preference 1</th>
+                    <th class="group-header">Preference 2</th>
+                    <th class="group-header">Preference 3</th>
+                    <th class="group-header">Preference 4</th>
+                    <th class="group-header">Preference 5</th>
+                    <th class="group-header">Preference 6</th>
+                    <th class="group-header">Preference 7</th>
+                </tr>
+                
+                <% @groups.each do |group| %>
+                <% @group = group %>
+                <tr>
+                    <td class="delete-checkbox"> <%= check_box_tag("delete[#{group.id}]", "1") %></td>
+                    <td class="group-name"><%= link_to(group.group_name, "/groups/" + group.id.to_s) %></td>
+                    <td class="preference"><%= choice_str :first_choice %></td>
+                    <td class="preference"><%= choice_str :second_choice %></td>
+                    <td class="preference"><%= choice_str :third_choice %></td>
+                    <td class="preference"><%= choice_str :fourth_choice %></td>
+                    <td class="preference"><%= choice_str :fifth_choice %></td>
+                    <td class="preference"><%= choice_str :sixth_choice %></td>
+                    <td class="preference"><%= choice_str :seventh_choice %></td>
+                </tr>
+                <% end %>
+            </table> 
+        </div>
+        <input type="submit" value="delete selected groups"/>
+    <% end %>
+</div>
