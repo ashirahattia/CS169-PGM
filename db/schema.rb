@@ -11,15 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161021025012) do
+ActiveRecord::Schema.define(version: 20161027041215) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "group_name"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "first_choice"
     t.integer  "second_choice"
     t.integer  "third_choice"
+    t.integer  "fourth_choice"
+    t.integer  "fifth_choice"
+    t.integer  "sixth_choice"
+    t.integer  "seventh_choice"
   end
 
   create_table "matches", force: :cascade do |t|

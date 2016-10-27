@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%= render "layouts/sidebar.html.erb" %>
 <div class="content">
     <div class="table-container">
@@ -13,7 +14,7 @@
                 <td><%= index %></td>
                 <td class="group-name"><%= @matches[index].group_name %></td>
                 <td class="project-name"><%= @matches[index].project_name %></td>
-                <!-- RANK  GOES HERE -->
+                <td class="rank"><%= choice_num @matches[index] %></td>
             </tr>
             <% end %>
         </table> 
