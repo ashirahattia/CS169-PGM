@@ -1,0 +1,30 @@
+<%= render "layouts/sidebar.html.erb" %>
+<div class="content">
+    <div class="table-container">
+        <table id="group_table" class="group-table">
+            <tr>
+                <th class="match-header">Group Name</th>
+                <th class="match-header">Preference 1</th>
+                <th class="match-header">Preference 2</th>
+                <th class="match-header">Preference 3</th>
+                <th class="match-header">Preference 4</th>
+                <th class="match-header">Preference 5</th>
+                <th class="match-header">Preference 6</th>
+                <th class="match-header">Preference 7</th>
+            </tr>
+            
+            <% @groups.each do |group| %>
+            <% @group = group %>
+            <tr>
+                <td class="group-name"><%= link_to(group.group_name, "/groups/" + group.id.to_s) %></td>
+                <th class="preference"><%= choice_str :first_choice %></th>
+                <th class="preference"><%= choice_str :second_choice %></th>
+                <th class="preference"><%= choice_str :third_choice %></th>
+                <th class="preference"><%= choice_str :fourth_choice %></th>
+                <th class="preference"><%= choice_str :fifth_choice %></th>
+                <th class="preference"><%= choice_str :sixth_choice %></th>
+                <th class="preference"><%= choice_str :seventh_choice %></th>
+            </tr>
+            <% end %>
+        </table> 
+    </div>

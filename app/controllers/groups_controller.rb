@@ -17,7 +17,16 @@ class GroupsController < ApplicationController
         @group[:sixth_choice] = params[:sixth_choice]
         @group[:seventh_choice] = params[:seventh_choice]
         @group.save
-        redirect_to '/groups/' + params[:id]
+        redirect_to :groups
+    end
+    
+    def index
+        @groups = Group.all
+    end
+    
+    def destroy
+        Group.destroy(params[:id])
+        redirect_to :groups
     end
     
 end
