@@ -4,6 +4,10 @@ td, th {
     padding: 10px;
 }
 
+th {
+    text-align: left;
+}
+
 tr {
     margin: 7px;
     padding: 7px;
@@ -28,8 +32,11 @@ tr {
     width: 100%;
 }
 
-.rematch-container {
+.match-table {
     width: 100%;
-    text-align: left;
+}
+
+.rematch-container {
+    text-align: right;
     padding-top: 20px;
 }
