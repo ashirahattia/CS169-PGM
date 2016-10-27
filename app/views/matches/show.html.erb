@@ -3,6 +3,7 @@
         <th>ID</th>
         <th>Group Name</th>
         <th>Project Name</th>
+        <th>Group's Rank for Project</th>
     </tr>
     
     <% @matches.count.times do |index| %>
@@ -10,6 +11,7 @@
         <td><%= index %></td>
         <td><%= @matches[index].group_name %></td>
         <td><%= @matches[index].project_name %></td>
+        <td><%= choice_num @matches[index] %></td>
     </tr>
     <% end %>
 </table> 
