@@ -764,3 +764,861 @@ Processing by MatchesController#show as HTML
   Rendered matches/show.html.erb within layouts/application (0.9ms)
 Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.4ms)
   [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (13.7ms)[0m  [1mCREATE TABLE "groups" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "group_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "first_choice" integer, "second_choice" integer, "third_choice" integer) [0m
+  [1m[35m (9.5ms)[0m  CREATE TABLE "matches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "group_name" varchar, "project_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (11.5ms)[0m  [1mCREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "project_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (7.5ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (7.8ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (9.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20161021025012')
+  [1m[36m (8.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20161020032920')[0m
+  [1m[35m (9.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20161020040040')
+  [1m[36m (9.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20161020033138')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/groups" for 127.0.0.1 at 2016-10-26 23:29:52 +0000
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-26 23:29:52 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 831ms (Views: 814.8ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-26 23:29:53 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 14ms (ActiveRecord: 0.7ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-26 23:29:53 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.3ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-26 23:29:53 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-26 23:29:53 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-26 23:29:53 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.0ms)
+  [1m[36mMatch Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "matches" LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2016-10-26 23:29:53 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-26 23:29:53 +0000
+Processing by MatchesController#new as HTML
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "matches"
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "groups"
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-26 23:29:53 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "matches"[0m
+  Rendered matches/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:48:30 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 205ms (Views: 196.6ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:48:30 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:48:30 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 8ms (ActiveRecord: 0.7ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:48:30 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.2ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:48:30 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:48:30 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:48:30 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+  [1m[36mMatch Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "matches" LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:48:30 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:48:30 +0000
+Processing by MatchesController#new as HTML
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "matches"
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "groups"
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:48:30 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "matches"[0m
+  Rendered matches/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:49:54 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 214ms (Views: 204.4ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:49:54 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:49:54 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 8ms (ActiveRecord: 0.7ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:49:54 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.2ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:49:54 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:49:54 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:49:54 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+  [1m[36mMatch Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "matches" LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:49:54 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:49:54 +0000
+Processing by MatchesController#new as HTML
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "matches"
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "groups"
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:49:54 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "matches"[0m
+  Rendered matches/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:54:12 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 218ms (Views: 207.8ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:54:12 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:54:12 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 8ms (ActiveRecord: 0.8ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:54:12 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.2ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:54:12 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:54:12 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:54:12 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+  [1m[36mMatch Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "matches" LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:54:12 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:54:12 +0000
+Processing by MatchesController#new as HTML
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "matches"
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "groups"
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:54:12 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "matches"[0m
+  Rendered matches/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/projects" for 127.0.0.1 at 2016-10-27 00:56:39 +0000
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:56:39 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 308ms (Views: 295.6ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:56:39 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:56:39 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 12ms (ActiveRecord: 0.9ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:56:39 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.2ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:56:39 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:56:39 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:56:39 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+  [1m[36mMatch Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "matches" LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:56:39 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:56:39 +0000
+Processing by MatchesController#new as HTML
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "matches"
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "groups"
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:56:39 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "matches"[0m
+  Rendered matches/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/projects" for 127.0.0.1 at 2016-10-27 00:57:31 +0000
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:57:31 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 373ms (Views: 363.3ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:57:31 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:57:31 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.2ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 8ms (ActiveRecord: 0.7ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:57:31 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.2ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:57:31 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:57:31 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:57:31 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+  [1m[36mMatch Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "matches" LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:57:31 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:57:31 +0000
+Processing by MatchesController#new as HTML
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "matches"
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "groups"
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:57:31 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "matches"[0m
+  Rendered matches/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/projects" for 127.0.0.1 at 2016-10-27 00:58:45 +0000
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:58:45 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 377ms (Views: 367.3ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:58:46 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:58:46 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 8ms (ActiveRecord: 0.7ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:58:46 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.2ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:58:46 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.2ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:58:46 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:58:46 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+  [1m[36mMatch Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "matches" LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:58:46 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:58:46 +0000
+Processing by MatchesController#new as HTML
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "matches"
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "groups"
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:58:46 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "matches"[0m
+  Rendered matches/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/projects" for 127.0.0.1 at 2016-10-27 00:59:27 +0000
+Processing by ProjectsController#index as HTML
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:59:27 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 221ms (Views: 220.6ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:59:27 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:59:27 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 8ms (ActiveRecord: 0.7ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:59:27 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.2ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:59:27 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:59:27 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:59:27 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+  [1m[36mMatch Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "matches" LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:59:27 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:59:28 +0000
+Processing by MatchesController#new as HTML
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "matches"
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "groups"
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:59:28 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "matches"[0m
+  Rendered matches/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/projects" for 127.0.0.1 at 2016-10-27 00:59:59 +0000
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 241ms (Views: 229.5ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:59:59 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 6ms (Views: 5.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:59:59 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:59:59 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.5ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.2ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 10ms (ActiveRecord: 1.0ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:59:59 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.2ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:59:59 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:59:59 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:59:59 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+  [1m[36mMatch Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "matches" LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2016-10-27 00:59:59 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 00:59:59 +0000
+Processing by MatchesController#new as HTML
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "matches"
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "groups"
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 00:59:59 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "matches"[0m
+  Rendered matches/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/projects" for 127.0.0.1 at 2016-10-27 01:00:57 +0000
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 199ms (Views: 188.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 01:00:57 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 6ms (Views: 5.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 01:00:57 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 01:00:57 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 7ms (ActiveRecord: 0.7ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 01:00:57 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 01:00:57 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 01:00:57 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 01:00:57 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+  [1m[36mMatch Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "matches" LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2016-10-27 01:00:57 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 01:00:57 +0000
+Processing by MatchesController#new as HTML
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "matches"
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "groups"
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 01:00:57 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "matches"[0m
+  Rendered matches/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 4ms (Views: 4.0ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 01:01:16 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 185ms (Views: 176.2ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 01:01:16 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 7ms (ActiveRecord: 0.7ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 01:01:16 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.1ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 01:01:16 +0000
+Processing by MatchesController#new as HTML
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "matches"[0m
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 01:01:16 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "matches"
+  Rendered matches/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2016-10-27 01:01:16 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+  [1m[36mMatch Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "matches" LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2016-10-27 01:01:16 +0000
+Processing by MatchesController#index as HTML
+  Rendered matches/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+Started GET "/matches/new" for 127.0.0.1 at 2016-10-27 01:01:16 +0000
+Processing by MatchesController#new as HTML
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "matches"
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "groups"
+Redirected to http://www.example.com/matches/show
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+Started GET "/matches/show" for 127.0.0.1 at 2016-10-27 01:01:16 +0000
+Processing by MatchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "matches"[0m
+  Rendered matches/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction

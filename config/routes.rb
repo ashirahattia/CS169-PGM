@@ -59,4 +59,5 @@ Rails.application.routes.draw do
   root 'matches#index'
   resources :matches
   resources :groups
+  resources :projects
 end
