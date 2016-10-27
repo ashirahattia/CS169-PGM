@@ -1,0 +1,12 @@
+<h1>Add New Project</h1>
+
+<% if flash[:notice] %>
+    <%= flash.notice %>
+<% end %>
+
+<%= form_tag("/projects/new", method: "get") do %>
+    <p>Group name:
+        <input id="project" type="text" name="project_name" />
+    </p>
+    <input type="submit" value="submit"/>
+<% end %>
