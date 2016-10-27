@@ -1,8 +1,3 @@
-Then(/^I input project information for Bob's Bakery$/) do
-end
-
-Then(/^I press submit$/) do
-end
-
-Then(/^a Bob's Bakery project should exist$/) do
+Then(/^a (.*) project should exist$/) do |name|
+    Project.where(project_name: name).should_not be_nil
 end
