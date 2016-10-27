@@ -18,7 +18,11 @@ end
 projects = [ {:project_name => 'proj1'},
              {:project_name => 'proj2'},
              {:project_name => 'proj3'},
-             {:project_name => 'proj4'}]
+             {:project_name => 'proj4'},
+             {:project_name => 'proj5'},
+             {:project_name => 'proj6'},
+             {:project_name => 'proj7'},
+             {:project_name => 'ying eats the babies'}]
              
 projects.each do |project|
     Project.create!(project)
