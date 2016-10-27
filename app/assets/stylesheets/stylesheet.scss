@@ -1,0 +1,35 @@
+@import "_variables.scss";
+@import "_matchtable.scss";
+
+body, html {
+    font-family: $lato;
+    color: $primary-text-color;
+}
+
+.button {
+    background-color: $green;
+    color: $white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: 400;
+    border: none;
+}
+
+.button:hover, .button:active {
+    background-color: $dark-green;
+}
+
+.content {
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.clear-top {
+    padding-top: 10%;
+}
+
+.text-center {
+    text-align: center;
+}

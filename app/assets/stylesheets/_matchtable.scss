@@ -1,0 +1,42 @@
+@import "_variables.scss";
+
+td, th {
+    padding: 10px;
+}
+
+th {
+    text-align: left;
+}
+
+tr {
+    margin: 7px;
+    padding: 7px;
+}
+
+.match-header {
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.2 em;
+}
+
+.group-name {
+    background-color: $header-bg-color;
+}
+
+.project-name{
+    background-color: $header-highlight-color;
+}
+
+.table-container {
+    width: 100%;
+}
+
+.match-table {
+    width: 100%;
+}
+
+.rematch-container {
+    text-align: right;
+    padding-top: 20px;
+}
