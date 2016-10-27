@@ -24,6 +24,38 @@
             <option value=<%= project[:id] %>><%= project[:project_name] %></option>
         <% end %>
     </select>
+    
+    <h3>Fourth project choice</h3>
+    <p>Currently <%= choice_str :fourth_choice %></p>
+    <select name="fourth_choice">
+        <% @projects.each do |project| %>
+            <option value=<%= project[:id] %>><%= project[:project_name] %></option>
+        <% end %>
+    </select>
+    
+    <h3>Fifth project choice</h3>
+    <p>Currently <%= choice_str :fifth_choice %></p>
+    <select name="fifth_choice">
+        <% @projects.each do |project| %>
+            <option value=<%= project[:id] %>><%= project[:project_name] %></option>
+        <% end %>
+    </select>
+    
+    <h3>Sixth project choice</h3>
+    <p>Currently <%= choice_str :sixth_choice %></p>
+    <select name="sixth_choice">
+        <% @projects.each do |project| %>
+            <option value=<%= project[:id] %>><%= project[:project_name] %></option>
+        <% end %>
+    </select>
+    
+    <h3>Seventh project choice</h3>
+    <p>Currently <%= choice_str :seventh_choice %></p>
+    <select name="seventh_choice">
+        <% @projects.each do |project| %>
+            <option value=<%= project[:id] %>><%= project[:project_name] %></option>
+        <% end %>
+    </select>
     <br>
     <input type="submit" value="submit"/>
 <% end %>
