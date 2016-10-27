@@ -52,6 +52,29 @@
       ],
       "/home/ubuntu/workspace/cs169-pgm/app/helpers/matches_helper.rb": [
         1,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
         null
       ],
       "/home/ubuntu/workspace/cs169-pgm/app/helpers/projects_helper.rb": [
@@ -88,7 +111,7 @@
         null
       ]
     },
-    "timestamp": 1477543278
+    "timestamp": 1477584677
   },
   "RSpec": {
     "coverage": {
@@ -118,6 +141,29 @@
       ],
       "/home/ubuntu/workspace/cs169-pgm/app/helpers/matches_helper.rb": [
         1,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
         null
       ],
       "/home/ubuntu/workspace/cs169-pgm/app/helpers/projects_helper.rb": [
@@ -129,6 +175,6 @@
         null
       ]
     },
-    "timestamp": 1477543264
+    "timestamp": 1477584692
   }
 }

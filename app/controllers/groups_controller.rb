@@ -24,6 +24,13 @@ class GroupsController < ApplicationController
         @groups = Group.all
     end
     
+    def destroy_multiple
+        params[:delete].keys.each do |id|
+            Group.destroy(id)
+        end
+        redirect_to :groups
+    end
+    
     def destroy
         Group.destroy(params[:id])
         redirect_to :groups

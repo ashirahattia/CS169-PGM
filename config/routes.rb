@@ -60,4 +60,7 @@ Rails.application.routes.draw do
   resources :matches
   resources :groups
   resources :projects
+  
+  post 'groups/destroy_multiple' => 'groups#destroy_multiple'
+  
 end
