@@ -1,28 +1,30 @@
-<<<<<<< HEAD
 <%= render "layouts/sidebar.html.erb" %>
-<div class="content">
-    <div class="table-container">
-        <table id="match_table" class="match-table">
-            <tr>
-                <th class="match-header">ID</th>
-                <th class="match-header">Group Name</th>
-                <th class="match-header">Project Name</th>
-            </tr>
-            
-            <% @matches.count.times do |index| %>
-            <tr>
-                <td><%= index %></td>
-                <td class="group-name"><%= @matches[index].group_name %></td>
-                <td class="project-name"><%= @matches[index].project_name %></td>
-                <td class="rank"><%= choice_num @matches[index] %></td>
-            </tr>
-            <% end %>
-        </table> 
-    </div>
-    
-    <div class="rematch-container">
-        <form action="/matches/new" method="get">
-            <input type="submit" class="button" value="Re-Match"/>
-        </form>
-    </div>
+<div class="content-container">
+    <div class="content">
+        <div class="table-container">
+            <table id="match_table" class="match-table">
+                <tr>
+                    <th class="match-header">ID</th>
+                    <th class="match-header">Group Name</th>
+                    <th class="match-header">Project Name</th>
+                </tr>
+                
+                <% @matches.count.times do |index| %>
+                <tr>
+                    <td><%= index %></td>
+                    <td class="group-name"><%= @matches[index].group_name %></td>
+                    <td class="project-name"><%= @matches[index].project_name %></td>
+                    <td class="rank"><%= choice_num @matches[index] %></td>
+                </tr>
+                <% end %>
+            </table> 
+        </div>
+        
+        <div class="rematch-container">
+            <form action="/matches/new" method="get">
+                <input type="submit" class="button" value="Re-Match"/>
+            </form>
+        </div>
+    </div>  
 </div>
+
