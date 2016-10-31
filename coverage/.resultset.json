@@ -1,7 +1,7 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/home/ubuntu/workspace/cs169-pgm/app/controllers/projects_controller.rb": [
+      "/home/ubuntu/workspace/app/controllers/projects_controller.rb": [
         1,
         1,
         null,
@@ -19,18 +19,18 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/cs169-pgm/app/controllers/application_controller.rb": [
+      "/home/ubuntu/workspace/app/controllers/application_controller.rb": [
         1,
         null,
         null,
         1,
         null
       ],
-      "/home/ubuntu/workspace/cs169-pgm/app/helpers/application_helper.rb": [
+      "/home/ubuntu/workspace/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/cs169-pgm/app/helpers/groups_helper.rb": [
+      "/home/ubuntu/workspace/app/helpers/groups_helper.rb": [
         1,
         null,
         null,
@@ -46,46 +46,46 @@
         null,
         1,
         0,
-        null,
-        null,
-        null
-      ],
-      "/home/ubuntu/workspace/cs169-pgm/app/helpers/matches_helper.rb": [
-        1,
-        1,
-        0,
-        0,
-        0,
-        null,
-        0,
-        null,
-        0,
-        null,
-        0,
-        null,
-        0,
-        null,
-        0,
-        null,
-        0,
-        null,
-        0,
-        null,
-        0,
-        null,
         null,
         null,
         null
       ],
-      "/home/ubuntu/workspace/cs169-pgm/app/helpers/projects_helper.rb": [
+      "/home/ubuntu/workspace/app/helpers/matches_helper.rb": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/app/helpers/projects_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/cs169-pgm/app/models/project.rb": [
+      "/home/ubuntu/workspace/app/models/project.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/cs169-pgm/app/controllers/matches_controller.rb": [
+      "/home/ubuntu/workspace/app/controllers/matches_controller.rb": [
         1,
         null,
         1,
@@ -106,12 +106,12 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/cs169-pgm/app/models/group.rb": [
+      "/home/ubuntu/workspace/app/models/group.rb": [
         1,
         null
       ]
     },
-    "timestamp": 1477584677
+    "timestamp": 1477898479
   },
   "RSpec": {
     "coverage": {

@@ -1,9 +1,11 @@
 @import "_variables.scss";
 @import "_matchtable.scss";
+@import "_sidebar.scss";
 
 body, html {
     font-family: $lato;
     color: $primary-text-color;
+    height: 100%;
 }
 
 .button {
@@ -21,15 +23,21 @@ body, html {
     background-color: $dark-green;
 }
 
+.text-center {
+    text-align: center;
+}
+
+.content-container {
+    margin-left: $sidebar-width;
+}
+
+
 .content {
     max-width: 780px;
     margin: 0 auto;
 }
 
+
 .clear-top {
     padding-top: 10%;
-}
-
-.text-center {
-    text-align: center;
 }
