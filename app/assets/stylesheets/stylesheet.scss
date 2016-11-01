@@ -1,11 +1,24 @@
 @import "_variables.scss";
 @import "_matchtable.scss";
+@import "_viewgroups.scss";
 @import "_sidebar.scss";
 
 body, html {
     font-family: $lato;
     color: $primary-text-color;
     height: 100%;
+}
+
+/* Links & Buttons */
+
+a:link, a:visited {
+    text-decoration: none;
+    color: $primary-text-color;
+    font-weight: bold;
+}
+
+a:hover, a:active {
+   text-decoration: underline;
 }
 
 .button {
@@ -17,15 +30,45 @@ body, html {
     text-transform: uppercase;
     font-weight: 400;
     border: none;
+    &.red {
+        background-color: $red;
+    }
 }
 
 .button:hover, .button:active {
     background-color: $dark-green;
+    &.red {
+        background-color: $dark-red;
+    }
+}
+
+/* Typography */
+
+h1, h2 {
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 1px;
+}
+
+h1 {
+    font-size: 1.2em;
+}
+
+h2 {
+    font-size: 1em;
 }
 
 .text-center {
     text-align: center;
 }
+
+ol, ul, p {
+    font-size: 1em;
+    font-weight: 300;
+}
+
+/* Containers */
 
 .content-container {
     margin-left: $sidebar-width;
@@ -34,10 +77,29 @@ body, html {
 
 .content {
     max-width: 780px;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
+.action-container {
+    text-align: right;
+    padding-top: 20px;
+}
 
 .clear-top {
     padding-top: 10%;
+}
+
+/* Table styling */
+
+td, th {
+    padding: 10px;
+}
+
+th {
+    text-align: left;
+}
+
+tr {
+    margin: 7px;
+    padding: 7px;
 }
