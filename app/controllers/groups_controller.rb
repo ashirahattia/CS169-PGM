@@ -32,6 +32,13 @@ class GroupsController < ApplicationController
         @groups = Group.all
     end
     
+    def new
+        
+        # @new_group = Group.create() <-- once we figure out how to put in IDs
+        
+        redirect_to '/groups/1' # make this the id once we figure out how to put in IDs
+    end
+    
     def destroy_multiple
         params[:delete].keys.each do |id|
             Group.destroy(id)

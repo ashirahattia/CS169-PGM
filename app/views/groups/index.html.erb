@@ -3,7 +3,9 @@
 <div class="content-container">
     <div class="content">
         <div class="action-container">
-            <input class="button" type="submit" value="+ add group"/>
+            <%= form_tag(:new_group, method: "GET") do %>
+                <input class="button" type="submit" value="+ add group"/>
+            <% end %>
         </div>
         <%= form_tag(:groups_destroy_multiple, method: "POST") do %>
             <div class="table-container">
