@@ -11,8 +11,4 @@ module GroupsHelper
         end
     end
     
-    def print_all
-        Project.all
-    end
-    
 end
