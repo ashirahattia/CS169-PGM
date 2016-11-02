@@ -1,36 +1,55 @@
 <%= render "layouts/sidebar.html.erb" %>
-<div class="content">
-    <%= form_tag(:groups_destroy_multiple, method: "POST") do %>
-        <div class="table-container">
-            <table id="group_table" class="group-table">
-                <tr>
-                    <th class="group-header">Delete</th>
-                    <th class="group-header">Group Name</th>
-                    <th class="group-header">Preference 1</th>
-                    <th class="group-header">Preference 2</th>
-                    <th class="group-header">Preference 3</th>
-                    <th class="group-header">Preference 4</th>
-                    <th class="group-header">Preference 5</th>
-                    <th class="group-header">Preference 6</th>
-                    <th class="group-header">Preference 7</th>
-                </tr>
-                
+
+<div class="content-container">
+    <div class="content">
+        <div class="action-container">
+            <%= form_tag(:new_group, method: "GET") do %>
+                <input class="button" type="submit" value="+ add group"/>
+            <% end %>
+        </div>
+        <%= form_tag(:groups_destroy_multiple, method: "POST") do %>
+            <div class="table-container">
                 <% @groups.each do |group| %>
                 <% @group = group %>
-                <tr>
-                    <td class="delete-checkbox"> <%= check_box_tag("delete[#{group.id}]", "1") %></td>
-                    <td class="group-name"><%= link_to(group.group_name, "/groups/" + group.id.to_s) %></td>
-                    <td class="preference"><%= choice_str :first_choice %></td>
-                    <td class="preference"><%= choice_str :second_choice %></td>
-                    <td class="preference"><%= choice_str :third_choice %></td>
-                    <td class="preference"><%= choice_str :fourth_choice %></td>
-                    <td class="preference"><%= choice_str :fifth_choice %></td>
-                    <td class="preference"><%= choice_str :sixth_choice %></td>
-                    <td class="preference"><%= choice_str :seventh_choice %></td>
-                </tr>
+                <div class="group-module">
+                    <div class="group-module-header">
+                        <h1>
+                            <span class="delete-checkbox"><%= check_box_tag("delete[#{group.id}]", "1") %></span>
+                            <%= link_to(group.group_name, "/groups/" + group.id.to_s) %>
+                        </h1>
+                    </div>
+                    <div class="group-module-body">
+                        <table>
+                            <tr>
+                                <th><h2>Members</h2></th>
+                                <th><h2>Preferences</h2></th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul>
+                                        
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ol>
+                                        <li><%= choice_str :first_choice %></li>
+                                        <li><%= choice_str :second_choice %></li>
+                                        <li><%= choice_str :third_choice %></li>
+                                        <li><%= choice_str :fourth_choice %></li>
+                                        <li><%= choice_str :fifth_choice %></li>
+                                        <li><%= choice_str :sixth_choice %></li>
+                                        <li><%= choice_str :seventh_choice %></li>
+                                    </ol>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
                 <% end %>
-            </table> 
-        </div>
-        <input type="submit" value="delete selected groups"/>
-    <% end %>
+            </div>
+            <div class="action-container">
+                <input class="button red" type="submit" value="delete selected groups"/>
+            </div>
+        <% end %>
+    </div>
 </div>
