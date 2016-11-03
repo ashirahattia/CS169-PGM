@@ -1,8 +1,27 @@
 <%= render "layouts/sidebar.html.erb" %>
+
 <div class="content-container">
-   <div class="content clear-top text-center">
-        <form action="/projects/new" method="get">
-            <input type="submit" class="button" value="Add New Project"/>
-        </form>
-    </div> 
+    <div class="content">
+        <div class="table-container">
+            <table id="projects_table" class="match-table">
+                <tr>
+                    <th class="match-header">ID</th>
+                    <th class="match-header">Project Name</th>
+                </tr>
+                
+                <% @projects.count.times do |index| %>
+                <tr>
+                    <td><%= index %></td>
+                    <td class="project-name"><%= @projects[index].project_name %></td>
+                </tr>
+                <% end %>
+            </table> 
+        </div>
+        
+        <div class="content clear-top text-center">
+            <form action="/projects/new" method="get">
+                <input type="submit" class="button" value="Add New Project"/>
+            </form>
+        </div>
+    </div>  
 </div>
