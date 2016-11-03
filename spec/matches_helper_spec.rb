@@ -9,7 +9,7 @@ describe MatchesHelper, :type => :helper do
         fake_project5 = Project.new(:project_name => "Project5", :id => 5)
         fake_project6 = Project.new(:project_name => "Project6", :id => 6)
         fake_project7 = Project.new(:project_name => "Project7", :id => 7)
-        fake_project7 = Project.new(:project_name => "Project8", :id => 8)
+        fake_project8 = Project.new(:project_name => "Project8", :id => 8)
         
         allow(Project).to receive(:find_by).with(:project_name => "Project1") { fake_project1 }
         allow(Project).to receive(:find_by).with(:project_name => "Project2") { fake_project2 }
