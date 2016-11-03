@@ -7,24 +7,21 @@ As a TA In order to have a more intuitive experience I want a CSS styled UI for 
 Plan for this iteration-----
 
 Iter 2 Features/Updates
--Add new Group
+Implemented this iteration:
+-Add/edit group preferences
 -Add new Projects
--Set up new Group preferences
 -update UI
 
 Main To Do Items
--Plan agenda meeting with Darren Wednesday
--Write/Edit user stories(iter 2-1)
--Create cucumber scenarios(iter 2-1)
--Build UI mockups
--Build UI skeleton files
+-begin to look into google sheets api/importing preferences
+for next iteration
+-look into different algorithms to discuss with Darren during meeting
+
 
 Administrative To Do Items
--Add Github Rules of Engagement into the ReadMe
--Fill this survey out as a team: http://bit.ly/cs169-XP-assess
 -individual peer evaluation surveys on bcourses
--Make sure pivotal tracker cards are SMART, add chore cards
--Link Lo-fi mockups to pivotal tracker
+-schedule next meeting with Darren
+-send Darren current iteration for meeting
 
 Tentative 4 Iteration Plan-----
 
@@ -33,19 +30,15 @@ Iter 1 Features/Updates
 -Set up database with dummy data
 -Build button to call the algorithm
 
-
 Iter 2 Features/Updates
--Add new Group
+-Add/edit group preferences
 -Add new Projects
--Set up new Group preferences
 -update UI
-
 
 Iter 3 Features/Updates
--Build out matching algorithm
--Add authentication?
+-Implement matching algorithm
+-Import group preferences from google sheet(as csv or google sheets api)
 -update UI
-
 
 Iter 4 Features/Updates
 -Add authentication?
