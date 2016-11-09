@@ -41,3 +41,7 @@ end
 Then(/^I login to Google$/) do
   pending
 end
+
+And(/^I input the project information$/) do
+  pending
+end
