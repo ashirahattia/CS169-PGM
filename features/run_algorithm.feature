@@ -8,3 +8,12 @@ Feature: Run Matching Algorithm
     And I am logged in as a TA
     Then there is no existing project-group match
     Then I should see Match button
+
+  Scenario: Re-initiate algorithm from table
+    Given I am on the home page
+    And I am logged in as a TA
+    And I have pressed the Match button
+    And I can see a match_group table
+    Then I should see Match button
+    And I have pressed the Match button
+    Then I should see a different table
