@@ -7,4 +7,4 @@ Feature: See Results of Algorithm
     Given I am on the home page
     And I am logged in as a TA
     And I have pressed the Match button
-    Then I can see a table
+    Then I can see a match_table table

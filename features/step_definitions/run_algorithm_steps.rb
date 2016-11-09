@@ -13,8 +13,8 @@ Then(/^I should see a project\-group match table$/) do
     Match.exists?.should be_true
 end
 
-Given(/^I can see a table$/) do
-  page.should have_css("table#match_table tr")
+Given(/^I can see a (.*) table$/) do |name|
+  page.should have_css("table##{name} tr")
 end
 
 Then(/^I should see (.*) button$/) do |name|
