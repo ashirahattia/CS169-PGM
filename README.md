@@ -5,7 +5,7 @@ See the app on heroku at <a href="http://cs169-pgm.herokuapp.com">cs169-pgm.hero
 
 See our tracking board at <a href="https://www.pivotaltracker.com/n/projects/1891561">Pivotal Tracker</a>
 
-Travis CS Badge: <img src="https://travis-ci.org/ashirahattia/cs169-pgm.svg?branch=master">
+Travis CS Badge: [![Build Status](https://travis-ci.org/ashirahattia/cs169-pgm.svg?branch=master)](https://travis-ci.org/ashirahattia/cs169-pgm)
 
 CodeClimate Badge:
 <a href="https://codeclimate.com/github/ashirahattia/cs169-pgm"><img src="https://codeclimate.com/github/ashirahattia/cs169-pgm/badges/gpa.svg" /></a>
