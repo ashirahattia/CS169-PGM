@@ -1,20 +1,22 @@
 <%= render "layouts/sidebar.html.erb" %>
 <div class="content-container">
     <div class="content">
+        <div class="center">
+            <h1>Overall Match Utility: <%= @utility %></h1>
+        </div>
         <div class="table-container">
             <table id="match_table" class="match-table">
                 <tr>
-                    <th class="match-header">ID</th>
                     <th class="match-header">Group Name</th>
                     <th class="match-header">Project Name</th>
+                    <th class="match-header">Preference</th>
                 </tr>
                 
                 <% @matches.count.times do |index| %>
                 <tr>
-                    <td><%= index %></td>
                     <td class="group-name"><%= @matches[index].group_name %></td>
                     <td class="project-name"><%= @matches[index].project_name %></td>
-                    <td class="rank"><%= choice_num @matches[index] %></td>
+                    <td class="rank <%=rank_color(@matches[index])%>"><%= choice_num @matches[index] %></td>
                 </tr>
                 <% end %>
             </table> 

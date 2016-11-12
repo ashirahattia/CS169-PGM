@@ -18,7 +18,19 @@ module MatchesHelper
         when group[:seventh_choice]
             7
         else
-            "Not a top choice"
+            8 # Not on preference list
+        end
+    end
+     
+    # Determine which background color class to add to the rank column of the match table  
+    def rank_color(match)
+        rank = choice_num(match)
+        if (rank <= 3)
+            "bg-green"
+        elsif (rank <=6)
+            "bg-yellow"
+        else
+            "bg-red"
         end
     end
 

@@ -1,4 +1,5 @@
 class Match < ActiveRecord::Base
+
     def self.algorithm
         Match.delete_all
         all_projects = Project.all.shuffle
