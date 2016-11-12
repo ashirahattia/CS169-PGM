@@ -11,7 +11,7 @@
                 
                 <% @projects.count.times do |index| %>
                 <tr>
-                    <td><%= index %></td>
+                    <td class="project-id"><%= @projects[index].id %></td>
                     <td class="project-name"><%= @projects[index].project_name %></td>
                 </tr>
                 <% end %>
