@@ -62,5 +62,13 @@ Rails.application.routes.draw do
   resources :projects
   
   post 'groups/destroy_multiple' => 'groups#destroy_multiple'
+
+  get 'google/fetch' => 'google#index'
+
+  get 'google/fetch/groups' => 'google#groups_fetch'
+  get 'google/show/groups' => 'google#show'
+
+  get 'google/fetch/projects' => 'google#projects_fetch'
+  get 'google/show/projects' => 'google#show'
   
 end
