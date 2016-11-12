@@ -1,5 +1,8 @@
 class GroupsController < ApplicationController
     include GroupsHelper
+    include ApplicationHelper
+    
+    before_filter :check_logged_in
 
     def show
         @group = Group.find(params[:id])
