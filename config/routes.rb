@@ -70,5 +70,8 @@ Rails.application.routes.draw do
 
   get 'google/fetch/projects' => 'google#projects_fetch'
   get 'google/show/projects' => 'google#show'
+
+  get 'google/authorize' => 'google#get_authorization'
+  post 'google/authorize' => 'google#complete_authorization'
   
 end
