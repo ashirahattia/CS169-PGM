@@ -14,6 +14,7 @@ class MatchesController < ApplicationController
     
     def show
         @matches = Match.all
+        @utility = 20 # SHOULD BE PART OF MATCH MODEL
     end
     
 end
