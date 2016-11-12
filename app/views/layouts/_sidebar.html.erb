@@ -2,17 +2,22 @@
     <div class="sidebar-content">
         <ul class="nav-ul">
             <li class="nav-li">
-                <a class="nav-link" href="<%= groups_path()%>">Groups</a>
+                <a class="nav-link" href="<%= login_path()%>">TA Login</a>
             </li>
             <li class="nav-li">
-                <a class="nav-link" href="<%= projects_path()%>">Projects</a>
+                <a class="nav-link" href="/matches/show">Current Matching</a>
             </li>
-            <li class="nav-li">
-                <a class="nav-link" href="<%= matches_path()%>">Current Matching</a>
-            </li>
-            <li class="nav-li">
-              <a class="nav-link" href="<%= google_fetch_path %>">Fetch Data</a>
-            </li>
+            <% if session[:is_ta] %>
+                <li class="nav-li">
+                    <a class="nav-link" href="<%= groups_path()%>">Groups</a>
+                </li>
+                <li class="nav-li">
+                    <a class="nav-link" href="<%= projects_path()%>">Projects</a>
+                </li>
+                <li class="nav-li">
+                  <a class="nav-link" href="<%= google_fetch_path %>">Fetch Data</a>
+                </li>
+            <% end %>
         </ul>
     </div>
 </div>

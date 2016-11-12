@@ -56,7 +56,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  root 'matches#index'
+  root 'matches#show'
   resources :matches
   resources :groups
   resources :projects
@@ -70,5 +70,9 @@ Rails.application.routes.draw do
 
   get 'google/fetch/projects' => 'google#projects_fetch'
   get 'google/show/projects' => 'google#show'
+  
+  get 'login' => 'login#index'
+  post 'login/attempt' => 'login#attempt'
+  post 'login/logout' => 'login#logout'
   
 end
