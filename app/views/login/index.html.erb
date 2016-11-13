@@ -2,18 +2,15 @@
 
 <div class="content-container">
   <div class="content clear-top text-center">
-    <% if session[:is_ta] %>
-        <p>You're currently logged in.</p>
+    <% if flash[:notice] %>
+        <p>flash.notice</p>
     <% end %>
 
     <% if session[:is_ta] %>
         <%= button_to "Log out", action: "logout" %>
     <% else %>
         <%= form_tag("/login/attempt", method: "post") do %>
-            <p>Username:
-              <input id="username" type="text" name="username" />
-            </p>
-            <p>Password:
+            <p>Staff Password:
               <input id="password" type="text" name="password" />
             </p>
             <input id="submit" type="submit" value="submit"/>
