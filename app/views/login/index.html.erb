@@ -3,7 +3,7 @@
 <div class="content-container">
   <div class="content clear-top text-center">
     <% if flash[:notice] %>
-        <p>flash.notice</p>
+        <p><%= flash.notice %></p>
     <% end %>
 
     <% if session[:is_ta] %>
