@@ -54,12 +54,17 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  
+  # Hungarian algorithm library
+  gem 'munkres'
+  
 end
 
 # debugger is useful in development mode too
 group :development, :test do
   gem 'jasmine-rails' # if you plan to use JavaScript/CoffeeScript
 end
+
 # setup Cucumber, RSpec, autotest support
 group :test do
   gem 'rspec-rails', '2.14'
