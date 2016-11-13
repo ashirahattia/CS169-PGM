@@ -19,15 +19,38 @@ class GoogleController < ApplicationController
 
   def groups_fetch
     fetch_group_data
-    redirect_to google_show_groups_path
   end
 
   def projects_fetch
     fetch_project_data
-    redirect_to google_show_projects_path
   end
 
   def index
+  end
+
+  def get_authorization
+    FileUtils.mkdir_p(File.dirname(CREDENTIALS_PATH))
+
+    client_id = Google::Auth::ClientId.from_file(CLIENT_SECRETS_PATH)
+    token_store = Google::Auth::Stores::FileTokenStore.new(file: CREDENTIALS_PATH)
+    authorizer = Google::Auth::UserAuthorizer.new(
+        client_id, SCOPE, token_store)
+    url = authorizer.get_authorization_url(base_url: OOB_URI)
+    session[:authorize] = url
+  end
+
+  def complete_authorization
+    FileUtils.mkdir_p(File.dirname(CREDENTIALS_PATH))
+
+    client_id = Google::Auth::ClientId.from_file(CLIENT_SECRETS_PATH)
+    token_store = Google::Auth::Stores::FileTokenStore.new(file: CREDENTIALS_PATH)
+    authorizer = Google::Auth::UserAuthorizer.new(
+        client_id, SCOPE, token_store)
+    user_id = 'default'
+
+    credentials = authorizer.get_and_store_credentials_from_code(user_id: user_id, code:params[:code], base_url: OOB_URI)
+
+    redirect_to google_fetch_path
   end
 
   ##
@@ -36,7 +59,7 @@ class GoogleController < ApplicationController
   # the user's default browser will be launched to approve the request.
   #
   # @return [Google::Auth::UserRefreshCredentials] OAuth2 credentials
-  def authorize
+  def authorize(force_reload)
     FileUtils.mkdir_p(File.dirname(CREDENTIALS_PATH))
 
     client_id = Google::Auth::ClientId.from_file(CLIENT_SECRETS_PATH)
@@ -45,15 +68,9 @@ class GoogleController < ApplicationController
         client_id, SCOPE, token_store)
     user_id = 'default'
     credentials = authorizer.get_credentials(user_id)
-    if credentials.nil?
-      url = authorizer.get_authorization_url(
-          base_url: OOB_URI)
-      puts "Open the following URL in the browser and enter the " +
-               "resulting code after authorization"
-      puts url
-      code = gets # COME BACK AND ADJUST
-      credentials = authorizer.get_and_store_credentials_from_code(
-          user_id: user_id, code: code, base_url: OOB_URI)
+    if credentials.nil? || force_reload
+      redirect_to google_authorize_path
+      return
     end
     credentials
   end
@@ -62,11 +79,17 @@ class GoogleController < ApplicationController
   def fetch_group_data
     service = Google::Apis::SheetsV4::SheetsService.new
     service.client_options.application_name = APPLICATION_NAME
-    service.authorization = authorize
+    service.authorization = authorize false
 
     range = 'Responses!A1:K29'
-    response = service.get_spreadsheet_values(SPREADSHEET_ID, range)
-    adjust_groups response
+    begin
+      response = service.get_spreadsheet_values(SPREADSHEET_ID, range)
+    rescue Signet::AuthorizationError
+      authorize true
+    end
+    unless response.nil?
+      adjust_groups response
+    end
   end
 
   # Takes the google sheet response and generates all the groups from it
@@ -85,24 +108,32 @@ class GoogleController < ApplicationController
                    :fourth_choice => preferences[3], :fifth_choice => preferences[4], :sixth_choice => preferences[5],
                    :seventh_choice => preferences[6])
     end
+    redirect_to google_show_groups_path
   end
 
   def fetch_project_data
     service = Google::Apis::SheetsV4::SheetsService.new
     service.client_options.application_name = APPLICATION_NAME
-    service.authorization = authorize
+    service.authorization = authorize(false)
 
     range = 'Projects!A1:B50'
-    response = service.get_spreadsheet_values(SPREADSHEET_ID, range)
-    adjust_projects response
+    begin
+      response = service.get_spreadsheet_values(SPREADSHEET_ID, range)
+    rescue Signet::AuthorizationError
+      authorize true
+    end
+    unless response.nil?
+      adjust_projects response
+    end
   end
 
-  def adjust_projects response
+  def adjust_projects(response)
     Project.destroy_all
     response.values = response.values.drop(1)
     response.values.each do |row|
       Project.create(:id => row[0], :project_name => row[1])
     end
+    redirect_to google_show_projects_path
   end
 
 end
