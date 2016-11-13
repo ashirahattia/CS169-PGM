@@ -8,13 +8,13 @@ class LoginController < ApplicationController
     
     def logout
         session[:is_ta] = false
+        flash[:notice] = nil
         redirect_to :login
     end
     
     def attempt
-        username = params[:username]
         password = params[:password]
-        if username == 'TA' and password == 'TA'
+        if password == 'TA'
             session[:is_ta] = true
             redirect_to '/matches/show'
             return
