@@ -73,9 +73,9 @@ Rails.application.routes.draw do
 
   get 'google/authorize' => 'google#get_authorization'
   post 'google/authorize' => 'google#complete_authorization'
-  
+
   get 'login' => 'login#index'
   post 'login/attempt' => 'login#attempt'
   post 'login/logout' => 'login#logout'
-  
+
 end
