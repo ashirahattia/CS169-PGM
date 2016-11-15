@@ -1,0 +1,16 @@
+<%= render "layouts/sidebar.html.erb" %>
+
+<div class="content-container">
+  <div class="content">
+    <div class="action-container">
+      <%= form_tag(google_fetch_groups_path, method: "GET") do %>
+          <input id="fetch_data" class="button" type="submit" value="Fetch Groups"/>
+      <% end %>
+    </div>
+    <div class="action-container">
+      <%= form_tag(google_fetch_projects_path, method: "GET") do %>
+          <input id="fetch_data" class="button" type="submit" value="Populate Projects"/>
+      <% end %>
+    </div>
+  </div>
+</div>

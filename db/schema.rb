@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027041215) do
+ActiveRecord::Schema.define(version: 20161113032726) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "group_name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20161027041215) do
     t.integer  "fifth_choice"
     t.integer  "sixth_choice"
     t.integer  "seventh_choice"
+    t.string   "username"
   end
 
   create_table "matches", force: :cascade do |t|

@@ -1,3 +1,6 @@
 coverage
 log/development.log
 tmp/*
+.idea
+.idea/*
+.bundle

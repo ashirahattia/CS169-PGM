@@ -5,6 +5,7 @@ class Match < ActiveRecord::Base
     $all_projects = Project.all
     $all_groups = Group.all
     
+    
     def generate_preference_list(group)
         group_preferences = [group.first_choice, group.second_choice,
                             group.third_choice, group.fourth_choice,
@@ -13,9 +14,11 @@ class Match < ActiveRecord::Base
         return group_preferences
     end
     
-    # Creates a cost matrix in which each row is a group and each column
-    # corresponds to a project. Each cell represents a group's preference for
-    # that project.
+    
+    # Creates a cost matrix in which each row corresponds to a group and each
+    # column corresponds to a project. Each cell represents a group's ranking
+    # for that project, where if a project is not ranked by the group, then
+    # it is given a cost of 100.
     def generate_cost_matrix
         cost_matrix = Array.new
         all_groups.each do |group|
@@ -31,15 +34,18 @@ class Match < ActiveRecord::Base
                 end 
             end
             cost_matrix << row
-        end
         return cost_matrix
-    end
+    
     
     def self.algorithm
         cost_matrix = generate_cost_matrix
         m = Munkres.new(cost_matrix)
         puts m.find_pairings
+        # m.find_pairings.each do |group, project|
+        #     create_match(group, project)
+        # end
     end
+    
     
     def create_match(group_name, project_name)
         Match.create(:group_name => group_name, :project_name => project_name)

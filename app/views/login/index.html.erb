@@ -1,0 +1,20 @@
+<%= render "layouts/sidebar.html.erb" %>
+
+<div class="content-container">
+  <div class="content clear-top text-center">
+    <% if flash[:notice] %>
+        <p><%= flash.notice %></p>
+    <% end %>
+
+    <% if session[:is_ta] %>
+        <%= button_to "Log out", action: "logout" %>
+    <% else %>
+        <%= form_tag("/login/attempt", method: "post") do %>
+            <p>Staff Password:
+              <input id="password" type="text" name="password" />
+            </p>
+            <input id="submit" type="submit" value="submit"/>
+        <% end %>
+    <% end %>
+  </div>
+</div>

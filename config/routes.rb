@@ -56,11 +56,26 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  root 'matches#index'
+  root 'matches#show'
   resources :matches
   resources :groups
   resources :projects
   
   post 'groups/destroy_multiple' => 'groups#destroy_multiple'
-  
+
+  get 'google/fetch' => 'google#index'
+
+  get 'google/fetch/groups' => 'google#groups_fetch'
+  get 'google/show/groups' => 'google#show'
+
+  get 'google/fetch/projects' => 'google#projects_fetch'
+  get 'google/show/projects' => 'google#show'
+
+  get 'google/authorize' => 'google#get_authorization'
+  post 'google/authorize' => 'google#complete_authorization'
+
+  get 'login' => 'login#index'
+  post 'login/attempt' => 'login#attempt'
+  post 'login/logout' => 'login#logout'
+
 end

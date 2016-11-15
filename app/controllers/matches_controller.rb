@@ -1,4 +1,7 @@
 class MatchesController < ApplicationController
+    include ApplicationHelper
+    
+    before_filter :check_logged_in, :except => :show
     
     def matches_params
         params.require(:matches).permit(:group_name, :project_name)
@@ -14,6 +17,7 @@ class MatchesController < ApplicationController
     
     def show
         @matches = Match.all
+        @utility = 20 # SHOULD BE PART OF MATCH MODEL
     end
     
 end

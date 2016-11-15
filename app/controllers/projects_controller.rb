@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+    include ApplicationHelper
+    before_filter :check_logged_in
+    
     def index
         @projects = Project.all
     end
