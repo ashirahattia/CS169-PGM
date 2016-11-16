@@ -25,6 +25,8 @@ gem 'rspec'
 gem 'test-unit'
 # Google API gems
 gem 'google-api-client'
+# Hungarian algorithm library
+gem 'munkres'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -56,9 +58,6 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  
-  # Hungarian algorithm library
-  gem 'munkres'
   
 end
 
