@@ -1,4 +1,7 @@
 Given(/^I am logged in as a TA$/) do
+  visit("/login")
+  fill_in "password", :with=>"TA"
+  click_button("submit")
 end
 
 Given(/^there is no existing project\-group match$/) do
@@ -13,8 +16,12 @@ Then(/^I should see a project\-group match table$/) do
     Match.exists?.should be_true
 end
 
-Given(/^I can see a (.*) table$/) do |name|
-  page.should have_css("table##{name} tr")
+Given(/^I (.*) see a (.*) table$/) do |condition, name|
+  if condition == 'cannot'
+    page.should_not have_css("table##{name} tr")
+  else
+    page.should have_css("table##{name} tr")
+  end
 end
 
 Then(/^I should see (.*) button$/) do |name|
@@ -23,8 +30,4 @@ end
 
 Then(/^I press (.*) button$/) do |name|
   click_button(name)
-end
-
-Then(/^I should see a different table$/) do
-  page.should have_css("table#match_table tr")
 end

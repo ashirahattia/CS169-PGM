@@ -6,19 +6,11 @@ And(/^all Groups should have preferences$/) do
   pending
 end
 
-Then(/^Group should not be empty$/) do
-  pending
-end
-
-Then(/^I should see a(.*)? algorithm score$/) do
-  pending
-end
-
 And(/^I input the group information$/) do
   pending
 end
 
-And(/^I set the group preferences \# This line probably needs to be expanded\?$/) do
+And(/^I set the group preferences/) do
   pending
 end
 
@@ -27,7 +19,7 @@ Then(/^the new group should exist with my preferences set$/) do
 end
 
 And(/^I should see a warning label$/) do
-  pending
+  page.should_not have_css("warning")
 end
 
 Then(/^I select the first group$/) do
@@ -38,10 +30,46 @@ Then(/^Group should not have the first group$/) do
   pending
 end
 
-Then(/^I login to Google$/) do
+And(/^I input the project information$/) do
   pending
 end
 
-And(/^I input the project information$/) do
+Given(/^I have logged in$/) do
+  visit("/login")
+  fill_in("password", :with => "TA")
+  click_button("submit")
+end
+
+Given(/^I have logged out$/) do
+  visit("/login")
+  click_button("Log out")
+end
+
+And(/^all Projects should have names$/) do
   pending
+end
+
+And(/^I see the (.*) (.*) empty$/) do |object, zero|
+  case object
+    when 'groups'
+      check_count Group.count, zero
+    when 'projects'
+      check_count Project.count, zero
+  end
+end
+
+def check_count(count, zero)
+  if zero == 'is'
+    count.should eql(0)
+  else
+    count.should_not eql(0)
+  end
+end
+
+And(/^I might be on authentication page$/) do
+  visit("/google/authorize")
+  fill_in('code', :with => 'TEST')
+  Group.create
+  Project.create
+  click_button('submit')
 end
