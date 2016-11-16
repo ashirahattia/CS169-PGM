@@ -4,9 +4,13 @@
 <!--    <%= flash.notice %>-->
 <!--<% end %>-->
 
-<%= form_tag("/projects/new", method: "get") do %>
-    <p>Project name:
-        <input id="project" type="text" name="project_name" />
-    </p>
-    <input id="submit" type="submit" value="submit"/>
-<% end %>
+<div class="content-container">
+  <div class="content">
+    <%= form_tag("/projects/new", method: "get") do %>
+        <p>Project name:
+          <input id="project" type="text" name="project_name" />
+        </p>
+        <input id="submit" type="submit" value="submit"/>
+    <% end %>
+  </div>
+</div>

@@ -45,3 +45,26 @@ end
 And(/^I input the project information$/) do
   pending
 end
+
+Given(/^I have logged in$/) do
+  visit("/login")
+  fill_in("password", :with => "TA")
+  click_button("submit")
+end
+
+Given(/^I have logged out$/) do
+  visit("/login")
+  click_button("Log out")
+end
+
+Then(/^Project should not be empty$/) do
+  pending
+end
+
+And(/^all Projects should have names$/) do
+  pending
+end
+
+Then(/^I authenticate google$/) do
+  visit("/google/authorize")
+end
