@@ -81,12 +81,16 @@ class GoogleController < ApplicationController
     credentials
   end
 
-  #Fetches the data from the google sheet
-  def fetch_group_data
+  def service_authorize
     service = Google::Apis::SheetsV4::SheetsService.new
     service.client_options.application_name = APPLICATION_NAME
     service.authorization = authorize false
+    service
+  end
 
+  #Fetches the data from the google sheet
+  def fetch_group_data
+    service = service_authorize
     range = 'Responses!A1:K29'
     begin
       response = service.get_spreadsheet_values(SPREADSHEET_ID, range)
@@ -120,11 +124,9 @@ class GoogleController < ApplicationController
   end
 
   def fetch_project_data
-    service = Google::Apis::SheetsV4::SheetsService.new
-    service.client_options.application_name = APPLICATION_NAME
-    service.authorization = authorize(false)
-
+    service = service_authorize
     range = 'Projects!A1:B50'
+
     begin
       response = service.get_spreadsheet_values(SPREADSHEET_ID, range)
     rescue Signet::AuthorizationError
