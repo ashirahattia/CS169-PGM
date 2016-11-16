@@ -48,7 +48,13 @@ class GoogleController < ApplicationController
         client_id, SCOPE, token_store)
     user_id = 'default'
 
-    credentials = authorizer.get_and_store_credentials_from_code(user_id: user_id, code:params[:code], base_url: OOB_URI)
+    begin
+      credentials = authorizer.get_and_store_credentials_from_code(user_id: user_id, code:params[:code], base_url: OOB_URI)
+    rescue Signet::AuthorizationError
+      flash[:notice] = "Error, invalid code. Try again"
+      redirect_to google_authorize_path
+      return
+    end
 
     redirect_to google_fetch_path
   end
@@ -86,6 +92,8 @@ class GoogleController < ApplicationController
       response = service.get_spreadsheet_values(SPREADSHEET_ID, range)
     rescue Signet::AuthorizationError
       authorize true
+    rescue Google::Apis::AuthorizationError
+      authorize true
     end
     unless response.nil?
       adjust_groups response
@@ -103,7 +111,6 @@ class GoogleController < ApplicationController
       preference_rows.each do |preference|
         preferences.push((/\d+/.match(preference))[0])
       end
-      puts preferences
       Group.create(:group_name => row[2], :created_at => row[0], :id => row[2], :username => row[1],
                    :first_choice => preferences[0], :second_choice => preferences[1], :third_choice => preferences[2],
                    :fourth_choice => preferences[3], :fifth_choice => preferences[4], :sixth_choice => preferences[5],
@@ -121,6 +128,8 @@ class GoogleController < ApplicationController
     begin
       response = service.get_spreadsheet_values(SPREADSHEET_ID, range)
     rescue Signet::AuthorizationError
+      authorize true
+    rescue Google::Apis::AuthorizationError
       authorize true
     end
     unless response.nil?

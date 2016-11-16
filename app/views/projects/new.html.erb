@@ -1,11 +1,11 @@
-<h1>Add New Project</h1>
-
-<!--<% if flash[:notice] %>-->
-<!--    <%= flash.notice %>-->
-<!--<% end %>-->
+<%= render "layouts/sidebar.html.erb" %>
 
 <div class="content-container">
   <div class="content">
+    <h1>Add New Project</h1>
+    <% if flash[:notice] %>
+            <%= flash.notice %>
+    <% end %>
     <%= form_tag("/projects/new", method: "get") do %>
         <p>Project name:
           <input id="project" type="text" name="project_name" />

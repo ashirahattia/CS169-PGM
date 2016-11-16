@@ -2,11 +2,17 @@
 
 <div class="content-container">
     <div class="content">
-        <div class="action-container">
-            <%= form_tag(:new_group, method: "GET") do %>
-                <input id="add_group" class="button" type="submit" value="+ add group"/>
-            <% end %>
-        </div>
+        <!--<div class="action-container">-->
+            <!--<%= form_tag(:new_group, method: "GET") do %>-->
+                <!--<input id="add_group" class="button" type="submit" value="+ add group"/>-->
+            <!--<% end %>-->
+        <!--</div>-->
+      <% if flash[:notice] %>
+          <div id="warning">
+            Error: <%= flash.notice %>
+          </div>
+      <% end %>
+      <br>
         <%= form_tag(:groups_destroy_multiple, method: "POST") do %>
             <div class="table-container">
                 <% @groups.each do |group| %>
@@ -46,7 +52,7 @@
                 <% end %>
             </div>
             <div class="action-container">
-                <input class="button red" type="submit" value="delete selected groups"/>
+                <input id="delete_group" class="button red" type="submit" value="delete selected groups"/>
             </div>
         <% end %>
     </div>
