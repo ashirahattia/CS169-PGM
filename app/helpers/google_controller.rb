@@ -49,7 +49,7 @@ class GoogleController < ApplicationController
     user_id = 'default'
 
     begin
-      credentials = authorizer.get_and_store_credentials_from_code(user_id: user_id, code:params[:code], base_url: OOB_URI)
+      authorizer.get_and_store_credentials_from_code(user_id: user_id, code:params[:code], base_url: OOB_URI)
     rescue Signet::AuthorizationError
       flash[:notice] = "Error, invalid code. Try again"
       redirect_to google_authorize_path
@@ -90,10 +90,8 @@ class GoogleController < ApplicationController
 
   #Fetches the data from the google sheet
   def fetch_group_data
-    service = service_authorize
-    range = 'Responses!A1:K29'
     begin
-      response = service.get_spreadsheet_values(SPREADSHEET_ID, range)
+      response = service_authorize.get_spreadsheet_values(SPREADSHEET_ID, 'Responses!A1:K29')
     rescue Signet::AuthorizationError
       authorize true
     rescue Google::Apis::AuthorizationError
@@ -124,11 +122,8 @@ class GoogleController < ApplicationController
   end
 
   def fetch_project_data
-    service = service_authorize
-    range = 'Projects!A1:B50'
-
     begin
-      response = service.get_spreadsheet_values(SPREADSHEET_ID, range)
+      response = service_authorize.get_spreadsheet_values(SPREADSHEET_ID, 'Projects!A1:B50')
     rescue Signet::AuthorizationError
       authorize true
     rescue Google::Apis::AuthorizationError

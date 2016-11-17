@@ -48,9 +48,6 @@ group :development, :test do
   gem 'sqlite3'
 end
 
-# Looks like Heroku no longer likes the production group
-gem 'pg'
-
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
