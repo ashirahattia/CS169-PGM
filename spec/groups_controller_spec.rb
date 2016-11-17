@@ -1,6 +1,13 @@
 require "spec_helper"
 
 describe GroupsController, :type => :controller do
+  it 'produces an index' do
+    fake_groups = [Group.new(:id =>1, :group_name=>"Test1"), Group.new(:id =>1, :group_name=>"Test2")]
+    allow(Group).to receive(:all) { fake_groups }
+    controller.index
+    expect(assigns(@groups)[:groups]).to eq(fake_groups)
+  end
+  
   it 'returns the group with the id and all the projects' do
     fake_project = Project.new(:project_name => "Project1", :id => 1)
     fake_group = Group.new(:id => 1, :group_name => "Test")
@@ -31,5 +38,40 @@ describe GroupsController, :type => :controller do
     expect(assigns(@groups)[:group][:second_choice]).to eq(fake_project2[:id])
     expect(assigns(@groups)[:group][:third_choice]).to eq(fake_project3[:id])
   end
+  
+  it 'redirects if preferences are not unique' do
+    fake_project = Project.new(:project_name => "Project1", :id => 1)
+    fake_group = Group.new(:id => 1, :group_name => "Test")
+    allow(Group).to receive(:find) { fake_group }
+    allow(Project).to receive(:all) { [fake_project] }
+    controller.params = {:id=> 1, :first_choice => 1, :second_choice => 1}
+    controller.should_receive(:redirect_to).with("/groups/1")
+    controller.update
+  end
+  
+  it 'destroys a single group' do
+    fake_group = Group.new(:id => 1, :group_name => "Test")
+    controller.params = {:id => 1}
+    controller.should_receive(:redirect_to).with(:groups).and_return(true)
+    (Group).should_receive(:destroy).with(fake_group[:id]).and_return(true)
+    (Match).should_receive(:destroy_all).and_return(true)
+    controller.destroy
+  end
 
+  it 'destroys multiple groups' do
+    fake_group1 = Group.new(:id =>1, :group_name=>"Test1")
+    fake_group2 = Group.new(:id =>2, :group_name=>"Test2")
+    controller.params = {:delete => {'1': 1, '2': 1}}
+    (Group).should_receive(:destroy).with('1').and_return(true)
+    (Group).should_receive(:destroy).with('2').and_return(true)
+    (Match).should_receive(:destroy_all).and_return(true)
+    controller.should_receive(:redirect_to).with(:groups).and_return(true)
+    controller.destroy_multiple
+  end
+  
+  it 'rescues errors in destroy_multiple when no groups are selected for deletion' do
+    controller.should_receive(:redirect_to).with(:groups).and_return(true)
+    controller.destroy_multiple
+    expect(flash[:notice]).to be_present
+  end
 end
