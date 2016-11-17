@@ -10,8 +10,9 @@ Feature: Perform Matching
     And All data is put into the database
     And I press Match button
     Then I am on the current_matching page
-    And I should see a Re-Match button
-
+    And I should see Re-Match button
+    
+# OLD SCENARIOS RENDERED OBSELETE
   # Scenario: Select Rematch Button
   #   Given I am on the current_matching page
   #   And I press Match button
