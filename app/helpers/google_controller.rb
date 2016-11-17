@@ -102,7 +102,7 @@ class GoogleController < ApplicationController
   end
 
   # Takes the google sheet response and generates all the groups from it
-  def adjust_groups response
+  def adjust_groups(response)
     Group.destroy_all
     Match.destroy_all
     response.values = response.values.drop(1)
@@ -117,7 +117,6 @@ class GoogleController < ApplicationController
                    :fourth_choice => preferences[3], :fifth_choice => preferences[4], :sixth_choice => preferences[5],
                    :seventh_choice => preferences[6])
     end
-    redirect_to google_show_groups_path
   end
 
   def fetch_project_data
@@ -140,7 +139,6 @@ class GoogleController < ApplicationController
     response.values.each do |row|
       Project.create(:id => row[0], :project_name => row[1])
     end
-    redirect_to google_show_projects_path
   end
 
 end
