@@ -3,7 +3,6 @@ Then(/^a (.*) project should exist$/) do |name|
 end
 
 And(/^all Groups should have preferences$/) do
-  # Group.where().should_not be_nil
   pending
 end
 
