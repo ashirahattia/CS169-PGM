@@ -31,7 +31,7 @@ Then(/^Group should not have the first group$/) do
 end
 
 And(/^I input the project information$/) do
-  pending
+  fill_in 'project_name', :with => 'Test Project'
 end
 
 Then(/^I can see a add_project table$/) do
