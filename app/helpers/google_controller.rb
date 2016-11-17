@@ -143,6 +143,8 @@ class GoogleController < ApplicationController
       google_authorize true
     rescue Google::Apis::AuthorizationError
       google_authorize true
+    rescue Google::Apis::ClientError
+      google_authorize true
     end
     response
   end

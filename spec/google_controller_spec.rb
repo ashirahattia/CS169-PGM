@@ -12,8 +12,8 @@ describe GoogleController, :type => :controller do
   end
 
   it 'goes for service authorization' do
-    expect(controller).to render_template(nil)
     controller.service_authorize
+    expect(controller).to render_template(nil)
   end
 
   it 'checks for completion of authorization' do
