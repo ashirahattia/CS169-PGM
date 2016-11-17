@@ -87,15 +87,5 @@ And(/^All data is put into the database$/) do
     Project.create(:id => row[0], :project_name => row[1])
   end
   response_groups = dummy_group_data_values
-  response.each do |row|
-    preferences = []
-    preference_rows = row.drop(4)
-    preference_rows.each do |preference|
-      preferences.push((/\d+/.match(preference))[0])
-    end
-    Group.create(:group_name => row[2], :created_at => row[0], :id => row[2], :username => row[1],
-                 :first_choice => preferences[0], :second_choice => preferences[1], :third_choice => preferences[2],
-                 :fourth_choice => preferences[3], :fifth_choice => preferences[4], :sixth_choice => preferences[5],
-                 :seventh_choice => preferences[6])
-  end
+  GoogleController.create_groups(response_groups)
 end

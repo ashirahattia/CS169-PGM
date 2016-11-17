@@ -89,13 +89,7 @@ class GoogleController < ApplicationController
 
   #Fetches the data from the google sheet
   def fetch_group_data
-    begin
-      response = service_authorize.get_spreadsheet_values(SPREADSHEET_ID, 'Responses!A1:K29')
-    rescue Signet::AuthorizationError
-      authorize true
-    rescue Google::Apis::AuthorizationError
-      authorize true
-    end
+    response = fetch_data('Responses!A1:K29')
     unless response.nil?
       adjust_groups response
     end
@@ -104,8 +98,16 @@ class GoogleController < ApplicationController
   # Takes the google sheet response and generates all the groups from it
   def adjust_groups(response)
     Group.destroy_all
-    Match.destroy_all
-    response.values = response.values.drop(1)
+    delete_matches(response)
+    create_groups(response)
+    if Project.count == 0
+      fetch_project_data
+    else
+      redirect_to groups_path
+    end
+  end
+
+  def create_groups(response)
     response.values.each do |row|
       preferences = []
       preference_rows = row.drop(4)
@@ -117,30 +119,36 @@ class GoogleController < ApplicationController
                    :fourth_choice => preferences[3], :fifth_choice => preferences[4], :sixth_choice => preferences[5],
                    :seventh_choice => preferences[6])
     end
-    if Project.count == 0
-      fetch_project_data
-    else
-      redirect_to groups_path
-    end
+  end
+
+
+  def delete_matches(response)
+    Match.destroy_all
+    response.values = response.values.drop(1)
+    response
   end
 
   def fetch_project_data
-    begin
-      response = service_authorize.get_spreadsheet_values(SPREADSHEET_ID, 'Projects!A1:B50')
-    rescue Signet::AuthorizationError
-      authorize true
-    rescue Google::Apis::AuthorizationError
-      authorize true
-    end
+    response = fetch_data('Projects!A1:B50')
     unless response.nil?
       adjust_projects response
     end
   end
 
+  def fetch_data(range)
+    begin
+      response = service_authorize.get_spreadsheet_values(SPREADSHEET_ID, range)
+    rescue Signet::AuthorizationError
+      authorize true
+    rescue Google::Apis::AuthorizationError
+      authorize true
+    end
+    response
+  end
+
   def adjust_projects(response)
     Project.destroy_all
-    Match.destroy_all
-    response.values = response.values.drop(1)
+    delete_matches(response)
     response.values.each do |row|
       Project.create(:id => row[0], :project_name => row[1])
     end
