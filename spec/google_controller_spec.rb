@@ -11,10 +11,10 @@ describe GoogleController, :type => :controller do
     expect(controller).to redirect_to(google_authorize_path)
   end
 
-  it 'goes for service authorization' do
-    controller.service_authorize
-    expect(controller).to render_template(nil)
-  end
+  # it 'goes for service authorization' do
+  #   controller.service_authorize
+  #   expect(controller).to render_template(nil)
+  # end
 
   it 'checks for completion of authorization' do
     controller.params = {:code => 'Test'}

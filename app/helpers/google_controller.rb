@@ -155,7 +155,9 @@ class GoogleController < ApplicationController
     response.values.each do |row|
       Project.create(:id => row[0], :project_name => row[1])
     end
-    redirect_to projects_path
+    unless response.nil?
+      redirect_to projects_path
+    end
   end
 
 end
