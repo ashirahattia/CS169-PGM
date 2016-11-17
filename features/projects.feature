@@ -4,11 +4,13 @@ Feature: Deal with Projects Manually
   I want to input project details
 
   Scenario: View current project
+    Given I am logged in as a TA
     Given I am on the projects page
-    Then I can see a project_table table
+    Then I can see a projects_table table
     And I should see add_project button
 
   Scenario: Add a new projects
+    Given I am logged in as a TA
     Given I am on the projects page
     Then I should see add_project button
     And I press add_project button
