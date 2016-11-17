@@ -716,6 +716,7 @@ describe GoogleController, :type => :controller do
                                  "9 CITY DOG SHARE (Calendar App)"]] }
 
     controller.adjust_groups(response_groups)
+    controller.should redirect_to(projects_path)
   end
 
 end
