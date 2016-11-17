@@ -117,6 +117,11 @@ class GoogleController < ApplicationController
                    :fourth_choice => preferences[3], :fifth_choice => preferences[4], :sixth_choice => preferences[5],
                    :seventh_choice => preferences[6])
     end
+    if Project.count == 0
+      fetch_project_data
+    else
+      redirect_to groups_path
+    end
   end
 
   def fetch_project_data
@@ -139,6 +144,7 @@ class GoogleController < ApplicationController
     response.values.each do |row|
       Project.create(:id => row[0], :project_name => row[1])
     end
+    redirect_to projects_path
   end
 
 end
