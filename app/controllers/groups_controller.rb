@@ -24,7 +24,7 @@ class GroupsController < ApplicationController
         if arr.length != arr.uniq.length
             flash[:notice] = "Update unsuccessful. Preferences must be unique."
             @group = Group.find(params[:id])
-            redirect_to '/groups/' + params[:id]
+            redirect_to '/groups/' + params[:id].to_s
         else
             @group.save
             redirect_to :groups
