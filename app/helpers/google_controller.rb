@@ -52,7 +52,6 @@ class GoogleController < ApplicationController
       authorizer.get_and_store_credentials_from_code(user_id: user_id, code:params[:code], base_url: OOB_URI)
     rescue Signet::AuthorizationError
       flash[:notice] = "Error, invalid code. Try again"
-      redirect_to google_authorize_path
       return
     end
 
