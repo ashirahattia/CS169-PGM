@@ -85,7 +85,9 @@ class GoogleController < ApplicationController
     service = Google::Apis::SheetsV4::SheetsService.new
     service.client_options.application_name = APPLICATION_NAME
     service.authorization = google_authorize false
-    service
+    unless service.authorization.nil?
+      service
+    end
   end
 
   #Fetches the data from the google sheet
