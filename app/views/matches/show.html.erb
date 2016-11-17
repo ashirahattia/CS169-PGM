@@ -22,11 +22,13 @@
             </table> 
         </div>
         
-        <div class="action-container">
-            <form action="/matches/new" method="get">
-                <input type="submit" class="button" value="Re-Match"/>
-            </form>
-        </div>
+        <% if session[:is_ta] %>
+            <div class="action-container">
+                <form action="/matches/new" method="get">
+                    <input type="submit" class="button" value="Re-Match"/>
+                </form>
+            </div>
+        <% end %>
     </div>  
 </div>
 
