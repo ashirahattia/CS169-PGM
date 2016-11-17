@@ -34,10 +34,6 @@ And(/^I input the project information$/) do
   pending
 end
 
-Then(/^I can see a project_table table$/) do
-  pending
-end
-
 Then(/^I can see a add_project table$/) do
   pending
 end
