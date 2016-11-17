@@ -12,4 +12,6 @@ describe GoogleController, :type => :controller do
     expect(flash[:notice]).to_not eq(nil)
   end
 
+
+
 end
