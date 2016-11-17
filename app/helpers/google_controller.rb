@@ -64,7 +64,7 @@ class GoogleController < ApplicationController
   # the user's default browser will be launched to approve the request.
   #
   # @return [Google::Auth::UserRefreshCredentials] OAuth2 credentials
-  def authorize(force_reload)
+  def google_authorize(force_reload)
     FileUtils.mkdir_p(File.dirname(CREDENTIALS_PATH))
 
     client_id = Google::Auth::ClientId.from_file(CLIENT_SECRETS_PATH)
@@ -73,6 +73,7 @@ class GoogleController < ApplicationController
         client_id, SCOPE, token_store)
     user_id = 'default'
     credentials = authorizer.get_credentials(user_id)
+
     if force_reload || credentials.nil?
       redirect_to google_authorize_path
       return
@@ -83,7 +84,7 @@ class GoogleController < ApplicationController
   def service_authorize
     service = Google::Apis::SheetsV4::SheetsService.new
     service.client_options.application_name = APPLICATION_NAME
-    service.authorization = authorize false
+    service.authorization = google_authorize false
     service
   end
 
@@ -139,9 +140,9 @@ class GoogleController < ApplicationController
     begin
       response = service_authorize.get_spreadsheet_values(SPREADSHEET_ID, range)
     rescue Signet::AuthorizationError
-      authorize true
+      google_authorize true
     rescue Google::Apis::AuthorizationError
-      authorize true
+      google_authorize true
     end
     response
   end

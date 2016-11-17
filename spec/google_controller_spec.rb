@@ -6,15 +6,15 @@ describe GoogleController, :type => :controller do
     expect(session[:authorize]).to_not eq(nil)
   end
 
-  # it 'goes for authorization' do
-  #   controller.should redirect_to(google_authorize_path)
-  #   controller.authorize(true)
-  # end
-  #
-  # it 'goes for service authorization' do
-  #   controller.should redirect_to(google_authorize_path)
-  #   controller.service_authorize
-  # end
+  it 'goes for authorization' do
+    get :groups_fetch
+    expect(controller).to redirect_to(google_authorize_path)
+  end
+
+  it 'goes for service authorization' do
+    expect(controller).to render_template(nil)
+    controller.service_authorize
+  end
 
   it 'checks for completion of authorization' do
     controller.params = {:code => 'Test'}
