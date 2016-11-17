@@ -3,6 +3,7 @@ Then(/^a (.*) project should exist$/) do |name|
 end
 
 And(/^all Groups should have preferences$/) do
+  # Group.where().should_not be_nil
   pending
 end
 
@@ -23,7 +24,7 @@ And(/^I should see a warning label$/) do
 end
 
 Then(/^I select the first group$/) do
-  pending
+  check("#delete_1")
 end
 
 Then(/^Group should not have the first group$/) do
@@ -33,6 +34,15 @@ end
 And(/^I input the project information$/) do
   pending
 end
+
+Then(/^I can see a project_table table$/) do
+  pending
+end
+
+Then(/^I can see a add_project table$/) do
+  pending
+end
+
 
 Given(/^I have logged in$/) do
   visit("/login")
