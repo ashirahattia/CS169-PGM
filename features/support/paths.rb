@@ -27,6 +27,9 @@ module NavigationHelpers
       
       when /^the current_matching page/
         '/matches/show'
+      
+      when /^the Add Project form/
+        '/projects/new'
 
         # Add more mappings here.
         # Here is an example that pulls values out of the Regexp:
