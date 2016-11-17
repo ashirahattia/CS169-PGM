@@ -24,6 +24,9 @@ module NavigationHelpers
 
       when /^authentication page/
         '/google/authorize'
+      
+      when /^the current_matching page/
+        '/matches/show'
 
         # Add more mappings here.
         # Here is an example that pulls values out of the Regexp:
