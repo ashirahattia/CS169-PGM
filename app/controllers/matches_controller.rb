@@ -16,7 +16,7 @@ class MatchesController < ApplicationController
     end
     
     def show
-        @matches = Match.all
+        @matches = Match.all.sort_by { |each| (each.group_name.to_i) }
         @utility = 20 # SHOULD BE PART OF MATCH MODEL
     end
     
