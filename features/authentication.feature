@@ -7,7 +7,7 @@ Feature: Google authentication
     Given I am logged in as a TA
     Then I go to fetch_data page
     And I see the groups is empty
-    Then I press fetch_group_data button
+    #Then I press fetch_group_data button
     And I might be on authentication page
     And I see the groups is not empty
 
@@ -15,5 +15,5 @@ Feature: Google authentication
     Given I am logged in as a TA
     Then I go to fetch_data page
     And I see the projects is empty
-    Then I press fetch_project_data button
+    #Then I press fetch_project_data button
     And I see the projects is not empty

@@ -15,7 +15,7 @@ Feature: Run Matching Algorithm
     And All data is put into the database
     And I have pressed the Match button
     Then I should be on the current_matching page
-    And I can see a match_group table
+    And I can see a match_table table
     Then I should see Match button
     And I have pressed the Match button
-    Then I should see a different table
+    Then I should be on the current_matching page

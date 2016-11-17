@@ -23,11 +23,11 @@ And(/^I should see a warning label$/) do
 end
 
 Then(/^I select the first group$/) do
-  check("#delete_1")
+  check("delete_1")
 end
 
 Then(/^Group should not have the first group$/) do
-  pending
+  page.should_not have_content("delete[1]")
 end
 
 And(/^I input the project information$/) do

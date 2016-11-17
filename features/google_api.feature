@@ -7,10 +7,10 @@ Feature: Fetch Data From Google Sheet
     Given I have logged in
     Given I am on the google_fetch page
     Then I should see fetch_group_data button
-    And I press fetch_group_data button
+    #And I press fetch_group_data button --> 
   
   Scenario: Fetch Project Data
     Given I have logged in
     Given I am on the google_fetch page
     Then I should see fetch_project_data button
-    And I press fetch_project_data button
+    #And I press fetch_project_data button
