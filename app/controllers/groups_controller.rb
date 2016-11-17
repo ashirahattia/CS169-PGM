@@ -35,13 +35,6 @@ class GroupsController < ApplicationController
         @groups = Group.all
     end
     
-    def new
-        
-        # @new_group = Group.create() <-- once we figure out how to put in IDs
-        
-        redirect_to '/groups/1' # make this the id once we figure out how to put in IDs
-    end
-    
     def destroy_multiple
         begin
             params[:delete].keys.each do |id|
@@ -59,7 +52,7 @@ class GroupsController < ApplicationController
     def destroy
         begin
             Group.destroy(params[:id])
-        rescue NoMethodError
+        rescue ActiveRecord::RecordNotFound
             flash[:notice] = "No group selected"
             redirect_to :groups
             return

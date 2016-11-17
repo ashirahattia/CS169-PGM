@@ -2,9 +2,9 @@ require "spec_helper"
 
 describe LoginController, :type => :controller do
     it 'checks if user is currently logged in' do
-       session = {:is_ta => true}
+       session[:is_ta] = true
        controller.index
-       expect(session[:is_ta]).to be_true
+       expect(flash[:notice]).to be_present
     end
     
     it 'logs the user out' do

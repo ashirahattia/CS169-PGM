@@ -74,4 +74,11 @@ describe GroupsController, :type => :controller do
     controller.destroy_multiple
     expect(flash[:notice]).to be_present
   end
+  
+  it 'rescues errors in destroy when no groups are selected for deletion' do
+    controller.params = {:id=>nil}
+    controller.should_receive(:redirect_to).with(:groups).and_return(true)
+    controller.destroy
+    expect(flash[:notice]).to be_present
+  end
 end
