@@ -4,10 +4,12 @@ Feature: Perform Matching
   I want to push a button and populate the matches
 
   Scenario: Select Matching Button
+    Given I am logged in as a TA
     Given I am on the current_matching page
     Then I should see Match button
+    And All data is put into the database
     And I press Match button
-    Then I am on the show_current_matching page
+    Then I am on the current_matching page
     And I should see a Re-Match button
 
   # Scenario: Select Rematch Button

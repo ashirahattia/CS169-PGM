@@ -85,6 +85,7 @@ describe GoogleController, :type => :controller do
                               ["33", "UC Berkeley: Educational Technology Services"],
                               ["34", "Visionaria Network"]]}
 
+    controller.should_receive(:redirect_to).with(projects_path)
     controller.adjust_projects(response)
     response_groups = double("groups")
     response_groups.stub(:values) { [["Timestamp",
@@ -714,7 +715,7 @@ describe GoogleController, :type => :controller do
                                  "23 San Francisco Bay Bird observatory",
                                  "27 The Arctic Institute",
                                  "9 CITY DOG SHARE (Calendar App)"]] }
-
+    controller.should_receive(:redirect_to).with(groups_path)
     controller.adjust_groups(response_groups)
   end
 
