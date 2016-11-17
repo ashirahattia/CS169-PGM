@@ -12,6 +12,7 @@ Feature: Run Matching Algorithm
   Scenario: Re-initiate algorithm from table
     Given I am on the home page
     And I am logged in as a TA
+    And All data is put into the database
     And I have pressed the Match button
     Then I should be on the current_matching page
     And I can see a match_group table
