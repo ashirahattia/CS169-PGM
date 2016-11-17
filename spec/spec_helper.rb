@@ -64,3 +64,7 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+def session
+  last_request.env['rack.session']
+end
