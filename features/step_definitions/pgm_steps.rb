@@ -1,4 +1,5 @@
 require "././spec/spec_helper"
+require 'cucumber/rspec/doubles'
 
 Then(/^a (.*) project should exist$/) do |name|
   Project.where(project_name: name).should_not be_nil
@@ -25,11 +26,11 @@ And(/^I should see a warning label$/) do
 end
 
 Then(/^I select the first group$/) do
-  check("delete_1")
+  check("delete[0]")
 end
 
 Then(/^Group should not have the first group$/) do
-  page.should_not have_content("delete[1]")
+  page.should_not have_content("delete[0]")
 end
 
 And(/^I input the project information$/) do
@@ -82,10 +83,11 @@ And(/^I might be on authentication page$/) do
 end
 
 And(/^All data is put into the database$/) do
-  response = dummy_project_data_values
-  response.each do |row|
+  response_projects = dummy_project_data_values
+  response_projects.each do |row|
     Project.create(:id => row[0], :project_name => row[1])
   end
-  response_groups = dummy_group_data_values
-  GoogleController.create_groups(response_groups)
+  response_groups = double("group")
+  response_groups.stub(:values) { dummy_group_data_values_with_headers }
+  GoogleController.new.create_groups(response_groups)
 end
