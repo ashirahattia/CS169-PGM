@@ -16,5 +16,5 @@ Feature: Deal with Projects Manually
     And I press add_project button
     Then I should be on the Add Project form
     And I input the project information
-    And I press Submit button
+    And I press submit button
     Then a test project should exist
