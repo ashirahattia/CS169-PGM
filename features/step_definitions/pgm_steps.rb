@@ -26,11 +26,11 @@ And(/^I should see a warning label$/) do
 end
 
 Then(/^I select the first group$/) do
-  check("delete[0]")
+  check("delete[2]")
 end
 
 Then(/^Group should not have the first group$/) do
-  page.should_not have_content("delete[0]")
+  page.should_not have_content("delete[2]")
 end
 
 And(/^I input the project information$/) do
@@ -88,6 +88,6 @@ And(/^All data is put into the database$/) do
     Project.create(:id => row[0], :project_name => row[1])
   end
   response_groups = double("group")
-  response_groups.stub(:values) { dummy_group_data_values_with_headers }
+  response_groups.stub(:values) { dummy_group_data_values }
   GoogleController.new.create_groups(response_groups)
 end

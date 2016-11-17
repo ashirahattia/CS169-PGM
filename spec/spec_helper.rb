@@ -146,9 +146,9 @@ def dummy_group_data_values
     "7 UC Berkeley: Educational Technology Services"]]
 end
 
-def dummy_group_data_values_with_headers
+def dummy_group_with_headers
   [["Timestamp", "Email Address", "What is your team ID?",
     "Assigned", "1st preference:", "2nd preference:",
     "3rd preference:", "4th preference:", "5th preference:",
-    "6th preference", "7th preference"]].push(dummy_group_data_values)
+    "6th preference", "7th preference"]]
 end

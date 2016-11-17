@@ -73,7 +73,7 @@ class GoogleController < ApplicationController
         client_id, SCOPE, token_store)
     user_id = 'default'
     credentials = authorizer.get_credentials(user_id)
-    if credentials.nil? || force_reload
+    if force_reload || credentials.nil?
       redirect_to google_authorize_path
       return
     end
