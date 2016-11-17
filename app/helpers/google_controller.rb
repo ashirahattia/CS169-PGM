@@ -119,8 +119,8 @@ class GoogleController < ApplicationController
     end
     if Project.count == 0
       fetch_project_data
-    # else
-    #   redirect_to groups_path
+    else
+      redirect_to groups_path
     end
   end
 
@@ -144,7 +144,7 @@ class GoogleController < ApplicationController
     response.values.each do |row|
       Project.create(:id => row[0], :project_name => row[1])
     end
-    # redirect_to projects_path
+    redirect_to projects_path
   end
 
 end
