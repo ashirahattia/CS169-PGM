@@ -50,23 +50,21 @@ describe GoogleController, :type => :controller do
   end
 
   it 'fetches group data' do
-    response = double("group")
-    response.stub(:values) { dummy_group_with_headers }
-    response.stub(:values=) { dummy_group_data_values }
-    service = double("service")
-    service.stub(:get_spreadsheet_values) { response}
-    controller.should_receive(:service_authorize).and_return(service)
+    stub_values double("group"), dummy_group_with_headers, dummy_group_data_values
     controller.should_receive(:adjust_groups).and_return(true)
     controller.fetch_group_data
   end
 
-  it 'fetches project data' do
-    response = double("project")
-    response.stub(:values) { dummy_project_data_values_with_headers }
-    response.stub(:values=) { dummy_project_data_values }
+  def stub_values (response, first_set, second_set)
+    response.stub(:values) { first_set }
+    response.stub(:values=) { second_set }
     service = double("service")
-    service.stub(:get_spreadsheet_values) { response}
+    service.stub(:get_spreadsheet_values) { response }
     controller.should_receive(:service_authorize).and_return(service)
+  end
+
+  it 'fetches project data' do
+    stub_values double("project"), dummy_project_data_values_with_headers, dummy_project_data_values
     controller.should_receive(:adjust_projects).and_return(true)
     controller.fetch_project_data
   end

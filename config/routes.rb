@@ -78,4 +78,6 @@ Rails.application.routes.draw do
   post 'login/attempt' => 'login#attempt'
   post 'login/logout' => 'login#logout'
 
+  get '*path' => 'application#errors'
+
 end
