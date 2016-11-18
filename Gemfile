@@ -27,6 +27,7 @@ gem 'test-unit'
 gem 'google-api-client'
 # Hungarian algorithm library
 gem 'munkres'
+gem 'pg'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
