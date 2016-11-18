@@ -2,33 +2,28 @@ Feature: Perform Matching
   As a TA
   In order to match groups with projects
   I want to push a button and populate the matches
+  
+  Scenario: Initiate algorithm
+    Given I am on the home page
+    And I am logged in as a TA
+    Then there is no existing project-group match
+    Then I should see Match button
 
   Scenario: Select Matching Button
     Given I am logged in as a TA
     Given I am on the current_matching page
-    Then I should see Match button
     And All data is put into the database
     And I press Match button
     Then I am on the current_matching page
     And I should see Re-Match button
-    
-# OLD SCENARIOS RENDERED OBSELETE
-  # Scenario: Select Rematch Button
-  #   Given I am on the current_matching page
-  #   And I press Match button
-  #   Then I am on the show_current_matching page
-  #   Then I can see a group_match table
-  #   And I should see a Re-Match button
-  #   Then I press Re-Match button
-  #   Then I should see a different algorithm score
-
-  # Scenario: See Multiple Algorithm Buttons
-  #   Given I am on the current_matching page
-  #   Then I should see X_Match button
-  #   And I should see a Y_Match button
-  #   Then I press X_Match button
-  #   And I am on the show_current_matching page
-  #   And I can see a group_match table
-  #   Then I press Y_Match button
-  #   And I am on the show_current_matching page
-  #   Then I should see a different table
+  
+  Scenario: Re-initiate algorithm from table
+    Given I am on the home page
+    And I am logged in as a TA
+    And All data is put into the database
+    And I have pressed the Match button
+    Then I should be on the current_matching page
+    And I can see a match_table table
+    Then I should see Re-Match button
+    And I have pressed the Re-Match button
+    Then I should be on the current_matching page

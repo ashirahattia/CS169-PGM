@@ -25,14 +25,3 @@ Feature: Deal with Groups Manually
     And I cannot see a group_table table
     Then I press delete_group button
     And I should see a warning label
-
-        #  Scenario: Add a new group with preferences
-#    Given I am logged in as a TA
-#    Then I am on the groups page
-#    And I should see add_group button
-#    And I press add_group button
-#    Then I should be on the add group form
-#    And I input the group information
-#    And I set the group preferences
-#    And I press submit button
-#    Then the new group should exist with my preferences set
