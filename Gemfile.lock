@@ -225,6 +225,7 @@ GEM
     parser (2.3.1.4)
       ast (~> 2.2)
     path_expander (1.0.0)
+    pg (0.19.0)
     phantomjs (2.1.1.0)
     power_assert (0.2.6)
     procto (0.0.3)
@@ -381,6 +382,7 @@ DEPENDENCIES
   jquery-rails
   metric_fu
   munkres
+  pg
   rails (= 4.2.5)
   rspec
   rspec-rails (= 2.14)
