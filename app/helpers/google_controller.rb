@@ -36,6 +36,7 @@ class GoogleController < ApplicationController
     authorizer = Google::Auth::UserAuthorizer.new(
         client_id, SCOPE, token_store)
     url = authorizer.get_authorization_url(base_url: OOB_URI)
+    session[:is_authorized] = false
     session[:authorize] = url
   end
 
@@ -50,6 +51,7 @@ class GoogleController < ApplicationController
 
     begin
       authorizer.get_and_store_credentials_from_code(user_id: user_id, code:params[:code], base_url: OOB_URI)
+      session[:is_authorized] = true
     rescue Signet::AuthorizationError
       flash[:notice] = "Error, invalid code. Try again"
       return
