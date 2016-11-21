@@ -56,7 +56,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  root 'matches#show'
+  root 'matches#index'
   resources :matches
   resources :groups
   resources :projects

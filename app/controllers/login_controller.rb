@@ -16,7 +16,7 @@ class LoginController < ApplicationController
         password = params[:password]
         if password == 'TA'
             session[:is_ta] = true
-            redirect_to '/matches/show'
+            redirect_to '/matches'
             return
         end
         flash[:notice] = "Login attempt failed."
