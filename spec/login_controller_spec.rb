@@ -15,7 +15,7 @@ describe LoginController, :type => :controller do
     
     it 'logs in with the correct password' do
         controller.params = {:password=>"TA"}
-        controller.should_receive(:redirect_to).with('/matches/show').and_return(true)
+        controller.should_receive(:redirect_to).with('/matches').and_return(true)
         controller.attempt
         expect(session[:is_ta]).to be_true
     end

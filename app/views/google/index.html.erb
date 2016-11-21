@@ -2,15 +2,29 @@
 
 <div class="content-container">
   <div class="content">
-    <div class="action-container">
-      <%= form_tag(google_fetch_groups_path, method: "GET") do %>
-          <input id="fetch_group_data" class="button" type="submit" value="Fetch Groups"/>
-      <% end %>
-    </div>
-    <div class="action-container">
-      <%= form_tag(google_fetch_projects_path, method: "GET") do %>
-          <input id="fetch_project_data" class="button" type="submit" value="Populate Projects"/>
-      <% end %>
-    </div>
+    <% if session[:is_authorized] %>
+      AUTHORIZED!
+        <div class="action-container">
+          <%= form_tag(google_fetch_groups_path, method: "GET") do %>
+              <input id="fetch_group_data" class="button" type="submit" value="Fetch Groups"/>
+          <% end %>
+        </div>
+        <div class="action-container">
+          <%= form_tag(google_fetch_projects_path, method: "GET") do %>
+              <input id="fetch_project_data" class="button" type="submit" value="Populate Projects"/>
+          <% end %>
+        </div>
+    <% else %>
+        <% if flash[:notice] %>
+            <%= flash.notice %>
+        <% end %>
+        <br>
+        Go to the url and copy and paste the code into this box:
+        <a href="<%= session[:authorize] %>">Google Authorization</a>
+        <%= form_tag(google_authorize_path, method: "POST") do %>
+            Code: <input type="text" name="code" id="code"><br>
+            <input id="submit" class="button" type="submit" value="Submit Code"/>
+        <% end %>
+    <% end %>
   </div>
 </div>
