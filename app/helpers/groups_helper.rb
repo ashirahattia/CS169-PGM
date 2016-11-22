@@ -16,8 +16,8 @@ module GroupsHelper
         Match.all.each do |match|
             if match.group_name == group_name
                 Match.delete match.id
+                return
             end
-            return
         end
     end 
     
