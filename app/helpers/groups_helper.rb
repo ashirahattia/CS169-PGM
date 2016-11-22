@@ -15,7 +15,7 @@ module GroupsHelper
         group_name = Group.find(group_id).group_name
         Match.all.each do |match|
             if match.group_name == group_name
-                Match.delete match.id
+                Match.destroy(match.id)
                 return
             end
         end
