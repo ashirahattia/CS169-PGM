@@ -91,3 +91,7 @@ And(/^All data is put into the database$/) do
   response_groups.stub(:values) { dummy_group_data_values }
   GoogleController.new.create_groups(response_groups)
 end
+
+And(/^I cannot see a (.*) button$/) do |name|
+  expect(page).not_to have_button(name)
+end
