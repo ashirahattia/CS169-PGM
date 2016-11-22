@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161113032726) do
+ActiveRecord::Schema.define(version: 20161122054437) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "group_name"
@@ -28,11 +28,14 @@ ActiveRecord::Schema.define(version: 20161113032726) do
   end
 
   create_table "matches", force: :cascade do |t|
-    t.string   "group_name"
-    t.string   "project_name"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "group_id"
+    t.integer  "project_id"
   end
+
+  add_index "matches", ["group_id"], name: "index_matches_on_group_id"
+  add_index "matches", ["project_id"], name: "index_matches_on_project_id"
 
   create_table "projects", force: :cascade do |t|
     t.string   "project_name"
