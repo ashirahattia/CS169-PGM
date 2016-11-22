@@ -37,9 +37,10 @@ class GroupsController < ApplicationController
     
     def destroy_multiple
         begin
-            Group.find(params[:delete].keys).each do |group|
-                group.destroy
+            params[:delete].keys.each do |id|
+                Group.destroy(id)
             end
+            Match.destroy_all
         rescue NoMethodError
             flash[:notice] = "No group selected"
             redirect_to :groups
@@ -50,7 +51,8 @@ class GroupsController < ApplicationController
     
     def destroy
         begin
-            Group.find(params[:id]).destroy
+            destroy_corresponding_match params[:id]
+            Group.destroy(params[:id])
         rescue ActiveRecord::RecordNotFound
             flash[:notice] = "No group selected"
             redirect_to :groups

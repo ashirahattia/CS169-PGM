@@ -11,4 +11,14 @@ module GroupsHelper
         end
     end
     
+    def destroy_corresponding_match group_id
+        group_name = Group.find(group_id).group_name
+        Match.all.each do |match|
+            if match.group_name == group_name
+                Match.destroy(match.id)
+                return
+            end
+        end
+    end 
+    
 end
