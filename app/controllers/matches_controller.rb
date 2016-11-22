@@ -13,7 +13,7 @@ class MatchesController < ApplicationController
     end
     
     def index
-        @matches = Match.all.sort_by { |each| (each.group_name.to_i) }
+        @matches = Match.all.sort_by { |some_match| (some_match.group_name) }
     end
     
 end
