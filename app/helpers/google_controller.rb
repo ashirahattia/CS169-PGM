@@ -116,7 +116,7 @@ class GoogleController < ApplicationController
       preference_rows.each do |preference|
         preferences.push((/\d+/.match(preference))[0])
       end
-      Group.create(:group_name => row[2], :created_at => row[0], :id => row[2], :username => row[1],
+      Group.create(:group_name => row[2], :created_at => row[0], :username => row[1],
                    :first_choice => preferences[0], :second_choice => preferences[1], :third_choice => preferences[2],
                    :fourth_choice => preferences[3], :fifth_choice => preferences[4], :sixth_choice => preferences[5],
                    :seventh_choice => preferences[6])

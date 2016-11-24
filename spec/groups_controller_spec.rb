@@ -52,25 +52,21 @@ describe GroupsController, :type => :controller do
   it 'destroys a single group' do
     fake_group = Group.new(:id => 1, :group_name => "Test")
     fake_project = Project.new(:id => 1, :project_name => "Test")
-    fake_match = Match.new(:group_name => "Test", :project_name => "Test", :id => 1)
+    fake_match = Match.new(:group_id => 1, :project_id => 1, :id => 1)
     controller.params = {:id => 1}
     allow(Group).to receive(:find) { fake_group }
-    allow(Match).to receive(:all) { [fake_match] }
     controller.should_receive(:redirect_to).with(:groups).and_return(true)
-    (Group).should_receive(:destroy).with(fake_group[:id]).and_return(true)
-    (Match).should_receive(:destroy).with(fake_group[:id]).and_return(true)
+    (fake_group).should_receive(:destroy).and_return(true)
     controller.destroy
   end
 
   it 'destroys multiple groups' do
     fake_group1 = Group.new(:id =>1, :group_name=>"Test1")
     fake_group2 = Group.new(:id =>2, :group_name=>"Test2")
-    allow(Group).to receive(:find).with("1") { fake_group1 }
-    allow(Group).to receive(:find).with("2") { fake_group2 }
+    allow(Group).to receive(:find).with(['1', '2']) { [fake_group1, fake_group2] }
     controller.params = {:delete => {'1': 1, '2': 1}}
-    (Group).should_receive(:destroy).with('1').and_return(true)
-    (Group).should_receive(:destroy).with('2').and_return(true)
-    (Match).should_receive(:destroy_all).and_return(true)
+    (fake_group1).should_receive(:destroy).and_return(true)
+    (fake_group2).should_receive(:destroy).and_return(true)
     controller.should_receive(:redirect_to).with(:groups).and_return(true)
     controller.destroy_multiple
   end
