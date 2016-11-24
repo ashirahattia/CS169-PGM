@@ -33,5 +33,17 @@ module MatchesHelper
             "bg-red"
         end
     end
-
+    
+    def find_unmatched_projects()
+        projects = Project.all
+        matched = Match.pluck(:project_id)
+        unmatched = []
+        projects.each do |project|
+            if (not matched.include? project.id)
+                unmatched.append(project.project_name)
+            end
+        end
+        return unmatched
+    end
+    
 end

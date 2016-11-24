@@ -30,6 +30,17 @@
                 </form>
             </div>
         <% end %>
+        
+        <div class="table_container">
+            <table id="unmatched_projects_table" class="match-table">
+                <th class="match-header">Unmatched Projects</th>
+                <% find_unmatched_projects().each do |project_name| %>
+                <tr>
+                    <td class="project-name"><%=project_name %></td>
+                </tr>
+                <% end %>
+            </table>
+        </div>
     </div>  
 </div>
 
