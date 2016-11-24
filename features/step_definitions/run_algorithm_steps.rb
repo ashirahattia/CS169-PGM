@@ -97,3 +97,7 @@ end
 Then(/^I should see that group enlisted projects are matched with their groups$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
+
+Then(/^I can see all unmatched projects$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
