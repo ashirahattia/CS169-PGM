@@ -95,3 +95,19 @@ end
 And(/^I cannot see a (.*) button$/) do |name|
   expect(page).not_to have_button(name)
 end
+
+Then(/^high priority projects are marked so in the database$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^non high priority projects are not marked as high priority in the database$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^group enlisted projects are marked so in the database$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I see google sheet instructions$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
