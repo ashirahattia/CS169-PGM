@@ -10,6 +10,6 @@ Feature: Error Prevention on rematching
     And I have pressed the Match button
     And I can see a match_table table
     And I press the Match button again
-    Then I should see the warning "Are you sure you want to re-match?"
+    Then I should see a warning
     
   
