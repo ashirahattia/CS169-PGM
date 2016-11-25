@@ -99,5 +99,5 @@ Then(/^I should see that group enlisted projects are matched with their groups$/
 end
 
 Then(/^I can see all unmatched projects$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  page.should have_css("table#unmatched_projects_table")
 end
