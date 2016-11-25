@@ -4,11 +4,21 @@ class MatchesController < ApplicationController
     before_filter :check_logged_in, :except => :index
     
     def matches_params
-        params.require(:matches).permit(:group_name, :project_name)
+        params.require(:matches).permit(:loss_function, :x)
     end
     
     def new
-        Match.algorithm
+        if params[:loss_function] == "exponential"
+            loss_function = :exponential
+        else
+            loss_function = :quadratic
+        end
+        
+        x = params[:x].to_f
+        x = [x, 0].max # x shouldn't be negative
+        x = [x, 10].min # if x is too high, shit crashes. and results converge anyway so...
+        
+        Match.algorithm(loss_function, x)
         redirect_to '/matches'
     end
     

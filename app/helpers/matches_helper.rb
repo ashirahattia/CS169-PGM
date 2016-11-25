@@ -46,4 +46,14 @@ module MatchesHelper
         return unmatched
     end
     
+    def sum_of_match_prefs
+        if Match.all.length == 0
+            return 0
+        end
+        result = 0
+        Match.all.each do |m|
+            result += choice_num(m)
+        end
+        return result
+    end
 end

@@ -11,7 +11,7 @@
     <% else %>
         <%= form_tag("/login/attempt", method: "post") do %>
             <p>Staff Password:
-              <input id="password" type="text" name="password" />
+              <input id="password" type="password" name="password" />
             </p>
             <input id="submit" type="submit" value="submit"/>
         <% end %>
