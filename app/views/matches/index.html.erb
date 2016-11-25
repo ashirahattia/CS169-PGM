@@ -24,35 +24,48 @@
         </div>
         
         <% if session[:is_ta] %>
-            <h3>Sum of current match preferences: <%= sum_of_match_prefs %></h2>
+            <br>
+            <div class="table_container">
+                <table id="unmatched_projects_table" class="match-table">
+                    <th class="match-header">Unmatched Projects</th>
+                    <% find_unmatched_projects().each do |project_name| %>
+                    <tr>
+                        <td class="project-name"><%=project_name %></td>
+                    </tr>
+                    <% end %>
+                </table>
+            </div>
+            <h3 id="utility-number">Sum of current match preferences: <%= sum_of_match_prefs %></h3>
             <form action="/matches/new" method="get">
                 <h3>Loss Function:</h3>
-                    <p>For power loss function:<br>
-                       When x < 1, the algorithm prefers giving some groups their top choices at the expense of giving other groups their worse choices.<br>
-                       When x > 1, the algorithm avoids giving groups their worse choices at the expense of not giving some groups their top choices.<br>
-                       When x = 1, the algorithm wants to minimize the average preference.</p>
-                    <p>For exponential loss function:<br>
-                       It does not make sense to have x <= 1. With higher values of x, the algorithm avoids giving groups their worse choices at the expense of not giving some groups their top choices. </p>
-                    <p>x must be at least 0 and at most 10.<p>
-                    <p>Power (pref^x) <input type="radio" name="loss_function" value="power" checked="checked"> &emsp; &emsp;
-                       Exponential (x^pref) <input type="radio" name="loss_function" value="exponential"></p>
-                    <p>x=<input type="text" name="x" value="1.0"></p>
-                <div class="action-container">
-                    <input id="Re-Match" type="submit" class="button" value="Re-Match"/>
+                <p>For power loss function:<br>
+                   When x < 1, the algorithm prefers giving some groups their top choices at the expense of giving other groups their worse choices.<br>
+                   When x > 1, the algorithm avoids giving groups their worse choices at the expense of not giving some groups their top choices.<br>
+                   When x = 1, the algorithm wants to minimize the average preference.</p>
+                <p>For exponential loss function:<br>
+                   It does not make sense to have x <= 1. With higher values of x, the algorithm avoids giving groups their worse choices at the expense of not giving some groups their top choices. </p>
+                <p>x must be at least 0 and at most 10.<p>
+                <p>Power (pref^x) <input type="radio" name="loss_function" value="power" checked="checked"> &emsp; &emsp;
+                   Exponential (x^pref) <input type="radio" name="loss_function" value="exponential"></p>
+                <p>x=<input type="text" name="x" value="1.0"></p>
+                <a id="trigger-rematch" class="button" href="#">Re-match</a>
+                
+                <div id="rematch-confirm-modal" class="modal-wrapper">
+                <div class="modal-bg">
                 </div>
+                <div class="modal-container">
+                    <p>
+                        Are you sure you want to re-match? This will destroy your previous matching
+                    </p>
+                    <div class="action-container">
+                        <a id="trigger-cancel" class="button red" href="#">Cancel</a>
+                        <input id="Re-Match" type="submit" class="button" value="Re-Match"/>
+                    </div>
+                </div> 
+            </div>
             </form>
         <% end %>
         
-        <div class="table_container">
-            <table id="unmatched_projects_table" class="match-table">
-                <th class="match-header">Unmatched Projects</th>
-                <% find_unmatched_projects().each do |project_name| %>
-                <tr>
-                    <td class="project-name"><%=project_name %></td>
-                </tr>
-                <% end %>
-            </table>
-        </div>
     </div>  
 </div>
 
