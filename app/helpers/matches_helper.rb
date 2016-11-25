@@ -1,7 +1,7 @@
 module MatchesHelper
     def choice_num some_match
-        project_id = Project.find_by(project_name: some_match.project.project_name).id
-        group = Group.where(group_name: some_match.group.group_name).to_a[0]
+        project_id = some_match.project.id
+        group = some_match.group
         case project_id
         when group[:first_choice]
             1

@@ -11,4 +11,11 @@ module GroupsHelper
         end
     end
     
+    def select_if_needed(x, y)
+        if x == y
+            return ", selected=selected"
+        else
+            return ""
+        end
+    end
 end
