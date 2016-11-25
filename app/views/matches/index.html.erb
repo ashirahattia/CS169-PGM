@@ -27,14 +27,14 @@
             <h3>Sum of current match preferences: <%= sum_of_match_prefs %></h2>
             <form action="/matches/new" method="get">
                 <h3>Loss Function:</h3>
-                    <p>For quadratic loss:<br>
+                    <p>For power loss function:<br>
                        When x < 1, the algorithm prefers giving some groups their top choices at the expense of giving other groups their worse choices.<br>
                        When x > 1, the algorithm avoids giving groups their worse choices at the expense of not giving some groups their top choices.<br>
                        When x = 1, the algorithm wants to minimize the average preference.</p>
-                    <p>For exponential loss:<br>
+                    <p>For exponential loss function:<br>
                        It does not make sense to have x <= 1. With higher values of x, the algorithm avoids giving groups their worse choices at the expense of not giving some groups their top choices. </p>
                     <p>x must be at least 0 and at most 10.<p>
-                    <p>Quadratic (pref^x) <input type="radio" name="loss_function" value="quadratic" checked="checked"> &emsp; &emsp;
+                    <p>Power (pref^x) <input type="radio" name="loss_function" value="power" checked="checked"> &emsp; &emsp;
                        Exponential (x^pref) <input type="radio" name="loss_function" value="exponential"></p>
                     <p>x=<input type="text" name="x" value="1.0"></p>
                 <div class="action-container">

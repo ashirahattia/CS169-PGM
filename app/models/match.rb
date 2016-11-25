@@ -63,7 +63,7 @@ class Match < ActiveRecord::Base
         end
     end
     
-    def self.quadraticize_matrix(matrix, x)
+    def self.powerize_matrix(matrix, x)
         matrix.each do |row|
             row.length.times.each do |i|
                 row[i] **= x
@@ -89,8 +89,8 @@ class Match < ActiveRecord::Base
         
         cost_matrix = self.generate_cost_matrix
         
-        if function_type == :quadratic
-            self.quadraticize_matrix(cost_matrix, x)
+        if function_type == :power
+            self.powerize_matrix(cost_matrix, x)
         elsif function_type == :exponential
             self.exponentiate_matrix(cost_matrix, x)
         end

@@ -11,7 +11,7 @@ class MatchesController < ApplicationController
         if params[:loss_function] == "exponential"
             loss_function = :exponential
         else
-            loss_function = :quadratic
+            loss_function = :power
         end
         
         x = params[:x].to_f
