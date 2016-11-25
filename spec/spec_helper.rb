@@ -20,7 +20,6 @@ SimpleCov.start do
   add_filter "/README.md"
   add_filter "/README.rdoc"
   add_filter "/app/assets/"
-  add_filter "/app/models/match.rb" #TEMPORARILY filtered because it's a dummy file right now
 end
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
