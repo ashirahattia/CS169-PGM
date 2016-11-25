@@ -50,7 +50,7 @@ class Match < ActiveRecord::Base
     
     # Helper method for fill_in_dummy_groups
     def self.make_dummy_arr(length)
-        return Array.new(length, 500)
+        return Array.new(length, 999999999999)
     end
 
     
@@ -63,15 +63,39 @@ class Match < ActiveRecord::Base
         end
     end
     
+    def self.quadraticize_matrix(matrix, x)
+        matrix.each do |row|
+            row.length.times.each do |i|
+                row[i] **= x
+            end
+        end
+    end
     
-    def self.algorithm
+    def self.exponentiate_matrix(matrix, x)
+        matrix.each do |row|
+            row.length.times.each do |i|
+                row[i] = x**row[i]
+            end
+        end
+    end
+    
+    def self.algorithm(function_type, x)
         @all_groups = Group.all
         @all_projects = Project.all
         if (@all_groups.length == 0) or (@all_projects.length == 0) # if it's 0, the page will crash.
             return
         end
         Match.delete_all
-        cost_matrix = self.fill_dummy_groups(self.generate_cost_matrix)
+        
+        cost_matrix = self.generate_cost_matrix
+        
+        if function_type == :quadratic
+            self.quadraticize_matrix(cost_matrix, x)
+        elsif function_type == :exponential
+            self.exponentiate_matrix(cost_matrix, x)
+        end
+            
+        cost_matrix = self.fill_dummy_groups(cost_matrix)
         m = Munkres.new(cost_matrix)
         self.convert_matrix_to_matches(m.find_pairings)
     end
