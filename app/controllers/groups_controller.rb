@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
         @projects = Project.all
         
         if params[:force_choice] == "None"
-            @group[:force_matched_project] = nil
+            @group[:force_matched_project_id] = nil
         else
             force_project = Project.find(params[:force_choice])
             if force_project.force_matched_group and force_project.force_matched_group != @group
