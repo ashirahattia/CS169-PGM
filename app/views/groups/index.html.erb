@@ -2,6 +2,7 @@
 
 <div class="content-container">
     <div class="content">
+        <p>Click on the group name (next to the check box) to edit the group matching preferences.</p>
         <%= form_tag(:groups_destroy_multiple, method: "POST") do %>
             <div class="table-container">
                 <% @groups.each do |group| %>
