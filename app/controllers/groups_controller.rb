@@ -23,7 +23,7 @@ class GroupsController < ApplicationController
                 redirect_to '/groups/' + params[:id].to_s
                 return
             else
-                @group[:force_matched_project] = params[:force_choice]
+                @group[:force_matched_project_id] = params[:force_choice]
             end
         end
         
@@ -47,7 +47,7 @@ class GroupsController < ApplicationController
     end
     
     def index
-        @groups = Group.all
+        @groups = Group.all.sort_by {|group| group.group_name.to_i}
     end
     
     def destroy_multiple
