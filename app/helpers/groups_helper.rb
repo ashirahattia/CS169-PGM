@@ -18,4 +18,12 @@ module GroupsHelper
             return ""
         end
     end
+    
+    def current_force_matched_project
+        if @group.force_matched_project
+            return @group.force_matched_project.project_name
+        else
+            return "None"
+        end
+    end
 end

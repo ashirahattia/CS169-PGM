@@ -4,6 +4,8 @@ class Match < ActiveRecord::Base
     belongs_to :group
     belongs_to :project
     
+    @@big_number = 999999999999999
+    
     def self.generate_preference_list(group)
         group_preferences = [group[:first_choice], group[:second_choice],
                             group[:third_choice], group[:fourth_choice],
@@ -27,7 +29,7 @@ class Match < ActiveRecord::Base
                     rank = project_list.index(project.id) + 1
                     row << rank
                 else 
-                    row << 100
+                    row << @@big_number
                 end 
             end
             cost_matrix << row
@@ -50,7 +52,7 @@ class Match < ActiveRecord::Base
     
     # Helper method for fill_in_dummy_groups
     def self.make_dummy_arr(length)
-        return Array.new(length, 999999999999)
+        return Array.new(length, @@big_number)
     end
 
     
@@ -79,13 +81,34 @@ class Match < ActiveRecord::Base
         end
     end
     
+    def self.force_matches
+        groups_to_delete = []
+        projects_to_delete = []
+        @all_groups.each do |group|
+            project = group.force_matched_project
+            if project
+                groups_to_delete << group
+                projects_to_delete << project
+                Match.create(:group_id => group.id, :project_id => project.id)
+            end
+        end
+        groups_to_delete.each do |group|
+            @all_groups.delete(group)
+        end
+        projects_to_delete.each do |project|
+            @all_projects.delete(project)
+        end
+    end
+    
     def self.algorithm(function_type, x)
-        @all_groups = Group.all
-        @all_projects = Project.all
+        @all_groups = Group.all.to_a
+        @all_projects = Project.all.to_a
         if (@all_groups.length == 0) or (@all_projects.length == 0) # if it's 0, the page will crash.
             return
         end
         Match.delete_all
+        
+        self.force_matches # must go before creating cost matrix!
         
         cost_matrix = self.generate_cost_matrix
         

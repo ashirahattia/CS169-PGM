@@ -12,6 +12,21 @@ class GroupsController < ApplicationController
     def update
         @group = Group.find(params[:id])
         @projects = Project.all
+        
+        if params[:force_choice] == "None"
+            @group.force_matched_project = nil
+        else
+            force_project = Project.find(params[:force_choice])
+            if force_project.force_matched_group and force_project.force_matched_group != @group
+                flash[:notice] = "Update unsuccessful. Project " + force_project.project_name +
+                                  " already matched to group " + force_project.force_matched_group.group_name
+                redirect_to '/groups/' + params[:id].to_s
+                return
+            else
+                @group.force_matched_project = force_project
+            end
+        end
+        
         @group[:first_choice] = params[:first_choice]
         @group[:second_choice] = params[:second_choice]
         @group[:third_choice] = params[:third_choice]
