@@ -5,6 +5,7 @@
             <table id="match_table" class="match-table">
                 <tr>
                     <th class="match-header">Group #</th>
+                    <th class="match-header">Associated Student</th>
                     <th class="match-header">Project Name</th>
                     <% if session[:is_ta] %>
                         <th class="match-header">Preference</th>
@@ -14,6 +15,7 @@
                 <% @matches.count.times do |index| %>
                 <tr>
                     <td class="group-name"><%= @matches[index].group.group_name %></td>
+                    <td class="group-name"><%= @matches[index].group.username %></td>
                     <td class="project-name"><%= @matches[index].project.project_name %></td>
                     <% if session[:is_ta] %>
                         <td class="rank <%=rank_color(@matches[index])%>"><%= choice_num @matches[index] %></td>
