@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
         @projects = Project.all
         
         if params[:force_choice] == "None"
-            @group.force_matched_project = nil
+            @group[:force_matched_project] = nil
         else
             force_project = Project.find(params[:force_choice])
             if force_project.force_matched_group and force_project.force_matched_group != @group
@@ -23,7 +23,7 @@ class GroupsController < ApplicationController
                 redirect_to '/groups/' + params[:id].to_s
                 return
             else
-                @group.force_matched_project = force_project
+                @group[:force_matched_project] = params[:force_choice]
             end
         end
         
