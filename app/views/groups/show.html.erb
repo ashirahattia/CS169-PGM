@@ -9,6 +9,18 @@
         <% end %>
         
         <%= form_tag("/groups/" + params[:id], method: "put") do %>
+        
+            <h3>Force Assignment to Project:</h3>
+            <p>Currently <%= current_force_matched_project %></p>
+            <select name="force_choice">
+                <option value="None">None</option>
+                <% @projects.each do |project| %>
+                    <option value=<%= project[:id] %> <%= select_if_needed(project, @group.force_matched_project) %>>
+                             <%= project[:project_name] %></option>
+                <% end %>
+            </select>
+        
+        
             <h3>First project choice</h3>
             <p>Currently <%= choice_str :first_choice %></p>
             <select name="first_choice">
