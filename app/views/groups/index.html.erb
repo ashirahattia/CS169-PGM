@@ -2,6 +2,7 @@
 
 <div class="content-container">
     <div class="content">
+        <p>Click on the group name (next to the check box) to edit the group matching preferences.</p>
         <%= form_tag(:groups_destroy_multiple, method: "POST") do %>
             <div class="table-container">
                 <% @groups.each do |group| %>
@@ -18,10 +19,11 @@
                             <tr>
                                 <th><h2>Members</h2></th>
                                 <th><h2>Preferences</h2></th>
+                                <th><h2>Force Matched To Project</h2></th>
                             </tr>
                             <tr>
                                 <td>
-                                  <li><%= @group.username %></li>
+                                  <%= @group.username %>
                                 </td>
                                 <td>
                                     <ol>
@@ -33,6 +35,9 @@
                                         <li><%= choice_str :sixth_choice %></li>
                                         <li><%= choice_str :seventh_choice %></li>
                                     </ol>
+                                </td>
+                                <td>
+                                    <%= current_force_matched_project %>
                                 </td>
                             </tr>
                         </table>

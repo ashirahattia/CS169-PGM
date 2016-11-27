@@ -12,6 +12,21 @@ class GroupsController < ApplicationController
     def update
         @group = Group.find(params[:id])
         @projects = Project.all
+        
+        if params[:force_choice] == "None"
+            @group[:force_matched_project_id] = nil
+        else
+            force_project = Project.find(params[:force_choice])
+            if force_project.force_matched_group and force_project.force_matched_group != @group
+                flash[:notice] = "Update unsuccessful. Project " + force_project.project_name +
+                                  " already matched to group " + force_project.force_matched_group.group_name
+                redirect_to '/groups/' + params[:id].to_s
+                return
+            else
+                @group[:force_matched_project_id] = params[:force_choice]
+            end
+        end
+        
         @group[:first_choice] = params[:first_choice]
         @group[:second_choice] = params[:second_choice]
         @group[:third_choice] = params[:third_choice]
@@ -32,7 +47,7 @@ class GroupsController < ApplicationController
     end
     
     def index
-        @groups = Group.all
+        @groups = Group.all.sort_by {|group| group.group_name.to_i}
     end
     
     def destroy_multiple

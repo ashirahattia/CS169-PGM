@@ -29,6 +29,7 @@ describe GroupsController, :type => :controller do
     fake_group = Group.new(:id => 1, :group_name => "Test")
     allow(Group).to receive(:find) { fake_group }
     allow(Project).to receive(:all) { [fake_project1, fake_project2, fake_project3, fake_project4, fake_project5, fake_project6, fake_project7] }
+    allow(Project).to receive(:find) {Project.new}
     controller.should_receive(:redirect_to).with(:groups).and_return(true)
     controller.params = {:id=> 1, :first_choice => 1, :second_choice => 2, :third_choice => 3, :fourth_choice => 4, :fifth_choice => 5, :sixth_choice => 6, :seventh_choice => 7}
     controller.update
@@ -44,6 +45,7 @@ describe GroupsController, :type => :controller do
     fake_group = Group.new(:id => 1, :group_name => "Test")
     allow(Group).to receive(:find) { fake_group }
     allow(Project).to receive(:all) { [fake_project] }
+    allow(Project).to receive(:find) {Project.new}
     controller.params = {:id=> 1, :first_choice => 1, :second_choice => 1}
     controller.should_receive(:redirect_to).with("/groups/1")
     controller.update
