@@ -14,7 +14,7 @@
                 
                 <% @matches.count.times do |index| %>
                 <tr>
-                    <td class="group-name"><%= @matches[index].group.group_name %></td>
+                    <td class="group-name"><%= @matches[index].group.id %></td>
                     <td class="group-name"><%= @matches[index].group.username %></td>
                     <td class="project-name"><%= @matches[index].project.project_name %></td>
                     <% if session[:is_ta] %>
@@ -48,9 +48,9 @@
         <div class="table_container">
             <table id="unmatched_projects_table" class="match-table">
                 <th class="match-header">Unmatched Projects</th>
-                <% find_unmatched_projects().each do |project_name| %>
+                <% find_unmatched_projects.each do |project| %>
                 <tr>
-                    <td class="project-name"><%=project_name %></td>
+                    <td class="project-name"><%=project.project_name%></td>
                 </tr>
                 <% end %>
             </table>

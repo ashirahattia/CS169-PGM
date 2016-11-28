@@ -5,6 +5,7 @@ require 'googleauth/stores/file_token_store'
 require 'fileutils'
 
 class GoogleController < ApplicationController
+  include MatchesHelper
 
   OOB_URI = 'urn:ietf:wg:oauth:2.0:oob'
   APPLICATION_NAME = 'CS169'
@@ -23,6 +24,14 @@ class GoogleController < ApplicationController
 
   def projects_fetch
     fetch_project_data
+  end
+
+  def write_matches
+    write_all_matches
+  end
+
+  def fetch_matches
+    update_matches_sheet
   end
 
   def index
@@ -116,7 +125,7 @@ class GoogleController < ApplicationController
       preference_rows.each do |preference|
         preferences.push((/\d+/.match(preference))[0])
       end
-      Group.create(:group_name => row[2], :created_at => row[0], :username => row[1],
+      Group.create(:id => row[2], :created_at => row[0], :username => row[1],
                    :first_choice => preferences[0], :second_choice => preferences[1], :third_choice => preferences[2],
                    :fourth_choice => preferences[3], :fifth_choice => preferences[4], :sixth_choice => preferences[5],
                    :seventh_choice => preferences[6])
@@ -155,6 +164,35 @@ class GoogleController < ApplicationController
       Project.create(:id => row[0], :project_name => row[1])
     end
     redirect_to projects_path
+  end
+
+  def write_all_matches
+    temp_matches = Match.all.sort_by { |some_match| (some_match.group.id.to_i) }
+    match_values = [['Group ID', 'Project ID', 'Project Name']]
+    temp_matches.each do |match|
+      match_values.push([match.group.id, match.project.id, match.project.project_name])
+    end
+    find_unmatched_projects.each do |project|
+      match_values.push(['None', project.id, project.project_name])
+    end
+    range = 'Current_Match!A1:C50'
+    service_authorize.clear_values(SPREADSHEET_ID, range)
+    values = Google::Apis::SheetsV4::ValueRange.new({:values => match_values, :major_dimension => 'ROWS'})
+    service_authorize.update_spreadsheet_value(SPREADSHEET_ID, range, values, value_input_option:'USER_ENTERED')
+    redirect_to root_path
+  end
+
+  def update_matches_sheet
+    response = fetch_data('Current_Match!A2:C50')
+    unless response.values.nil?
+      Match.delete_all
+      response.values.each do |row|
+        if row[0] != 'None'
+          Match.create(:group_id => row[0], :project_id => row[1])
+        end
+      end
+    end
+    redirect_to root_path
   end
 
 end

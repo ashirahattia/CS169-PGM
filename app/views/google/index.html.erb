@@ -14,6 +14,16 @@
               <input id="fetch_project_data" class="button" type="submit" value="Populate Projects"/>
           <% end %>
         </div>
+        <div class="action-container">
+          <%= form_tag(google_write_matches_path, method: "POST") do %>
+              <input id="write_matches" class="button" type="submit" value="Write Matches"/>
+          <% end %>
+        </div>
+        <div class="action-container">
+          <%= form_tag(google_fetch_matches_path, method: "GET") do %>
+              <input id="fetch_matches" class="button" type="submit" value="Fetch Matches"/>
+          <% end %>
+        </div>
     <% else %>
         <% if flash[:notice] %>
             <%= flash.notice %>

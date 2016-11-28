@@ -65,14 +65,17 @@ Rails.application.routes.draw do
 
   get 'google/fetch' => 'google#index'
 
+  get 'google/authorize' => 'google#get_authorization'
+  post 'google/authorize' => 'google#complete_authorization'
+
   get 'google/fetch/groups' => 'google#groups_fetch'
   get 'google/show/groups' => 'google#show'
 
   get 'google/fetch/projects' => 'google#projects_fetch'
   get 'google/show/projects' => 'google#show'
 
-  get 'google/authorize' => 'google#get_authorization'
-  post 'google/authorize' => 'google#complete_authorization'
+  post 'google/write/matches' => 'google#write_matches'
+  get 'google/fetch/matches' => 'google#fetch_matches'
 
   get 'login' => 'login#index'
   post 'login/attempt' => 'login#attempt'
