@@ -6,10 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-groups = [  {:group_name => 'group1'},
-            {:group_name => 'group2'},
-            {:group_name => 'group3'},
-            {:group_name => 'group4'}]
+groups = [  {:id => 1},
+            {:id => 2},
+            {:id => 3},
+            {:id => 4}]
             
 groups.each do |group|
     Group.create!(group)
