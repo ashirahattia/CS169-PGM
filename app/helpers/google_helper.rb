@@ -29,7 +29,7 @@ module GoogleHelper
   def update_settings
     Setting.destroy_all
     Setting.create(:spreadsheet_id => params[:spreadsheet_id],
-                   :group_tab => params[:group_tab],
+                   :group_tab => "#{params[:group_tab]}!A1:Y1000",
                    :group_username_col => params[:group_username_col],
                    :group_id_col => params[:group_id_col],
                    :group_preference_1 => params[:group_preference_1],
@@ -49,7 +49,7 @@ module GoogleHelper
   def current_settings
     settings = Setting.first
     session[:spreadsheet_id] = settings.spreadsheet_id
-    session[:group_tab] = settings.group_tab
+    session[:group_tab] = settings.group_tab.split('!')[0]
     session[:group_username_col] = settings.group_username_col
     session[:group_id_col] = settings.group_id_col
     session[:group_preference_1] = settings.group_preference_1
@@ -59,10 +59,10 @@ module GoogleHelper
     session[:group_preference_5] = settings.group_preference_5
     session[:group_preference_6] = settings.group_preference_6
     session[:group_preference_7] = settings.group_preference_7
-    session[:project_tab] = settings.project_tab
+    session[:project_tab] = settings.project_tab.split('!')[0]
     session[:project_id_col] = settings.project_id_col
     session[:project_name_col] = settings.project_name_col
-    session[:matches_tab] = settings.matches_tab
+    session[:matches_tab] = settings.matches_tab.split('!')[0]
   end
 
   def current_google_link

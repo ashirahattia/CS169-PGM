@@ -60,6 +60,9 @@ class GoogleController < ApplicationController
 
   def create_projects(response)
     response.values.each do |row|
+      if row[@@SETTINGS.project_id_col.to_i].nil?
+        return
+      end
       Project.create(:id => row[@@SETTINGS.project_id_col.to_i],
                      :project_name => row[@@SETTINGS.project_name_col.to_i])
     end
@@ -83,6 +86,9 @@ class GoogleController < ApplicationController
 
   def create_groups(response)
     response.values.each do |row|
+      if row[@@SETTINGS.group_id_col.to_i].nil?
+        return
+      end
       preferences = []
       preference_rows = row
       preference_rows.each do |preference|

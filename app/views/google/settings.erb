@@ -11,7 +11,7 @@
           Google Spreadsheet ID (string right after the /d/ in the URL):
           <input type="text" name="spreadsheet_id" id="spreadsheet_id" value="<%= session[:spreadsheet_id] %>">
           <br>
-          Groups Tab (eg. Groups): <input type="text" name="group_tab" id="group_tab" value="<%= session[:group_tab] %>">
+          Groups Tab Name(eg. Groups): <input type="text" name="group_tab" id="group_tab" value="<%= session[:group_tab] %>">
           <br>
           Group Username Column: <input type="text" name="group_username_col" id="group_username_col" value="<%= session[:group_username_col] %>">
           <br>
@@ -31,13 +31,13 @@
           <br>
           Group Preference 7 Column: <input type="text" name="group_preference_7" id="group_preference_7" value="<%= session[:group_preference_7] %>">
           <br>
-          Projects Tab (eg. Projects): <input type="text" name="project_tab" id="project_tab" value="<%= session[:project_tab] %>">
+          Projects Tab Name(eg. Projects): <input type="text" name="project_tab" id="project_tab" value="<%= session[:project_tab] %>">
           <br>
           Project ID Column: <input type="text" name="project_id_col" id="project_id_col" value="<%= session[:project_id_col] %>">
           <br>
           Project Name Column: <input type="text" name="project_name_col" id="project_name_col" value="<%= session[:project_name_col] %>">
           <br>
-          Matches Tab (eg. Matches): <input type="text" name="matches_tab" id="matches_tab" value="<%= session[:matches_tab] %>">
+          Matches Tab Name(eg. Matches): <input type="text" name="matches_tab" id="matches_tab" value="<%= session[:matches_tab] %>">
           <br>
           <input id="fetch_matches" class="button" type="submit" value="Save Settings"/>
       <% end %>
