@@ -5,9 +5,14 @@ module GroupsHelper
         if @group[symbol].nil?
             "not chosen"
         else
-            proj_id = @group[symbol]
-            project = Project.find(proj_id)
-            project[:project_name]
+            begin
+                proj_id = @group[symbol]
+                project = Project.find(proj_id)
+                project[:project_name]
+            rescue ActiveRecord::RecordNotFound
+                flash[:notice] = "Unable to find project: #{proj_id}"
+                return 'unknown'
+            end
         end
     end
     

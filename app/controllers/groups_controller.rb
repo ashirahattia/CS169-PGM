@@ -47,7 +47,7 @@ class GroupsController < ApplicationController
     end
     
     def index
-        @groups = Group.all.sort_by {|group| group.group_name.to_i}
+        @groups = Group.all.sort_by {|group| group.id.to_i}
     end
     
     def destroy_multiple
