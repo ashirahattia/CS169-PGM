@@ -11,10 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129005532) do
+ActiveRecord::Schema.define(version: 20161129043854) do
 
   create_table "groups", force: :cascade do |t|
-    t.string   "group_name"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "first_choice"
@@ -42,6 +41,26 @@ ActiveRecord::Schema.define(version: 20161129005532) do
     t.string   "project_name"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.text     "spreadsheet_id"
+    t.text     "group_tab"
+    t.text     "group_username_col"
+    t.text     "group_id_col"
+    t.text     "group_preference_1"
+    t.text     "group_preference_2"
+    t.text     "group_preference_3"
+    t.text     "group_preference_4"
+    t.text     "group_preference_5"
+    t.text     "group_preference_6"
+    t.text     "group_preference_7"
+    t.text     "project_tab"
+    t.text     "project_id_col"
+    t.text     "project_name_col"
+    t.text     "matches_tab"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
 end

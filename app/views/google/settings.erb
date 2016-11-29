@@ -1,9 +1,44 @@
 <%= render 'layouts/sidebar.html.erb' %>
 
+<% current_settings %>
+
 <div class="content-container">
   <div class="content">
     <div class="action-container">
+      All Column IDs start at 0.
+
       <%= form_tag(google_settings_path, method: 'PUT') do %>
+          Google Spreadsheet ID (string right after the /d/ in the URL):
+          <input type="text" name="spreadsheet_id" id="spreadsheet_id" value="<%= session[:spreadsheet_id] %>">
+          <br>
+          Groups Tab (eg. Groups): <input type="text" name="group_tab" id="group_tab" value="<%= session[:group_tab] %>">
+          <br>
+          Group Username Column: <input type="text" name="group_username_col" id="group_username_col" value="<%= session[:group_username_col] %>">
+          <br>
+          Group ID Column: <input type="text" name="group_id_col" id="group_id_col" value="<%= session[:group_id_col] %>">
+          <br>
+          Group Preference 1 Column: <input type="text" name="group_preference_1" id="group_preference_1" value="<%= session[:group_preference_1] %>">
+          <br>
+          Group Preference 2 Column: <input type="text" name="group_preference_2" id="group_preference_2" value="<%= session[:group_preference_2] %>">
+          <br>
+          Group Preference 3 Column: <input type="text" name="group_preference_3" id="group_preference_3" value="<%= session[:group_preference_3] %>">
+          <br>
+          Group Preference 4 Column: <input type="text" name="group_preference_4" id="group_preference_4" value="<%= session[:group_preference_4] %>">
+          <br>
+          Group Preference 5 Column: <input type="text" name="group_preference_5" id="group_preference_5" value="<%= session[:group_preference_5] %>">
+          <br>
+          Group Preference 6 Column: <input type="text" name="group_preference_6" id="group_preference_6" value="<%= session[:group_preference_6] %>">
+          <br>
+          Group Preference 7 Column: <input type="text" name="group_preference_7" id="group_preference_7" value="<%= session[:group_preference_7] %>">
+          <br>
+          Projects Tab (eg. Projects): <input type="text" name="project_tab" id="project_tab" value="<%= session[:project_tab] %>">
+          <br>
+          Project ID Column: <input type="text" name="project_id_col" id="project_id_col" value="<%= session[:project_id_col] %>">
+          <br>
+          Project Name Column: <input type="text" name="project_name_col" id="project_name_col" value="<%= session[:project_name_col] %>">
+          <br>
+          Matches Tab (eg. Matches): <input type="text" name="matches_tab" id="matches_tab" value="<%= session[:matches_tab] %>">
+          <br>
           <input id="fetch_matches" class="button" type="submit" value="Save Settings"/>
       <% end %>
     </div>

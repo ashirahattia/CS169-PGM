@@ -11,6 +11,8 @@ class GoogleController < ApplicationController
 
   before_filter :check_logged_in
 
+  @@SETTINGS = Setting.first
+
   def projects_groups_fetch
     unless authorize(false).nil?
       if fetch_project_data
@@ -29,6 +31,7 @@ class GoogleController < ApplicationController
 
   def save_preferences
     update_settings
+    @@SETTINGS = Setting.first
     redirect_to google_fetch_path
   end
 
@@ -41,7 +44,7 @@ class GoogleController < ApplicationController
   #### CS169-PGM GOOGLE METHODS BEGIN ####
 
   def fetch_project_data
-    response = fetch_data('Projects!A1:B50')
+    response = fetch_data(@@SETTINGS.project_tab)
     unless response.nil?
       adjust_projects response
       return true
@@ -57,13 +60,14 @@ class GoogleController < ApplicationController
 
   def create_projects(response)
     response.values.each do |row|
-      Project.create(:id => row[0], :project_name => row[1])
+      Project.create(:id => row[@@SETTINGS.project_id_col.to_i],
+                     :project_name => row[@@SETTINGS.project_name_col.to_i])
     end
   end
 
   #Fetches the data from the google sheet
   def fetch_group_data
-    response = fetch_data('Groups!A1:K29')
+    response = fetch_data(@@SETTINGS.group_tab)
     unless response.nil?
       adjust_groups response
     end
@@ -80,19 +84,28 @@ class GoogleController < ApplicationController
   def create_groups(response)
     response.values.each do |row|
       preferences = []
-      preference_rows = row.drop(4)
+      preference_rows = row
       preference_rows.each do |preference|
-        preferences.push((/\d+/.match(preference))[0])
+        id = (/\d+/.match(preference))
+        if !id.nil?
+          preferences.push(id[0])
+        else
+          preferences.push([])
+        end
       end
-      Group.create(:id => row[2], :created_at => row[0], :username => row[1],
-                   :first_choice => preferences[0], :second_choice => preferences[1], :third_choice => preferences[2],
-                   :fourth_choice => preferences[3], :fifth_choice => preferences[4], :sixth_choice => preferences[5],
-                   :seventh_choice => preferences[6])
+      Group.create(:id => row[@@SETTINGS.group_id_col.to_i], :username => row[@@SETTINGS.group_username_col.to_i],
+                   :first_choice => preferences[@@SETTINGS.group_preference_1.to_i],
+                   :second_choice => preferences[@@SETTINGS.group_preference_2.to_i],
+                   :third_choice => preferences[@@SETTINGS.group_preference_3.to_i],
+                   :fourth_choice => preferences[@@SETTINGS.group_preference_4.to_i],
+                   :fifth_choice => preferences[@@SETTINGS.group_preference_5.to_i],
+                   :sixth_choice => preferences[@@SETTINGS.group_preference_6.to_i],
+                   :seventh_choice => preferences[@@SETTINGS.group_preference_7.to_i])
     end
   end
 
   def update_matches_sheet
-    response = fetch_data('Current_Match!A1:C50')
+    response = fetch_data(@@SETTINGS.matches_tab)
     unless response.nil?
       response = delete_matches(response)
       response.values.each do |row|
@@ -114,11 +127,11 @@ class GoogleController < ApplicationController
     find_unmatched_projects.each do |project|
       match_values.push(['None', project.id, project.project_name])
     end
-    range = 'Current_Match!A1:C50'
     begin
-      service_authorize.clear_values(current_parameters[:spreadsheet_id], range)
+      service_authorize.clear_values(@@SETTINGS.spreadsheet_id, @@SETTINGS.matches_tab)
       values = Google::Apis::SheetsV4::ValueRange.new({:values => match_values, :major_dimension => 'ROWS'})
-      service_authorize.update_spreadsheet_value(current_parameters[:spreadsheet_id], range, values, value_input_option:'USER_ENTERED')
+      service_authorize.update_spreadsheet_value(@@SETTINGS.spreadsheet_id, @@SETTINGS.matches_tab, values,
+                                                 value_input_option:'USER_ENTERED')
       if flash[:notice]
         flash[:notice] += 'Matches Re-Alphabetized and Written.'
       else
@@ -194,12 +207,16 @@ class GoogleController < ApplicationController
 
   def fetch_data(range)
     begin
-      response = service_authorize.get_spreadsheet_values(current_parameters[:spreadsheet_id], range)
+      response = service_authorize.get_spreadsheet_values(@@SETTINGS.spreadsheet_id, range)
     rescue Signet::AuthorizationError
       authorize true
       return
     rescue Google::Apis::AuthorizationError
       authorize true
+      return
+    rescue Google::Apis::ClientError
+      flash[:notice] = "Error fetching: #{range} in spreadsheet id: #{@@SETTINGS.spreadsheet_id}"
+      redirect_to google_fetch_path
       return
     end
     response

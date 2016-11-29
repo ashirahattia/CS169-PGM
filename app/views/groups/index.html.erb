@@ -11,7 +11,7 @@
                     <div class="group-module-header">
                         <h1>
                             <span class="delete-checkbox"><%= check_box_tag("delete[#{group.id}]", "1") %></span>
-                            <%= link_to(group.group_name, "/groups/" + group.id.to_s) %>
+                            <%= link_to(group.id, "/groups/" + group.id.to_s) %>
                         </h1>
                     </div>
                     <div class="group-module-body">
