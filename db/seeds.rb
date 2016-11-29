@@ -27,3 +27,19 @@ projects = [ {:project_name => 'proj1'},
 projects.each do |project|
     Project.create!(project)
 end
+
+Setting.create(:spreadsheet_id => '1kPwI0T6PnmVT9TF7QqDa1TWsKlnNRG2sXGBsnhWv7AI',
+               :group_tab => 'Groups!A1:Y1000',
+               :group_username_col => '1',
+               :group_id_col => '2',
+               :group_preference_1 => '4',
+               :group_preference_2 => '5',
+               :group_preference_3 => '6',
+               :group_preference_4 => '7',
+               :group_preference_5 => '8',
+               :group_preference_6 => '9',
+               :group_preference_7 => '10',
+               :project_tab => 'Projects',
+               :project_id_col => '0',
+               :project_name_col => '1',
+               :matches_tab => 'Current_Match')
