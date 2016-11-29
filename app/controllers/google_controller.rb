@@ -10,28 +10,35 @@ class GoogleController < ApplicationController
   include GoogleHelper
 
   before_filter :check_logged_in
-  before_filter :check_authorization
 
   @@SETTINGS = Setting.first
 
   def projects_groups_fetch
-    if fetch_project_data
-      fetch_group_data
+    if check_authorization
+      if fetch_project_data
+        fetch_group_data
+      end
     end
   end
 
   def write_matches
-    write_all_matches
+    if check_authorization
+      write_all_matches
+    end
   end
 
   def fetch_matches
-    update_matches_sheet
+    if check_authorization
+      update_matches_sheet
+    end
   end
 
   def save_preferences
-    update_settings
-    @@SETTINGS = Setting.first
-    redirect_to google_fetch_path
+    if check_authorization
+      update_settings
+      @@SETTINGS = Setting.first
+      redirect_to google_fetch_path
+    end
   end
 
   def index
@@ -181,7 +188,11 @@ class GoogleController < ApplicationController
   end
 
   def check_authorization
-    authorize(false)
+    if authorize(false)
+      return true
+    else
+      return false
+    end
   end
 
   ##
