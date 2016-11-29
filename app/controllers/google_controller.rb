@@ -10,14 +10,13 @@ class GoogleController < ApplicationController
   include GoogleHelper
 
   before_filter :check_logged_in
+  before_filter :check_authorization
 
   @@SETTINGS = Setting.first
 
   def projects_groups_fetch
-    unless authorize(false).nil?
-      if fetch_project_data
-        fetch_group_data
-      end
+    if fetch_project_data
+      fetch_group_data
     end
   end
 
@@ -179,6 +178,10 @@ class GoogleController < ApplicationController
     end
 
     redirect_to google_fetch_path
+  end
+
+  def check_authorization
+    authorize(false)
   end
 
   ##
