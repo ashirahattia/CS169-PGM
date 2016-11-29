@@ -1,0 +1,11 @@
+<%= render 'layouts/sidebar.html.erb' %>
+
+<div class="content-container">
+  <div class="content">
+    <div class="action-container">
+      <%= form_tag(google_settings_path, method: 'PUT') do %>
+          <input id="fetch_matches" class="button" type="submit" value="Save Settings"/>
+      <% end %>
+    </div>
+  </div>
+</div>

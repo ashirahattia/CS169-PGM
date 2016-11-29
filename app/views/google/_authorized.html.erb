@@ -1,0 +1,33 @@
+<%= render 'layouts/sidebar.html.erb' %>
+
+<% if flash[:notice] != "You're currently logged in." %>
+    <%= flash.notice %>
+<% end %>
+
+<div class="content-container">
+    <div class="content">
+        <div class="action-container">
+            <%= form_tag(google_fetch_data_path, method: "GET") do %>
+            <input id="fetch_group_data" class="button" type="submit" value="Populate Projects and Groups"/>
+            <% end %>
+        </div>
+        <div class="action-container">
+            <%= form_tag(google_write_matches_path, method: "POST") do %>
+            <input id="write_matches" class="button" type="submit" value="Write Matches"/>
+            <% end %>
+        </div>
+        <div class="action-container">
+            <%= form_tag(google_fetch_matches_path, method: "GET") do %>
+            <input id="fetch_matches" class="button" type="submit" value="Fetch Matches"/>
+            <% end %>
+        </div>
+        <div class="action-container">
+            <%= form_tag(google_settings_path, method:"GET") do %>
+            <input id="google_settings" class="button red" type="submit" value="Settings"/>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+Accessing this Google Sheet:
+<a href="<%= current_google_link %>" target="_blank">Google Sheets</a>
