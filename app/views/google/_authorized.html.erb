@@ -1,33 +1,41 @@
-<%= render 'layouts/sidebar.html.erb' %>
 
 <% if flash[:notice] != "You're currently logged in." %>
     <%= flash.notice %>
 <% end %>
+<h1>Fetch / Write Data </h1>
+<p>
+    <a href="<%= current_google_link %>" target="_blank">View current sheet</a> | <a href="<%=google_settings_path%>">Update settings</a>
+</p>
+<p> 
+    From this page you can pull group and project from the currently loaded google sheet, write matches back to that google sheet, or set up a new sheet
+</p>
 
-<div class="content-container">
-    <div class="content">
-        <div class="action-container">
-            <%= form_tag(google_fetch_data_path, method: "GET") do %>
-            <input id="fetch_group_data" class="button" type="submit" value="Populate Projects and Groups"/>
-            <% end %>
-        </div>
-        <div class="action-container">
-            <%= form_tag(google_write_matches_path, method: "POST") do %>
-            <input id="write_matches" class="button" type="submit" value="Write Matches"/>
-            <% end %>
-        </div>
-        <div class="action-container">
-            <%= form_tag(google_fetch_matches_path, method: "GET") do %>
-            <input id="fetch_matches" class="button" type="submit" value="Fetch Matches"/>
-            <% end %>
-        </div>
-        <div class="action-container">
-            <%= form_tag(google_settings_path, method:"GET") do %>
-            <input id="google_settings" class="button red" type="submit" value="Settings"/>
-            <% end %>
-        </div>
-    </div>
-</div>
+<h2>Populate Groups & Projects</h2>
+<p>
+    Before you can attempt any matches, you must populate the algorithm with projects, and group project preferences
+</p>
+<p>
+    <%= form_tag(google_fetch_data_path, method: "GET") do %>
+        <input id="fetch_group_data" class="button" type="submit" value="Populate Projects and Groups"/>
+    <% end %>
+</p>
 
-Accessing this Google Sheet:
-<a href="<%= current_google_link %>" target="_blank">Google Sheets</a>
+<h2>Fetch or Write Matches</h2>
+<p>
+    If you would like to make manual adjustments to the algorithm's matching, 
+    you can write the current match to a google sheet and adjust the matching there. 
+    Once you are done making adjustments, you can import that google sheet back 
+    into this app to render your new adjusted matching.
+    <br><b>Note that importing matches will overwrite the app's existing match</b>
+</p>
+<p>
+    <%= form_tag(google_write_matches_path, method: "POST") do %>
+        <input id="write_matches" class="button" type="submit" value="Write Matches"/>
+    <% end %>
+</p>
+<p>
+    <%= form_tag(google_fetch_matches_path, method: "GET") do %>
+        <input id="fetch_matches" class="button red" type="submit" value="Fetch Matches"/>
+    <% end %>  
+</p>
+

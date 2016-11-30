@@ -1,6 +1,13 @@
 <%= render "layouts/sidebar.html.erb" %>
 <div class="content-container">
     <div class="content">
+        <h1>Group-Project Matching</h1>
+        <p>
+            Below is the group-project pairs 
+        </p>
+        <% if session[:is_ta] %>
+            <p id="utility-number">Sum of current match preferences: <%= sum_of_match_prefs %></p>
+        <% end %>   
         <div class="table-container">
             <table id="match_table" class="match-table">
                 <tr>
@@ -30,23 +37,27 @@
             <div class="table_container">
                 <table id="unmatched_projects_table" class="match-table">
                     <th class="match-header">Unmatched Projects</th>
-                    <% find_unmatched_projects().each do |project_name| %>
+                    <% find_unmatched_projects().each do |project| %>
                     <tr>
-                        <td class="project-name"><%=project_name %></td>
+                        <td class="project-name"><%=project.project_name %></td>
                     </tr>
                     <% end %>
                 </table>
             </div>
-            <h3 id="utility-number">Sum of current match preferences: <%= sum_of_match_prefs %></h3>
+            <br>
+            <h1>Loss Function:</h1>
+            <p>
+                You can adjust the matching by selecting one of the following loss functions and adjusting the match coefficient x appropriately. 
+            </p>
+            <h3>For power loss function:</h3>
+            <br>
+               When x < 1, the algorithm prefers giving some groups their <b>top choices</b> at the expense of giving other groups their worse choices.<br>
+               When x > 1, the algorithm <b>avoids giving groups their worse choices</b> at the expense of not giving some groups their top choices.<br>
+               When x = 1, the algorithm wants to minimize the average preference.</p>
+            <h3>For exponential loss function:</h3>
+               It does not make sense to have x <= 1. With higher values of x, the algorithm avoids giving groups their worse choices at the expense of not giving some groups their top choices. </p>
+            <p><b>x must be at least 0 and at most 10.</b><p>
             <form action="/matches/new" method="get">
-                <h3>Loss Function:</h3>
-                <p>For power loss function:<br>
-                   When x < 1, the algorithm prefers giving some groups their top choices at the expense of giving other groups their worse choices.<br>
-                   When x > 1, the algorithm avoids giving groups their worse choices at the expense of not giving some groups their top choices.<br>
-                   When x = 1, the algorithm wants to minimize the average preference.</p>
-                <p>For exponential loss function:<br>
-                   It does not make sense to have x <= 1. With higher values of x, the algorithm avoids giving groups their worse choices at the expense of not giving some groups their top choices. </p>
-                <p>x must be at least 0 and at most 10.<p>
                 <p>Power (pref^x) <input type="radio" name="loss_function" value="power" checked="checked"> &emsp; &emsp;
                    Exponential (x^pref) <input type="radio" name="loss_function" value="exponential"></p>
                 <p>x=<input type="text" name="x" value="1.0"></p>

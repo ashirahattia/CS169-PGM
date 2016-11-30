@@ -152,3 +152,18 @@ tr {
     padding: 50px;
     z-index: 99;
 }
+
+/* Form Inputs */
+input[type="text"] {
+  display: block;
+  margin: 5px 0px;
+  padding: 10px;
+  font-family: $lato;
+  font-size: 14px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  &.full-width {
+      width: 100%;
+  }
+}
