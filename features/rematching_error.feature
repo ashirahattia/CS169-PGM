@@ -7,7 +7,8 @@ Feature: Error Prevention on rematching
     Given I am on the home page
     And I am logged in as a TA
     And All data is put into the database
-    And I have pressed the Match button
+    And I am on the home page
+    And I have pressed the Re-Match button
     And I can see a match_table table
     And I press the Match button again
     Then I should see a warning

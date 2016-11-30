@@ -6,4 +6,5 @@ Feature: Show Google sheet input instructions
   Scenario: Show google sheet instructions
     Given I am logged in as a TA
     And I am on the google_fetch page
-    Then I see google sheet instructions
+    Then I should not see google sheet instructions
+    And I should see the authorization page

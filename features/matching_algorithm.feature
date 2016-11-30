@@ -7,7 +7,8 @@ Feature: Perform Matching
     Given I am logged in as a TA
     Given I am on the matches page
     And All data is put into the database
-    And I press Match button
+    And I am on the home page
+    And I press Re-Match button
     Then I am on the matches page
     And I should see Re-Match button
   
@@ -15,7 +16,8 @@ Feature: Perform Matching
     Given I am on the matches page
     And I am logged in as a TA
     And All data is put into the database
-    And I have pressed the Match button
+    And I am on the home page
+    And I have pressed the Re-Match button
     Then I should be on the matches page
     And I can see a match_table table
     Then I should see Re-Match button

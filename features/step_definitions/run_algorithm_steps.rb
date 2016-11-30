@@ -35,27 +35,29 @@ end
 
 
 Then(/^I should see information about the algorithm$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  page.should have_content('Loss Function:')
 end
 
 Then(/^I should see three options for cost values$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  find_field('power').should_not be_nil
+  find_field('exponential').should_not be_nil
+  find_field('x').should_not be_nil
 end
 
 Then(/^I should see form fields$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_css('input[type="text"]')
 end
 
 Given(/^I click the linear cost value button$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  find_field('power').click
 end
 
-Then(/^I should see rank (\d+) form field default as (\d+)$/) do |arg1|
+Then(/^I should see rank (\d+) form field default as (\d+)$/) do |rank, default|
   pending # Write code here that turns the phrase above into concrete actions
 end
 
 Given(/^I click the exponential cost value button$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  find_field('exponential').click
 end
 
 Given(/^I press the Match button again$/) do

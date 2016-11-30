@@ -7,5 +7,6 @@ Feature: Show unmatched projects
     Given I am on the home page
     And I am logged in as a TA
     And All data is put into the database
-    And I have pressed the Match button
+    And I am on the home page
+    And I have pressed the Re-Match button
     Then I can see all unmatched projects
