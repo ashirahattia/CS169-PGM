@@ -57,7 +57,6 @@ describe GoogleController, :type => :controller do
     response.stub(:values=) { second_set }
     service = double("service")
     service.stub(:get_spreadsheet_values) { response }
-    controller.should_receive(:service_authorize).and_return(service)
   end
 
   def create_settings
