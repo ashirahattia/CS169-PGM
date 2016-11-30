@@ -52,6 +52,19 @@ describe GoogleController, :type => :controller do
     controller.projects_groups_fetch
   end
 
+  it 'tries to get authorization' do
+    @@SETTINGS = create_settings
+    controller.should_receive(:redirect_to).with(google_fetch_path)
+    controller.service_authorize.should eql(nil)
+  end
+
+  it 'tries to fetch data' do
+    @SETTINGS = create_settings
+    controller.should_receive(:redirect_to).with(google_fetch_path).twice
+    controller.fetch_data('None')
+    controller.write_all_matches
+  end
+
   def stub_values (response, first_set, second_set)
     response.stub(:values) { first_set }
     response.stub(:values=) { second_set }
