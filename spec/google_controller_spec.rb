@@ -51,7 +51,7 @@ describe GoogleController, :type => :controller do
 
   it 'tries to fetch data and write matches' do
     @@SETTINGS = create_settings
-    controller.should_receive(:redirect_to).with(google_fetch_path).exactly(3).times
+    controller.should_receive(:redirect_to).with(google_fetch_path).exactly(4).times
     controller.fetch_data('None')
     controller.write_all_matches
   end
