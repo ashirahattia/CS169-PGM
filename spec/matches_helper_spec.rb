@@ -12,7 +12,7 @@ describe MatchesHelper, :type => :helper do
         fake_project7 = Project.create(:project_name => "Project7", :id => 7)
         fake_project8 = Project.create(:project_name => "Project8", :id => 8)
 
-        fake_group1 = Group.create(:group_name => "Group1", :id => 1, :first_choice => 1, :second_choice => 2, :third_choice => 3, :fourth_choice => 4, :fifth_choice => 5, :sixth_choice => 6, :seventh_choice => 7)
+        fake_group1 = Group.create(:id => 1, :first_choice => 1, :second_choice => 2, :third_choice => 3, :fourth_choice => 4, :fifth_choice => 5, :sixth_choice => 6, :seventh_choice => 7)
 
         fake_match1 = Match.new(:project_id => 1, :group_id => 1)
         fake_match2 = Match.new(:project_id => 2, :group_id => 1)
@@ -50,7 +50,7 @@ describe MatchesHelper, :type => :helper do
         allow(Project).to receive(:find_by).with(:project_id => 6) { fake_project6 }
         allow(Project).to receive(:find_by).with(:project_id => 7) { fake_project7 }
         
-        fake_group1 = Group.new(:group_name => "Group1", :id => 1, :first_choice => 1, :second_choice => 2, :third_choice => 3, :fourth_choice => 4, :fifth_choice => 5, :sixth_choice => 6, :seventh_choice => 7)
+        fake_group1 = Group.new(:id => 1, :first_choice => 1, :second_choice => 2, :third_choice => 3, :fourth_choice => 4, :fifth_choice => 5, :sixth_choice => 6, :seventh_choice => 7)
         
         allow(Group).to receive(:where).with(:group_id => 1) { [fake_group1] }
         

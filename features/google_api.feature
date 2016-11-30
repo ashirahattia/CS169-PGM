@@ -9,4 +9,3 @@ Feature: Fetch Data From Google Sheet
     Then I should see submit button
     And I cannot see a fetch_group_data button
     And I cannot see a fetch_project_data button
-    #And I press fetch_group_data button -->

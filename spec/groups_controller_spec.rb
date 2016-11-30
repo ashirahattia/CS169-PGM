@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe GroupsController, :type => :controller do
   it 'produces an index' do
-    fake_groups = [Group.new(:id =>1, :group_name=>"Test1"), Group.new(:id =>1, :group_name=>"Test2")]
+    fake_groups = [Group.new(:id =>1), Group.new(:id =>1)]
     allow(Group).to receive(:all) { fake_groups }
     controller.index
     expect(assigns(@groups)[:groups]).to eq(fake_groups)
@@ -10,7 +10,7 @@ describe GroupsController, :type => :controller do
   
   it 'returns the group with the id and all the projects' do
     fake_project = Project.new(:project_name => "Project1", :id => 1)
-    fake_group = Group.new(:id => 1, :group_name => "Test")
+    fake_group = Group.new(:id => 1)
     allow(Group).to receive(:find) { fake_group }
     allow(Project).to receive(:all) { [fake_project] }
     controller.show
@@ -26,7 +26,7 @@ describe GroupsController, :type => :controller do
     fake_project5 = Project.new(:project_name => "Project5", :id => 5)
     fake_project6 = Project.new(:project_name => "Project6", :id => 6)
     fake_project7 = Project.new(:project_name => "Project7", :id => 7)
-    fake_group = Group.new(:id => 1, :group_name => "Test")
+    fake_group = Group.new(:id => 1)
     allow(Group).to receive(:find) { fake_group }
     allow(Project).to receive(:all) { [fake_project1, fake_project2, fake_project3, fake_project4, fake_project5, fake_project6, fake_project7] }
     allow(Project).to receive(:find) {Project.new}
@@ -42,7 +42,7 @@ describe GroupsController, :type => :controller do
   
   it 'redirects if preferences are not unique' do
     fake_project = Project.new(:project_name => "Project1", :id => 1)
-    fake_group = Group.new(:id => 1, :group_name => "Test")
+    fake_group = Group.new(:id => 1)
     allow(Group).to receive(:find) { fake_group }
     allow(Project).to receive(:all) { [fake_project] }
     allow(Project).to receive(:find) {Project.new}
@@ -52,7 +52,7 @@ describe GroupsController, :type => :controller do
   end
   
   it 'destroys a single group' do
-    fake_group = Group.new(:id => 1, :group_name => "Test")
+    fake_group = Group.new(:id => 1)
     fake_project = Project.new(:id => 1, :project_name => "Test")
     fake_match = Match.new(:group_id => 1, :project_id => 1, :id => 1)
     controller.params = {:id => 1}
@@ -63,8 +63,8 @@ describe GroupsController, :type => :controller do
   end
 
   it 'destroys multiple groups' do
-    fake_group1 = Group.new(:id =>1, :group_name=>"Test1")
-    fake_group2 = Group.new(:id =>2, :group_name=>"Test2")
+    fake_group1 = Group.new(:id =>1)
+    fake_group2 = Group.new(:id =>2)
     allow(Group).to receive(:find).with(['1', '2']) { [fake_group1, fake_group2] }
     controller.params = {:delete => {'1': 1, '2': 1}}
     (fake_group1).should_receive(:destroy).and_return(true)

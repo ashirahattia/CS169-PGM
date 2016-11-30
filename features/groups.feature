@@ -11,6 +11,7 @@ Feature: Deal with Groups Manually
 
   Scenario: Delete a group
     Given I am logged in as a TA
+    And I fill in the google settings
     And All data is put into the database
     Then I am on the groups page
     And I should see delete_group button

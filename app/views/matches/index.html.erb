@@ -57,12 +57,12 @@
             <h3>For exponential loss function:</h3>
                It does not make sense to have x <= 1. With higher values of x, the algorithm avoids giving groups their worse choices at the expense of not giving some groups their top choices. </p>
             <p><b>x must be at least 0 and at most 10.</b><p>
-            <form action="/matches/new" method="get">
-                <p>Power (pref^x) <input type="radio" name="loss_function" value="power" checked="checked"> &emsp; &emsp;
-                   Exponential (x^pref) <input type="radio" name="loss_function" value="exponential"></p>
-                <p>x=<input type="text" name="x" value="1.0"></p>
+            <form id='loss_function_form' action="/matches/new" method="get">
+                <p>Power (pref^x) <input type="radio" id='power' name="loss_function" value="power" checked="checked"> &emsp; &emsp;
+                   Exponential (x^pref) <input type="radio" id='exponential' name="loss_function" value="exponential"></p>
+                <p>x=<input type="text" id='x' name="x" value="1.0"></p>
                 <a id="trigger-rematch" class="button" href="#">Re-match</a>
-                
+
                 <div id="rematch-confirm-modal" class="modal-wrapper">
                 <div class="modal-bg">
                 </div>
@@ -74,7 +74,7 @@
                         <a id="trigger-cancel" class="button red" href="#">Cancel</a>
                         <input id="Re-Match" type="submit" class="button" value="Re-Match"/>
                     </div>
-                </div> 
+                </div>
             </div>
             </form>
         <% end %>
