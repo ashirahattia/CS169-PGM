@@ -7,8 +7,7 @@ describe Match, :type => :model do
     end
     
     it 'runs the hungarian algorithm' do
-        allow(Project).to receive(:all){fake_projects}
-        fake_projects = fake_projs
+        allow(Project).to receive(:all){fake_projs}
         fake_groups = [Group.new(:id => 1, :first_choice => 1, :second_choice => 2, :third_choice => 3),
                        Group.new(:id => 2, :first_choice => 2, :second_choice => 3, :third_choice => 1),
                        Group.new(:id => 3, :first_choice => 3, :second_choice => 1, :third_choice => 2)]
@@ -23,8 +22,7 @@ describe Match, :type => :model do
     end
     
     it 'generates dummies when there are more projects than groups' do
-        fake_projects = fake_projs
-        allow(Project).to receive(:all){fake_projects}
+        allow(Project).to receive(:all){fake_projs}
         fake_groups = [Group.new(:id => 1, :first_choice => 1, :second_choice => 2),
                        Group.new(:id => 2, :first_choice => 2, :second_choice => 3)]
         allow(Group).to receive(:all){fake_groups}
@@ -33,7 +31,7 @@ describe Match, :type => :model do
     end
 
   def fake_projs
-      [Project.new(:project_name => "Project1", :id => 1),
+      return [Project.new(:project_name => "Project1", :id => 1),
        Project.new(:project_name => "Project2", :id => 2),
        Project.new(:project_name => "Project3", :id => 3)]
   end

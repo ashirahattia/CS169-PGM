@@ -38,7 +38,7 @@ describe GoogleController, :type => :controller do
     @@SETTINGS = create_settings
     stub_values double("project"), dummy_project_data_values_with_headers, dummy_project_data_values
     stub_values double("group"), dummy_group_with_headers, dummy_group_data_values
-    controller.should_receive(:redirect_to).with(google_fetch_path).twice
+    controller.should_receive(:redirect_to).with(google_fetch_path).exactly(3).times
     controller.projects_groups_fetch
     controller.fetch_project_data.should eql(false)
   end
@@ -46,12 +46,12 @@ describe GoogleController, :type => :controller do
   it 'tries to get authorization' do
     @@SETTINGS = create_settings
     controller.should_receive(:redirect_to).with(google_fetch_path)
-    controller.service_authorize.should eql(nil)
+    controller.service_authorize.should_not eql(nil)
   end
 
   it 'tries to fetch data and write matches' do
-    @SETTINGS = create_settings
-    controller.should_receive(:redirect_to).with(google_fetch_path).twice
+    @@SETTINGS = create_settings
+    controller.should_receive(:redirect_to).with(google_fetch_path).exactly(3).times
     controller.fetch_data('None')
     controller.write_all_matches
   end
