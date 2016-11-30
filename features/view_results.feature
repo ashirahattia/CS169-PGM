@@ -6,6 +6,7 @@ Feature: See Results of Algorithm
   Scenario: See table
     Given I am on the home page
     And I am logged in as a TA
+    And I fill in the google settings
     And All data is put into the database
     And I am on the home page
     And I have pressed the Re-Match button

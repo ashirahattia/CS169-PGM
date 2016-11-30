@@ -5,6 +5,7 @@ Feature: Match high priority projects
 
   Scenario: Match high priority project
     Given I am logged in as a TA
+    And I fill in the google settings
     And All data is put into the database
     And I am on the home page
     And I have pressed the Re-Match button
@@ -13,6 +14,7 @@ Feature: Match high priority projects
   
   Scenario: High priority project could not be matched (ex. more high priority projects than groups)
     Given I am logged in as a TA
+    And I fill in the google settings
     And All data is put into the database
     And I am on the home page
     And I have pressed the Re-Match button

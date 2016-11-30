@@ -82,9 +82,6 @@ And(/^I fill in the authentication page$/) do
 end
 
 And(/^All data is put into the database$/) do
-  create_settings
-  visit('/google/settings')
-  click_button('fetch_matches')
   response_projects = dummy_project_data_values
   response_projects.each do |row|
     Project.create(:id => row[0], :project_name => row[1])
@@ -113,6 +110,7 @@ def create_settings
 end
 
 And(/^I fill in the google settings$/) do
+  create_settings
   visit('/google/settings')
   find_field('spreadsheet_id').should_not be_nil
   fill_in('spreadsheet_id', :with => '1kPwI0T6PnmVT9TF7QqDa1TWsKlnNRG2sXGBsnhWv7AI')

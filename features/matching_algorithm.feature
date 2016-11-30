@@ -6,6 +6,7 @@ Feature: Perform Matching
   Scenario: Select Matching Button
     Given I am logged in as a TA
     Given I am on the matches page
+    And I fill in the google settings
     And All data is put into the database
     And I am on the home page
     And I press Re-Match button
@@ -15,6 +16,7 @@ Feature: Perform Matching
   Scenario: Re-initiate algorithm from table
     Given I am on the matches page
     And I am logged in as a TA
+    And I fill in the google settings
     And All data is put into the database
     And I am on the home page
     And I have pressed the Re-Match button

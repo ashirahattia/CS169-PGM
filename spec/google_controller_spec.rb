@@ -24,7 +24,7 @@ describe GoogleController, :type => :controller do
   end
 
   it 'checks force reloading authorization' do
-    controller.should_receive(:redirect_to).with(google_fetch_path)
+    controller.should_receive(:redirect_to).with(google_fetch_path).twice
     controller.check_authorization
     expect(session[:is_authorized]).to_not eq(true)
     controller.authorize(true)
@@ -48,8 +48,7 @@ describe GoogleController, :type => :controller do
     @@SETTINGS = create_settings
     stub_values double("project"), dummy_project_data_values_with_headers, dummy_project_data_values
     stub_values double("group"), dummy_group_with_headers, dummy_group_data_values
-    controller.should_receive(:adjust_projects).and_return(true)
-    controller.should_receive(:adjust_groups).and_return(true)
+    controller.should_receive(:redirect_to).with(google_fetch_path)
     controller.projects_groups_fetch
   end
 

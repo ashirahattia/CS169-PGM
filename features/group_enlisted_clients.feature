@@ -6,11 +6,13 @@ Feature: Group enlisted clients should be matched with those groups
   Scenario: Group enlisted clients should be marked
     Given I am on the home page
     And I am logged in as a TA
+    And I fill in the google settings
     And All data is put into the database
     Then group enlisted projects are marked so in the database
 
   Scenario: Group enlisted clients should be matched with those groups
     Given I am logged in as a TA
+    And I fill in the google settings
     And All data is put into the database
     And I am on the matches page
     And I press Match button
