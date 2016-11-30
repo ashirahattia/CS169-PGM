@@ -6,19 +6,23 @@ Feature: View Utility Value
   Scenario: Match groups and projects
     Given I am on the home page
     And I am logged in as a TA
+    And I fill in the google settings
     And All data is put into the database
-    And I have pressed the Match button
+    And I am on the home page
+    And I have pressed the Re-Match button
     Then I can see a match_table table
     Then I can see a utility number
   
   Scenario: Best Match where all get first
     Given a best match is possible in the data
-    And I have pressed the Match button
+    And I am on the home page
+    And I have pressed the Re-Match button
     Then I can see a utility number
     And that utility number is 10
   
   Scenario: Bad Match where all get an unranked projects
     Given the best match matches groups with all unranked projects
-    And I have pressed the Match button
+    And I am on the home page
+    And I have pressed the Re-Match button
     Then I can see a utility number
     And that utility number is 0

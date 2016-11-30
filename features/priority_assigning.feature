@@ -6,11 +6,13 @@ Feature: High priority projects should be marked in the model
   Scenario: high priority tag is assigned to high priority projects
     Given I am on the home page
     And I am logged in as a TA
+    And I fill in the google settings
     And All data is put into the database
     Then high priority projects are marked so in the database
 
   Scenario: high priority tag is not assigned to non high priority projects
     Given I am on the home page
     And I am logged in as a TA
+    And I fill in the google settings
     And All data is put into the database
     Then non high priority projects are not marked as high priority in the database

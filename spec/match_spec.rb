@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe Match, :type => :model do
     it 'generates a preference list' do
-        dummy_group = Group.create(:group_name => "Group1", :id => 1, :first_choice => 1, :second_choice => 2, :third_choice => 3, :fourth_choice => 4, :fifth_choice => 5, :sixth_choice => 6, :seventh_choice => 7)
+        dummy_group = Group.create(:id => 1, :first_choice => 1, :second_choice => 2, :third_choice => 3, :fourth_choice => 4, :fifth_choice => 5, :sixth_choice => 6, :seventh_choice => 7)
         Match.generate_preference_list(dummy_group).should eql([1, 2, 3, 4, 5, 6, 7])
     end
     
@@ -11,9 +11,9 @@ describe Match, :type => :model do
                          Project.new(:project_name => "Project2", :id => 2), 
                          Project.new(:project_name => "Project3", :id => 3)]
         allow(Project).to receive(:all){fake_projects}
-        fake_groups = [Group.new(:group_name => "Group1", :id => 1, :first_choice => 1, :second_choice => 2, :third_choice => 3), 
-                       Group.new(:group_name => "Group2", :id => 2, :first_choice => 2, :second_choice => 3, :third_choice => 1), 
-                       Group.new(:group_name => "Group3", :id => 3, :first_choice => 3, :second_choice => 1, :third_choice => 2)]
+        fake_groups = [Group.new(:id => 1, :first_choice => 1, :second_choice => 2, :third_choice => 3),
+                       Group.new(:id => 2, :first_choice => 2, :second_choice => 3, :third_choice => 1),
+                       Group.new(:id => 3, :first_choice => 3, :second_choice => 1, :third_choice => 2)]
         allow(Group).to receive(:all){fake_groups}
         Match.algorithm(:quadratic, 2)
         expect(Match.all).to_not be_nil
@@ -29,8 +29,8 @@ describe Match, :type => :model do
                          Project.new(:project_name => "Project2", :id => 2), 
                          Project.new(:project_name => "Project3", :id => 3)]
         allow(Project).to receive(:all){fake_projects}
-        fake_groups = [Group.new(:group_name => "Group1", :id => 1, :first_choice => 1, :second_choice => 2), 
-                       Group.new(:group_name => "Group2", :id => 2, :first_choice => 2, :second_choice => 3)]
+        fake_groups = [Group.new(:id => 1, :first_choice => 1, :second_choice => 2),
+                       Group.new(:id => 2, :first_choice => 2, :second_choice => 3)]
         allow(Group).to receive(:all){fake_groups}
         Match.algorithm(:quadratic, 2)
         expect(Match.all).to_not be_nil
