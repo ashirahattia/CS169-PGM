@@ -59,15 +59,15 @@ Given(/^I click the exponential cost value button$/) do
 end
 
 Given(/^I press the Match button again$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  page.click_link("Re-match")
 end
 
-Then(/^I should see the warning "([^"]*)"$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^I should see a warning$/) do 
+  page.should have_css("#rematch-confirm-modal")
 end
 
 Then(/^I can see a utility number$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  page.should have_css("#utility-number")
 end
 
 Given(/^a best match is possible in the data$/) do

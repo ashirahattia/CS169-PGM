@@ -1,19 +1,17 @@
-<%= render 'layouts/sidebar.html.erb' %>
-
 <% if flash[:notice] %>
     <%= flash.notice %>
 <% end %>
 
 <% get_authorization %>
 
-<div class="content-container">
-  Looks like you aren't authorized to use the Google Sheets API.
-  <div class="content">
-    Go to the url and copy and paste the code into this box:
-    <a href="<%= session[:authorize] %>" target="_blank">Google Authorization</a>
+<b></b>Looks like you aren't authorized to use the Google Sheets API.</b>
+  <p>
+    Go to the <a href="<%= session[:authorize] %>" target="_blank">Google Authorization</a> url and copy and paste the code into this box:
+  </p>
+  <p>
     <%= form_tag(google_authorize_path, method: "POST") do %>
-        Code: <input type="text" name="code" id="code"><br>
-        <input id="submit" class="button" type="submit" value="Submit Code"/>
-    <% end %>
-  </div>
-</div>
+      Code: <input type="text" name="code" id="code">
+      <br><br>
+      <input id="submit" class="button" type="submit" value="Submit Code"/>
+  <% end %>
+  </p>
