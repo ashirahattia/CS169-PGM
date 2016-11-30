@@ -14,7 +14,7 @@
                 
                 <% @matches.count.times do |index| %>
                 <tr>
-                    <td class="group-name"><%= @matches[index].group.group_name %></td>
+                    <td class="group-name"><%= @matches[index].group.id %></td>
                     <td class="group-name"><%= @matches[index].group.username %></td>
                     <td class="project-name"><%= @matches[index].project.project_name %></td>
                     <% if session[:is_ta] %>
@@ -67,7 +67,6 @@
             </div>
             </form>
         <% end %>
-        
     </div>  
 </div>
 

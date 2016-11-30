@@ -33,7 +33,7 @@ describe GoogleController, :type => :controller do
   it 'does group fetch' do
     response = double("group")
     controller.should_receive(:fetch_group_data).and_return(response)
-    controller.groups_fetch
+    controller.projects_groups_fetch
   end
 
   it 'checks for project data filled' do

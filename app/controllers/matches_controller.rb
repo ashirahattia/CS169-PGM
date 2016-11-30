@@ -23,7 +23,7 @@ class MatchesController < ApplicationController
     end
     
     def index
-        @matches = Match.all.sort_by { |some_match| (some_match.group.group_name.to_i) }
+        @matches = Match.all.sort_by { |some_match| (some_match.group.id.to_i) }
     end
     
 end

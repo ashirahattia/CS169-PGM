@@ -34,13 +34,13 @@ module MatchesHelper
         end
     end
     
-    def find_unmatched_projects()
+    def find_unmatched_projects
         projects = Project.all
         matched = Match.pluck(:project_id)
         unmatched = []
         projects.each do |project|
             if (not matched.include? project.id)
-                unmatched.append(project.project_name)
+                unmatched.append(project)
             end
         end
         return unmatched
