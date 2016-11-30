@@ -6,16 +6,6 @@ describe GoogleController, :type => :controller do
     expect(session[:authorize]).to_not eq(nil)
   end
 
-  # it 'goes for authorization' do
-  #   controller.should redirect_to(google_authorize_path)
-  #   controller.authorize(true)
-  # end
-  #
-  # it 'goes for service authorization' do
-  #   controller.should redirect_to(google_authorize_path)
-  #   controller.service_authorize
-  # end
-
   it 'checks for completion of authorization' do
     controller.params = {:code => 'Test'}
     controller.should_receive(:redirect_to).with(google_fetch_path)
@@ -48,8 +38,9 @@ describe GoogleController, :type => :controller do
     @@SETTINGS = create_settings
     stub_values double("project"), dummy_project_data_values_with_headers, dummy_project_data_values
     stub_values double("group"), dummy_group_with_headers, dummy_group_data_values
-    controller.should_receive(:redirect_to).with(google_fetch_path)
+    controller.should_receive(:redirect_to).with(google_fetch_path).twice
     controller.projects_groups_fetch
+    controller.fetch_project_data.should eql(false)
   end
 
   it 'tries to get authorization' do
@@ -58,7 +49,7 @@ describe GoogleController, :type => :controller do
     controller.service_authorize.should eql(nil)
   end
 
-  it 'tries to fetch data' do
+  it 'tries to fetch data and write matches' do
     @SETTINGS = create_settings
     controller.should_receive(:redirect_to).with(google_fetch_path).twice
     controller.fetch_data('None')
