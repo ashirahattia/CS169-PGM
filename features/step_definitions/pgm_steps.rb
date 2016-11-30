@@ -82,6 +82,7 @@ And(/^I fill in the authentication page$/) do
 end
 
 And(/^All data is put into the database$/) do
+  create_settings
   put ('/google/settings')
   response_projects = dummy_project_data_values
   response_projects.each do |row|
