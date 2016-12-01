@@ -1,6 +1,8 @@
 
 <% if flash[:notice] != "You're currently logged in." %>
-    <%= flash.notice %>
+    <div class="alert-container">
+        <p><%= flash.notice %></p> 
+    </div>
 <% end %>
 <h1>Fetch / Write Data </h1>
 <p>
