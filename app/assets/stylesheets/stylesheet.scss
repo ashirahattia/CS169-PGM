@@ -167,3 +167,21 @@ input[type="text"] {
       width: 100%;
   }
 }
+
+select {
+  display: block;
+  margin: 5px 0px;
+  height: 30px;
+  font-family: $lato;
+  font-size: 14px;
+}
+
+/* alerts / flash */
+.alert-container {
+    width: 100%;
+    display: block;
+    padding: 20px;
+    text-align: center;
+    font-weight: 700;
+    color: $dark-green;
+}

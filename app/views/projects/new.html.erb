@@ -4,7 +4,9 @@
   <div class="content">
     <h1>Add New Project</h1>
     <% if flash[:notice] %>
-            <%= flash.notice %>
+            <div class="alert-container">
+               <p><%= flash.notice %></p> 
+            </div>
     <% end %>
     <%= form_tag("/projects/new", method: "get") do %>
         <p>Project name:
