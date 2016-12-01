@@ -10,18 +10,6 @@ Feature: Adjust Cost
     And I should see three options for cost values
     And I should see form fields
   
-  Scenario: Linear cost values
-    Given I am logged in as a TA
-    And I am on the matches page
-    And I click the linear cost value button
-    Then I should see rank 1 form field default as 1
-    And I should see rank 2 form field default as 2
-    And I should see rank 3 form field default as 3
-    And I should see rank 4 form field default as 4
-    And I should see rank 5 form field default as 5
-    And I should see rank 6 form field default as 6
-    And I should see rank 7 form field default as 7
-  
   Scenario: Exponential cost values
     Given I am logged in as a TA
     And I am on the matches page
