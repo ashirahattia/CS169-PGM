@@ -31,7 +31,7 @@ describe GroupsController, :type => :controller do
     allow(Project).to receive(:all) { [fake_project1, fake_project2, fake_project3, fake_project4, fake_project5, fake_project6, fake_project7] }
     allow(Project).to receive(:find) {Project.new}
     controller.should_receive(:redirect_to).with(:groups).and_return(true)
-    controller.params = {:id=> 1, :first_choice => 1, :second_choice => 2, :third_choice => 3, :fourth_choice => 4, :fifth_choice => 5, :sixth_choice => 6, :seventh_choice => 7}
+    controller.params = {:id=> 1, :first_choice => 1, :second_choice => 2, :third_choice => 3, :fourth_choice => 4, :fifth_choice => 5, :sixth_choice => 6, :seventh_choice => 7, :force_choice => "None"}
     controller.update
     expect(assigns(@groups)[:group]).to eq(fake_group)
     expect(assigns(@projects)[:projects]).to eq([fake_project1, fake_project2, fake_project3, fake_project4, fake_project5, fake_project6, fake_project7])
