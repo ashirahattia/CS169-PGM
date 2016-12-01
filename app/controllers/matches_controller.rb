@@ -3,10 +3,6 @@ class MatchesController < ApplicationController
     
     before_filter :check_logged_in, :except => :index
     
-    def matches_params
-        params.require(:matches).permit(:loss_function, :x)
-    end
-    
     def new
         if params[:loss_function] == "exponential"
             loss_function = :exponential
