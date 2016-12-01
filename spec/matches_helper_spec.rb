@@ -67,4 +67,63 @@ describe MatchesHelper, :type => :helper do
         helper.rank_color(fake_match3).should eql("bg-red")
         
     end
+    
+    it 'finds unmatched projects' do
+        fake_project1 = Project.new(:project_name => "Project1", :id => 1)
+        fake_project2 = Project.new(:project_name => "Project2", :id => 2)
+        fake_project3 = Project.new(:project_name => "Project3", :id => 3)
+        fake_project4 = Project.new(:project_name => "Project4", :id => 4)
+        fake_project5 = Project.new(:project_name => "Project5", :id => 5)
+        fake_project6 = Project.new(:project_name => "Project6", :id => 6)
+        fake_project7 = Project.new(:project_name => "Project7", :id => 7)
+
+        allow(Project).to receive(:all) { [fake_project1, fake_project2, fake_project3, fake_project4, fake_project5, fake_project6, fake_project7] }
+        allow(Project).to receive(:find_by).with(:project_id => 1) { fake_project1 }
+        allow(Project).to receive(:find_by).with(:project_id => 2) { fake_project2 }
+        allow(Project).to receive(:find_by).with(:project_id => 3) { fake_project3 }
+        allow(Project).to receive(:find_by).with(:project_id => 4) { fake_project4 }
+        allow(Project).to receive(:find_by).with(:project_id => 5) { fake_project5 }
+        allow(Project).to receive(:find_by).with(:project_id => 6) { fake_project6 }
+        allow(Project).to receive(:find_by).with(:project_id => 7) { fake_project7 }
+        
+        fake_group1 = Group.new(:id => 1, :first_choice => 1, :second_choice => 2, :third_choice => 3, :fourth_choice => 4, :fifth_choice => 5, :sixth_choice => 6, :seventh_choice => 7)
+        
+        allow(Group).to receive(:where).with(:group_id => 1) { [fake_group1] }
+        
+        Match.new(:project_id => 1, :group_id => 1)
+        Match.new(:project_id => 5, :group_id => 1)
+        Match.new(:project_id => 7, :group_id => 1)
+        
+        allow(Match).to receive(:pluck).with(:project_id) { [1, 5, 7] }
+
+        helper.find_unmatched_projects.should eql([fake_project2,fake_project3,fake_project4,fake_project6])
+    end
+    
+    it 'finds sum of match preferences' do
+        fake_project1 = Project.create(:project_name => "Project1", :id => 1)
+        fake_project2 = Project.create(:project_name => "Project2", :id => 2)
+        fake_project3 = Project.create(:project_name => "Project3", :id => 3)
+        fake_project4 = Project.create(:project_name => "Project4", :id => 4)
+        fake_project5 = Project.create(:project_name => "Project5", :id => 5)
+        fake_project6 = Project.create(:project_name => "Project6", :id => 6)
+        fake_project7 = Project.create(:project_name => "Project7", :id => 7)
+        fake_project8 = Project.create(:project_name => "Project8", :id => 8)
+
+        fake_group1 = Group.create(:id => 1, :first_choice => 1, :second_choice => 2, :third_choice => 3, :fourth_choice => 4, :fifth_choice => 5, :sixth_choice => 6, :seventh_choice => 7)
+
+        fake_match1 = Match.new(:project_id => 1, :group_id => 1)
+        fake_match2 = Match.new(:project_id => 2, :group_id => 1)
+        fake_match3 = Match.new(:project_id => 3, :group_id => 1)
+        fake_match4 = Match.new(:project_id => 4, :group_id => 1)
+        fake_match5 = Match.new(:project_id => 5, :group_id => 1)
+        fake_match6 = Match.new(:project_id => 6, :group_id => 1)
+        fake_match7 = Match.new(:project_id => 7, :group_id => 1)
+        fake_match8 = Match.new(:project_id => 8, :group_id => 1)
+        
+        allow(Match).to receive(:all) { [fake_match1, fake_match2, fake_match3, fake_match4, fake_match5, fake_match6, fake_match7, fake_match8] }
+
+        helper.sum_of_match_prefs.should eql(36)
+        
+    end
+    
 end
