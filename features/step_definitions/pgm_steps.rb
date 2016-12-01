@@ -146,7 +146,8 @@ Then(/^non high priority projects are not marked as high priority in the databas
 end
 
 Then(/^group enlisted projects are marked so in the database$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  Project.first.force_matched_group = Group.first
+  Group.first.force_matched_project = Project.first
 end
 
 Then(/^I should not see google sheet instructions$/) do

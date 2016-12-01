@@ -38,7 +38,7 @@ Then(/^I should see information about the algorithm$/) do
   page.should have_content('Loss Function:')
 end
 
-Then(/^I should see three options for cost values$/) do
+Then(/^I should see two options for cost values$/) do
   find_field('power').should_not be_nil
   find_field('exponential').should_not be_nil
   find_field('x').should_not be_nil
@@ -46,18 +46,6 @@ end
 
 Then(/^I should see form fields$/) do
   expect(page).to have_css('input[type="text"]')
-end
-
-Given(/^I click the linear cost value button$/) do
-  find_field('power').click
-end
-
-Then(/^I should see rank (\d+) form field default as (\d+)$/) do |rank, default|
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Given(/^I click the exponential cost value button$/) do
-  find_field('exponential').click
 end
 
 Given(/^I press the Match button again$/) do
@@ -97,7 +85,7 @@ Then(/^I should see a warning message that these projects could not be matched$/
 end
 
 Then(/^I should see that group enlisted projects are matched with their groups$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  page.should have_text("#{Group.first.id} #{Group.first.username} #{Project.first.project_name}")
 end
 
 Then(/^I can see all unmatched projects$/) do
