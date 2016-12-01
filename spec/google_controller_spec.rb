@@ -1,6 +1,11 @@
 require "spec_helper"
 
 describe GoogleController, :type => :controller do
+  
+  before(:each) do
+    @@SETTINGS = create_settings
+  end
+  
   it 'checks for authorization URL' do
     controller.get_authorization
     expect(session[:authorize]).to_not eq(nil)
@@ -21,7 +26,6 @@ describe GoogleController, :type => :controller do
   end
 
   it 'checks for project and group data filled' do
-    @@SETTINGS = create_settings
     put :save_preferences
     response = double("project")
     response.stub(:values) { dummy_project_data_values_with_headers }
@@ -35,7 +39,6 @@ describe GoogleController, :type => :controller do
   end
 
   it 'fetches project and group data' do
-    @@SETTINGS = create_settings
     stub_values double("project"), dummy_project_data_values_with_headers, dummy_project_data_values
     stub_values double("group"), dummy_group_with_headers, dummy_group_data_values
     controller.should_receive(:redirect_to).with(google_fetch_path).exactly(3).times
@@ -44,13 +47,11 @@ describe GoogleController, :type => :controller do
   end
 
   it 'tries to get authorization' do
-    @@SETTINGS = create_settings
     controller.should_receive(:redirect_to).with(google_fetch_path)
     controller.service_authorize.should_not eql(nil)
   end
 
   it 'tries to fetch data and write matches' do
-    @@SETTINGS = create_settings
     controller.should_receive(:redirect_to).with(google_fetch_path).exactly(4).times
     controller.fetch_data('None')
     controller.write_all_matches
@@ -79,6 +80,21 @@ describe GoogleController, :type => :controller do
                    :project_id_col => '0',
                    :project_name_col => '1',
                    :matches_tab => 'Current_Match')
+  end
+  
+  context "some extra tests" do
+    before(:each) do
+      allow(controller).to receive(:authorize) {true}
+      allow(controller).to receive(:fetch_data) {[1, 2, 3]}
+      allow(controller).to receive(:adjust_projects) {[4, 5, 6]}
+      allow(controller).to receive(:adjust_groups) {[7, 8, 9]}
+    end
+  
+    it 'projects_groups_fetch' do
+      # expect(controller).to receive(:check_authorization) {true}
+      # expect(controller).to receive(:fetch_project_data) {true}
+      controller.projects_groups_fetch.should eql([7,8,9])
+    end
   end
 
 end

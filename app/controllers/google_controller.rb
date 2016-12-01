@@ -14,23 +14,15 @@ class GoogleController < ApplicationController
   @@SETTINGS = Setting.first
 
   def projects_groups_fetch
-    if check_authorization
-      if fetch_project_data
-        fetch_group_data
-      end
-    end
+    return (check_authorization && fetch_project_data) ? fetch_group_data : nil
   end
 
   def write_matches
-    if check_authorization
-      write_all_matches
-    end
+    return check_authorization ? write_all_matches : nil
   end
 
   def fetch_matches
-    if check_authorization
-      update_matches_sheet
-    end
+    return check_authorization ? update_matches_sheet : nil
   end
 
   def save_preferences
@@ -66,10 +58,7 @@ class GoogleController < ApplicationController
 
   def create_projects(response)
     response.values.each do |row|
-      if row[@@SETTINGS.project_id_col.to_i].nil?
-        return
-      end
-      Project.create(:id => row[@@SETTINGS.project_id_col.to_i],
+      row[@@SETTINGS.project_id_col.to_i].nil? ? nil : Project.create(:id => row[@@SETTINGS.project_id_col.to_i],
                      :project_name => row[@@SETTINGS.project_name_col.to_i])
     end
   end
@@ -144,16 +133,9 @@ class GoogleController < ApplicationController
       values = Google::Apis::SheetsV4::ValueRange.new({:values => match_values, :major_dimension => 'ROWS'})
       service_authorize.update_spreadsheet_value(@@SETTINGS.spreadsheet_id, @@SETTINGS.matches_tab, values,
                                                  value_input_option:'USER_ENTERED')
-      if flash[:notice]
-        flash[:notice] += 'Matches Re-Alphabetized and Written.'
-      else
-        flash[:notice] = 'Matches Written.'
-      end
+      flash[:notice] = flash[:notice] ? flash[:notice] + 'Matches Re-Alphabetized and Written.' : 'Matches Written.'
       redirect_to google_fetch_path
-    rescue Signet::AuthorizationError
-      authorize true
-      return
-    rescue Google::Apis::AuthorizationError
+    rescue Signet::AuthorizationError, Google::Apis::AuthorizationError
       authorize true
       return
     end
@@ -188,11 +170,7 @@ class GoogleController < ApplicationController
   end
 
   def check_authorization
-    if authorize(false)
-      return true
-    else
-      return false
-    end
+    return authorize(false)
   end
 
   ##
@@ -228,10 +206,7 @@ class GoogleController < ApplicationController
   def fetch_data(range)
     begin
       response = service_authorize.get_spreadsheet_values(@@SETTINGS.spreadsheet_id, range)
-    rescue Signet::AuthorizationError
-      authorize true
-      return
-    rescue Google::Apis::AuthorizationError
+    rescue Signet::AuthorizationError, Google::Apis::AuthorizationError
       authorize true
       return
     rescue Google::Apis::ClientError
