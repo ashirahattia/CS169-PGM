@@ -6,7 +6,21 @@
             Below are the group-project pairs.
         </p>
         <% if session[:is_ta] %>
-            <p id="utility-number">Sum of current match preferences: <%= sum_of_match_prefs %></p>
+            <table>
+                <tr>
+                    <th scope="row">Preference ranking:</th>
+                    <% 1.upto(8).each do |x| %>
+                        <td><%=x%></td>
+                    <% end %>
+                </tr>
+                <tr>
+                    <th scope="row">Number of groups:</th>
+                    <% 1.upto(8).each do |x| %>
+                        <td><%=num_with_preference(x)%></td>
+                    <% end %>
+                </tr>
+            </table>
+            
         <% end %>   
         <div class="table-container">
             <table id="match_table" class="match-table">

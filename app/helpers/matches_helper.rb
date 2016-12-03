@@ -21,6 +21,16 @@ module MatchesHelper
             8 # Not on preference list
         end
     end
+    
+    def num_with_preference(x)
+        count = 0
+        Match.all.each do |m|
+            if choice_num(m) == x
+                count += 1
+            end
+        end
+        return count
+    end
      
     # Determine which background color class to add to the rank column of the match table  
     def rank_color(match)
