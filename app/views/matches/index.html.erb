@@ -56,7 +56,7 @@
                When x = 1, the algorithm wants to minimize the average preference.</p>
             <h3>For exponential loss function:</h3>
                It does not make sense to have x <= 1. With higher values of x, the algorithm avoids giving groups their worse choices at the expense of not giving some groups their top choices. </p>
-            <p><b>x must be in the range [1e-14, 10].</b> For polynomial loss with x < 1, the results of the algorithm may not converge until x 1e-10 or smaller.<p>
+            <p><b>x must be in the range [1e-14, 10].</b> For polynomial loss with x < 1, the results of the algorithm may not converge until x is 1e-10 or smaller.<p>
             <form id='loss_function_form' action="/matches/new" method="get">
                 <p>Power (pref^x) <input type="radio" id='power' name="loss_function" value="power" <%=MatchesController.class_variable_get(:@@power)%>> &emsp; &emsp;
                    Exponential (x^pref) <input type="radio" id='exponential' name="loss_function" value="exponential" <%=MatchesController.class_variable_get(:@@exponential)%>></p>
